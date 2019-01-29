@@ -34,7 +34,7 @@
             <div class="row">
 
                 <div class="col-sm-12 col-md-12 col-lg-12">
-                    <textarea id="mytextarea" name="mytextarea" rows="25"><?=nl2br(htmlspecialchars($chapter['content']))?></textarea>
+                    <textarea id="mytextarea" name="mytextarea" rows="25"><?=$chapter['content']?></textarea>
                 </div>
             </div>
 

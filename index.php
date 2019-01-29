@@ -107,7 +107,7 @@ try{
                 break;
 
             case 'save': 
-                saveChapter($_POST["idChapter"],$_POST['title'],addslashes($_POST['mytextarea']),$_GET['from']);
+                saveChapter($_POST["idChapter"],$_POST['title'],$_POST['mytextarea'],$_GET['from']);
                 break;
             case 'edit':
                 if (isset($_GET['message'])){
