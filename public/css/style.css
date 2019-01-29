@@ -1,0 +1,967 @@
+/* ---------------------------------------- */
+/* ==            SOMMAIRE                   */
+/*---------------------------------------- */
+/* L        - 1 - */
+/* L        - 2 - */
+/* L        - 3 - */
+/* ---------------------------------------- */
+/* ==       CODES COULEURS           */
+/*---------------------------------------- */
+/*
+maron foncé (text) :            #331902
+blanc:                          white
+beige :                         #e2d6c4
+kaki:                           #8d8b40
+*/
+/* ---------------------------------------- */
+/* == commun à toute les sections ou pages  */
+/*---------------------------------------- */
+body {
+    font-family: 'Ubuntu', sans-serif;
+    font-size: 16px;
+    text-align: justify;
+}
+
+h1 {
+    font-family: 'Caveat', cursive;
+    text-transform: uppercase;
+    font-size: 2.2em;
+    line-height: 1em;
+    text-align: center;
+}
+
+h4 {
+    font-family: 'Caveat', cursive;
+    font-size: 1.2em;
+    line-height: 2em;
+    text-align: center;
+}
+
+.row {
+    margin-right: 8%;
+    margin-left: 8%;
+}
+
+#body {
+    z-index: 0;
+    width: 100%;
+}
+
+
+
+/*        Articles               */
+article {
+    background-color: white;
+    padding: 30px 50px;
+    box-shadow: 0px 10px 30px 0 rgba(49, 52, 57, 0.3), 0 10px 30px rgba(0, 0, 0, 0.08);
+    margin-right: 8%;
+    margin-left: 8%;
+    margin-bottom: 8%;
+    border-radius: 10px;
+    text-align: center;
+}
+
+article p {
+    text-align: justify;
+}
+
+.warning {
+    color: darkred;
+    font-size: 20px;
+
+}
+
+
+/*     boutons     */
+.btn.btn-primary,
+input[type="submit"] {
+    background-color: #331902;
+    color: #e2d6c4;
+    border: 2px solid #e2d6c4;
+    padding: 15px 30px;
+    border-radius: 10px;
+}
+
+.btn.btn-primary:hover,
+input[type="submit"]:hover {
+    background-color: #e2d6c4;
+    color: #331902;
+    border: 2px solid #331902;
+    padding: 15px 30px;
+    border-radius: 10px;
+}
+
+a.btn.btn-secondary em {
+    color: #8d8b40;
+}
+
+a.btn.btn-secondary:hover em {
+    color: #331902;
+}
+
+article span {
+    text-align: left;
+    display: block;
+}
+
+article .btn-secondary {
+    text-align: right;
+    display: block;
+}
+
+/* ---------------------------------------- */
+/* ==              header                   */
+/*---------------------------------------- */
+header {
+    width: 100%;
+    margin: auto;
+    z-index: 0;
+}
+
+/* ==           menu    burger       */
+[type="checkbox"]:not(:checked),
+[type="checkbox"]:checked {
+    position: absolute;
+    left: -9999px;
+}
+
+.bar {
+    position: fixed;
+    left: 50px;
+    top: 50px;
+    width: 50px;
+    height: 7px;
+    z-index: 15;
+    background-color: #8d8b40;
+    transition: all 0.3s;
+    border: 1px inset #331902;
+    border-radius: 3px;
+}
+
+span.bar:nth-child(1) {
+    margin-top: -15px;
+}
+
+span.bar:nth-child(3) {
+    margin-top: 15px;
+}
+
+[type="checkbox"]:checked + label span.bar:nth-child(2) {
+    opacity: 0;
+}
+
+[type="checkbox"]:checked + label span.bar:nth-child(1) {
+    margin-top: 0;
+    transform: rotate(-45deg);
+}
+
+[type="checkbox"]:checked + label span.bar:nth-child(3) {
+    margin-top: 0;
+    transform: rotate(45deg);
+}
+
+.menu {
+    position: relative;
+}
+
+nav {
+    position: fixed;
+    min-width: 200px;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    z-index: 5;
+    top: 10px;
+    left: -400px;
+    background-color: white;
+}
+
+nav a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    z-index: 10;
+    background-color: white;
+    margin-left: 65px;
+    text-decoration: none;
+}
+
+.menu input#menuburger[type="checkbox"]:checked ~ nav {
+    display: block;
+    transition-property: transform;
+    transition-duration: 1s;
+    transform: translateX(412px)
+}
+
+nav a:hover {
+    background-color: rgba(225, 212, 190, 0.5);
+    color: #331902;
+    text-decoration: none;
+}
+
+nav > a:nth-child(1) {
+    margin-top: 65px
+}
+
+hr {
+    border-color: rgba(225, 212, 190, 0.5) !important;
+}
+
+/* ---------------------------------------- */
+/* ==     front page                       */
+/*---------------------------------------- */
+#back {
+    background-attachment: fixed;
+    background-position: top;
+    background-image: url(../images/header.png);
+    background-size: cover;
+    width: 100%;
+    display: flex;
+    margin-top: -122px;
+}
+
+#front {
+    z-index: 4;
+    background-color: transparent;
+}
+
+#intro p {
+    text-align: justify;
+    padding-left: 15%;
+    padding-right: 15%;
+    font-family: 'Caveat', cursive;
+    font-size: 1.8em;
+    line-height: 2em;
+    text-align: center;
+    color: #331902;
+}
+
+article#intro.row {
+    margin-top: 38%;
+}
+
+/*     photo      */
+.photo {
+    margin: auto;
+}
+
+.photo img {
+    max-width: 350px;
+    width: 100%;
+    height: auto;
+    margin: auto;
+    align-self: center;
+    display: block;
+}
+
+/*     illustrations principaux titres     */
+html body div#mainTitles.row .conteneur.col-12 .photo.col-sm-6.col-md-4.col-lg-2 a img {
+    margin: 20px 10px;
+    border: 6px #331902 outset;
+}
+
+figcaption {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    min-width: 250px;
+    bottom: 0;
+    left: 0;
+    background-color: rgba(255, 255, 255, 0);
+    transition-property: background-color;
+    transition-duration: 2s;
+    padding: 15px;
+}
+
+figcaption h4 {
+    margin-top: 5%;
+    z-index: 10;
+    text-transform: uppercase;
+    color: rgba(29, 14, 9, 0);
+    transition-property: color;
+    transition-duration: 4s;
+}
+
+figcaption p {
+    text-align: justify;
+    color: rgba(29, 14, 9, 0);
+    transition-property: color;
+    transition-duration: 4s;
+    margin-left: 15px;
+    margin-right: 15px;
+}
+
+figure:hover figcaption {
+    bottom: 0;
+    left: 0;
+    background-color: rgba(255, 255, 255, 1);
+}
+
+figure:hover h4 {
+    color: rgba(29, 14, 9, 1);
+    transition-property: color;
+    transition-duration: 3s;
+}
+
+figure:hover p {
+    color: rgba(29, 14, 9, 1);
+    transition-property: color;
+    transition-duration: 3s;
+}
+
+/*-----annimation oiseaux--------*/
+#bird1 {
+    left: 103%;
+    top: 35%;
+    width: 150px;
+    height: 150px;
+    animation: bird1 7s linear 3;
+    animation-delay: 0.5s;
+    animation-fill-mode: both;
+    overflow: hidden;
+    position: fixed;
+    z-index: 5;
+    background-position: top;
+    background-size: auto;
+    background-repeat: no-repeat;
+}
+
+@keyframes bird1 {
+    0% {
+        left: 103%;
+        top: 35%;
+        background-image: url(../images/Birds/bird11.png);
+    }
+
+    13% {
+        left: 90%;
+        top: 31%;
+        background-image: url(../images/Birds/bird12.png);
+    }
+
+    25% {
+        left: 81%;
+        top: 30%;
+        background-image: url(../images/Birds/bird13.png);
+    }
+
+    38% {
+        left: 71%;
+        top: 26%;
+        background-image: url(../images/Birds/bird14.png);
+    }
+
+    50% {
+        left: 57%;
+        top: 21%;
+        background-image: url(../images/Birds/bird15.png);
+    }
+
+    63% {
+        left: 48%;
+        top: 15%;
+        background-image: url(../images/Birds/bird16.png);
+    }
+
+    75% {
+        left: 33%;
+        top: 12%;
+        background-image: url(../images/Birds/bird17.png);
+    }
+
+    88% {
+        left: 10%;
+        top: 1%;
+        background-image: url(../images/Birds/bird18.png);
+    }
+
+    100% {
+        left: 1%;
+        top: -4%;
+        background-image: url(../images/Birds/bird19.png);
+    }
+}
+
+#bird2 {
+    left: 39%;
+    top: 99%;
+    width: 150px;
+    height: 150px;
+    animation: bird2 7s linear 4;
+    animation-delay: 0.4s;
+    animation-fill-mode: both;
+    overflow: hidden;
+    position: fixed;
+    z-index: 5;
+    background-position: top;
+    background-size: auto;
+    background-repeat: no-repeat;
+}
+
+@keyframes bird2 {
+    0% {
+        left: 99%;
+        top: 39%;
+        background-image: url(../images/Birds/bird21.png);
+    }
+
+    14% {
+        left: 96%;
+        top: 29%;
+        background-image: url(../images/Birds/bird22.png);
+    }
+
+    28% {
+        left: 76%;
+        top: 27%;
+        background-image: url(../images/Birds/bird23.png);
+    }
+
+    42% {
+        left: 65%;
+        top: 24%;
+        background-image: url(../images/Birds/bird24.png);
+    }
+
+    57% {
+        left: 54%;
+        top: 13%;
+        background-image: url(../images/Birds/bird25.png);
+    }
+
+    71% {
+        left: 40%;
+        top: 14%;
+        background-image: url(../images/Birds/bird26.png);
+    }
+
+    85% {
+        left: 30%;
+        top: 3%;
+        background-image: url(../images/Birds/bird27.png);
+    }
+
+    100% {
+        left: 12%;
+        top: -6%;
+        background-image: url(../images/Birds/bird28.png);
+    }
+}
+
+#bird3 {
+    left: 113%;
+    top: 35%;
+    width: 150px;
+    height: 150px;
+    animation: bird3 5s linear 2;
+    animation-delay: 0.5s;
+    animation-fill-mode: both;
+    overflow: hidden;
+    position: fixed;
+    z-index: 5;
+    background-position: top;
+    background-size: initial;
+    background-repeat: no-repeat;
+}
+
+@keyframes bird3 {
+    0% {
+        left: 113%;
+        top: 35%;
+        background-image: url(../images/Birds/bird31.png);
+    }
+
+    13% {
+        left: 95%;
+        top: 32%;
+        background-image: url(../images/Birds/bird32.png);
+    }
+
+    25% {
+        left: 86%;
+        top: 32%;
+        background-image: url(../images/Birds/bird33.png);
+    }
+
+    38% {
+        left: 71%;
+        top: 31%;
+        background-image: url(../images/Birds/bird34.png);
+    }
+
+    50% {
+        left: 60%;
+        top: 31%;
+        background-image: url(../images/Birds/bird35.png);
+    }
+
+    63% {
+        left: 50%;
+        top: 30%;
+        background-image: url(../images/Birds/bird36.png);
+    }
+
+    75% {
+        left: 36%;
+        top: 29%;
+        background-image: url(../images/Birds/bird37.png);
+    }
+
+    88% {
+        left: 22%;
+        top: 28%;
+        background-image: url(../images/Birds/bird38.png);
+    }
+
+    100% {
+        left: -13%;
+        top: 25%;
+        background-image: url(../images/Birds/bird39.png);
+    }
+}
+
+#bird4 {
+    left: 99%;
+    top: 34%;
+    width: 150px;
+    height: 150px;
+    animation: bird4 6s linear 6;
+    animation-delay: 0.7s;
+    animation-fill-mode: both;
+    overflow: hidden;
+    position: fixed;
+    z-index: 5;
+    background-position: top;
+    background-size: auto;
+    background-repeat: no-repeat;
+}
+
+@keyframes bird4 {
+    0% {
+        left: 99%;
+        top: 34%;
+        background-image: url(../images/Birds/bird41.png);
+    }
+
+    13% {
+        left: 90%;
+        top: 33%;
+        background-image: url(../images/Birds/bird42.png);
+    }
+
+    25% {
+        left: 82%;
+        top: 33%;
+        background-image: url(../images/Birds/bird43.png);
+    }
+
+    38% {
+        left: 66%;
+        top: 32%;
+        background-image: url(../images/Birds/bird44.png);
+    }
+
+    50% {
+        left: 56%;
+        top: 30%;
+        background-image: url(../images/Birds/bird45.png);
+    }
+
+    63% {
+        left: 42%;
+        top: 28%;
+        background-image: url(../images/Birds/bird46.png);
+    }
+
+    75% {
+        left: 32%;
+        top: 26%;
+        background-image: url(../images/Birds/bird47.png);
+    }
+
+    88% {
+        left: 20%;
+        top: 20%;
+        background-image: url(../images/Birds/bird48.png);
+    }
+
+    100% {
+        left: -10%;
+        top: 12%;
+        background-image: url(../images/Birds/bird49.png);
+    }
+}
+
+#bird5 {
+    left: 34%;
+    top: 94%;
+    width: 150px;
+    height: 150px;
+    animation: bird5 7s linear 4;
+    animation-delay: 0.4s;
+    animation-fill-mode: both;
+    overflow: hidden;
+    position: fixed;
+    z-index: 5;
+    background-position: top;
+    background-size: auto;
+    background-repeat: no-repeat;
+}
+
+@keyframes bird5 {
+    0% {
+        left: 94%;
+        top: 34%;
+        background-image: url(../images/Birds/bird51.png);
+    }
+
+    16% {
+        left: 76%;
+        top: 30%;
+        background-image: url(../images/Birds/bird52.png);
+    }
+
+    33% {
+        left: 60%;
+        top: 28%;
+        background-image: url(../images/Birds/bird53.png);
+    }
+
+    49% {
+        left: 50%;
+        top: 24%;
+        background-image: url(../images/Birds/bird54.png);
+    }
+
+    66% {
+        left: 40%;
+        top: 23%;
+        background-image: url(../images/Birds/bird55.png);
+    }
+
+    82% {
+        left: 26%;
+        top: 16%;
+        background-image: url(../images/Birds/bird56.png);
+    }
+
+    100% {
+        left: -10%;
+        top: 10%;
+        background-image: url(../images/Birds/bird57.png);
+    }
+}
+
+/* ---------------------------------------- */
+/* ==      chapter page                     */
+/*---------------------------------------- */
+#backChapter {
+    width: 100%;
+    background-attachment: fixed;
+    background-position: top;
+    background-image: url(../images/billet.jpg);
+    background-size: cover;
+    padding-bottom: 5%;
+    margin-top: -25px;
+}
+
+#frontChapter {
+    z-index: 4;
+    background-color: transparent;
+    padding-top: 15%;
+}
+
+.othersChapter {
+    display: flex;
+    justify-content: space-around;
+}
+
+div#backChapter div#nav {
+    color: #f1e8da;
+}
+
+article#extracts.row .conteneur.col-12 div#title p {
+    margin: 15px;
+}
+
+#about,
+#list {
+    background-color: white;
+    padding: 30px;
+    box-shadow: 0px 10px 30px 0 rgba(49, 52, 57, 0.3), 0 10px 30px rgba(0, 0, 0, 0.08);
+    margin-top: 9px;
+    margin-right: 8%;
+    margin-left: 8%;
+    margin-bottom: 8%;
+    z-index: 4;
+    border-radius: 10px;
+}
+
+#list {
+    padding: 20px;
+}
+
+#comment input,
+input[type="submit"] {
+    margin-top: 20px;
+}
+
+textarea,
+input {
+    max-width: 80%;
+}
+
+hr {
+    width: 50%;
+    border: 0.2px inset #331902;
+}
+
+input[type:" date"] {
+    border-radius: 3px;
+}
+
+/* ---------------------------------------- */
+/* ==         page commentaire               */
+/*---------------------------------------- */
+#backComments {
+    width: 100%;
+    background-attachment: fixed;
+    background-position: top;
+    background-image: url(../images/work-1627703_1920.jpg);
+    background-size: cover;
+    padding-bottom: 5%;
+    margin-top: -25px;
+}
+
+#frontComments {
+    z-index: 4;
+    background-color: transparent;
+    padding-top: 15%;
+}
+
+.col-lg-3 > p:nth-child(1) {
+    text-align: justify;
+    margin: 15px;
+}
+
+input[type="submit"],
+#create > form:nth-child(4) > button:nth-child(1) {
+    background-color: #331902;
+    color: #e2d6c4;
+    border: 2px solid #e2d6c4;
+    padding: 15px;
+    border-radius: 10px;
+    display: block;
+    margin: 30px auto;
+}
+
+input[type="submit"]:hover,
+#create > form:nth-child(4) > button:nth-child(1):hover {
+    background-color: #e2d6c4;
+    color: #331902;
+    border: 2px solid #331902;
+    padding: 15px;
+    border-radius: 5px;
+}
+
+div#backComments div#frontComments article.row form,
+div#backComments div#frontComments article.row form div.col-sm-12.col-md-6.col-lg-6 h4 {
+    text-align: center;
+}
+
+article#list.row .conteneur.col-12 h4 {
+    color: #8d8b40;
+}
+
+article#list.row .conteneur.col-12 div.col-sm-12.col-md-6.col-lg-3 h4 {
+    color: #331902;
+}
+
+/* ---------------------------------------- */
+/* ==           interface admin            */
+/*---------------------------------------- */
+#administration {
+    margin-top: 350px;
+    text-align: center;
+    font-weight: 500;
+}
+
+#mceu_21 {
+    margin: 70px auto;
+}
+
+#subtitle {
+    margin-top: 40px;
+}
+
+html body div#administration form.choice {
+    width: 100%;
+}
+
+html body div#administration form.choice div#completForm {
+    display: flex;
+    justify-content: space-around;
+    width: 60%;
+    text-align: center;
+    align-self: center;
+    margin: auto !important;
+}
+
+form.choice input.choice {
+    width: 7%;
+}
+
+/* ---------------------------------------- */
+/* ==         footer                       */
+/*---------------------------------------- */
+footer {
+    background-color: #331902;
+    height: 140px;
+}
+
+footer a h4,
+footer p,
+footer a,
+footer h4 {
+    color: #8d8b40 !important;
+    text-align: center;
+    display: block;
+}
+
+footer p,
+footer a {
+    display: inline-block;
+    text-align: center;
+}
+
+footer div.col-sm-12.col-md-6.col-lg-4.footer i {
+    font-size: xx-large;
+    color: #8d8b40;
+    text-align: center;
+    display: inline-block;
+}
+
+footer div.col-sm-12.col-md-6.col-lg-4.footer {
+    text-align: center;
+    padding-right: 3%;
+    padding-left: 3%;
+}
+
+img {
+    vertical-align: middle;
+    width: 6%;
+}
+
+div.row.credits div.col-sm-6.col-md-6.col-lg-6 div.row.books div.col-sm-3.col-md-3.col-lg-3.book img {
+    width: 50%;
+    margin-bottom: 15px;
+    margin-top: 15px;
+}
+
+/* ---------------------------------------- */
+/* ==         crédits photos               */
+/*---------------------------------------- */
+.row.credits div.col-sm-6.col-md-2.col-lg-3.photo img {
+    width: 200px;
+}
+
+div.row.credits {
+    margin: 70px;
+    height: content;
+}
+
+/* ---------------------------------------- */
+/* ==        Page connexion                */
+/*---------------------------------------- */
+#administration {
+    background-color: #e2d6c4;
+    padding: 15% 0;
+    margin-top: -2%;
+}
+
+#administration > h2 {
+    margin: auto;
+    width: 40%;
+}
+
+#administration > form {
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 4%;
+    width: 400px;
+    height: 250px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: flex-end;
+}
+
+#backError {
+    width: 100%;
+    background-attachment: fixed;
+    background-position: top;
+    background-image: url(../images/barimage.jpg);
+    background-size: cover;
+    padding-bottom: 5%;
+    margin-top: -25px;
+}
+
+/*
+--- jolies petite cases à coché pour l'interface admin--
+input:not([type="submit"]) {
+margin-top: 0px;
+margin-bottom: 30px;
+border-radius: 5px;
+padding: 10px;
+font-family: 'Ubuntu', sans-serif;
+}
+
+[type="radio"]:not(:checked),
+[type="radio"]:checked {
+position: absolute;
+left: -9999px;
+}
+
+[type="radio"]:not(:checked) + label,
+[type="radio"]:checked + label {
+position: relative;
+padding-left: 45px;
+cursor: pointer;
+}
+
+[type="radio"]:not(:checked) + label::before,
+[type="radio"]:checked + label::before {
+content: '';
+position: absolute;
+left: 0;
+top: -6px;
+width: 30px;
+height: 30px;
+border: 1px solid #331902;
+background: #cbc2ba;
+border-radius: 3px;
+box-shadow: inset 0 1px 3px rgba(0, 0, 0, .3);
+}
+
+
+
+[type="radio"]:not(:checked) + label::after,
+[type="radio"]:checked + label::after {
+content: '✔';
+position: absolute;
+top: -9px;
+left: 4px;
+font-size: 25px;
+color: #331902;
+transition: all .2s;
+}
+
+[type="radio"]:not(:checked) + label::after {
+opacity: 0;
+transform: scale(0);
+}
+
+[type="radio"]:checked + label::after {
+opacity: 1;
+transform: scale(1);
+}
+*/

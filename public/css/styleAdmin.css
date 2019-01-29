@@ -1,0 +1,455 @@
+/* ---------------------------------------- */
+/* ==            SOMMAIRE                   */
+/*---------------------------------------- */
+
+/* L        - 1 - */
+/* L        - 2 - */
+/* L        - 3 - */
+
+/* ---------------------------------------- */
+/* ==       CODES COULEURS           */
+/*---------------------------------------- */
+/*
+maron foncé (text) :            #331902
+blanc:                          white
+beige :                         #e2d6c4
+kaki:                           #8d8b40
+rouge:                          darkred
+*/
+
+/* ---------------------------------------- */
+/* == DÉFINITIONS DES POLICES*/
+/*---------------------------------------- */
+body {
+    font-family: 'Ubuntu', sans-serif;
+    margin: auto;
+    width: 100%;
+    font-size: 16px;
+    text-align: justify;
+    z-index: 0;
+    background-color: #e2d6c4;
+}
+
+h1 {
+    font-family: 'Caveat', cursive;
+    text-transform: uppercase;
+    font-size: 2.2em;
+    line-height: 1em;
+    text-align: center;
+}
+
+i {
+    font-size: x-large;
+}
+
+h4 {
+    font-family: 'Caveat', cursive;
+    font-size: 1.8em;
+    line-height: 2em;
+    text-align: center;
+}
+
+.row {
+    margin-right: 8%;
+    margin-left: 8%;
+}
+
+article {
+    background-color: white;
+    padding: 30px 50px;
+    box-shadow: 0px 10px 30px 0 rgba(49, 52, 57, 0.3), 0 10px 30px rgba(0, 0, 0, 0.08);
+    margin-right: 8%;
+    margin-left: 8%;
+    margin-bottom: 8%;
+    border-radius: 10px;
+    text-align: center;
+
+}
+
+.warning {
+    color: darkred;
+    font-size: 20px;
+
+}
+
+article p {
+    text-align: justify;
+}
+
+
+/*     boutons     */
+.btn.btn-primary,
+input[type="submit"] {
+    background-color: #331902;
+    color: #e2d6c4;
+    border: 2px solid #e2d6c4;
+    padding: 5px;
+    border-radius: 10px;
+    width: 130px;
+}
+
+.btn.btn-primary:hover,
+input[type="submit"]:hover {
+    background-color: #e2d6c4;
+    color: #331902;
+    border: 2px solid #331902;
+    padding: 5px;
+    border-radius: 10px;
+}
+
+a.btn.btn-secondary em {
+    color: #8d8b40;
+}
+
+a.btn.btn-secondary:hover em {
+    color: #331902;
+}
+
+article span {
+    text-align: left;
+    display: block;
+}
+
+article .btn-secondary {
+    text-align: right;
+    display: block;
+}
+
+btn-danger {
+    background-color: darkred;
+    color: #e2d6c4;
+    border: 2px solid #e2d6c4 !important;
+    padding: 5px 10px;
+    border-radius: 10px;
+    display: block !important;
+}
+
+a.btn.btn-light {
+    display: inline-block;
+    padding: 6px 12px;
+    margin-bottom: 0;
+    font-size: 14px;
+    font-weight: normal;
+    line-height: 1.428571429;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    cursor: pointer;
+    background-color: #f0f0f0;
+    border: 1px solid transparent;
+    border-radius: 4px;
+
+}
+
+div.show:nth-child(3) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > form:nth-child(1) > p:nth-child(1) > a:nth-child(3),
+body > header:nth-child(1) > nav:nth-child(1) > div:nth-child(5) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > form:nth-child(1) > p:nth-child(1) > a:nth-child(3),
+div.show:nth-child(7) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > form:nth-child(1) > p:nth-child(1) > a:nth-child(3),
+div.show:nth-child(9) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > form:nth-child(1) > p:nth-child(1) > a:nth-child(3) {
+    width: 130px;
+}
+
+body > header:nth-child(1) > nav:nth-child(1) > button:nth-child(2),
+body > header:nth-child(1) > nav:nth-child(1) > button:nth-child(4),
+body > header:nth-child(1) > nav:nth-child(1) > button:nth-child(6),
+body > header:nth-child(1) > nav:nth-child(1) > button:nth-child(8) {
+    width: 200px;
+}
+
+
+/* ---------------------------------------- */
+/* == Header                         */
+/*---------------------------------------- */
+
+
+nav {
+
+    background-color: white;
+    padding: 30px 50px;
+    box-shadow: 0px 10px 30px 0 rgba(49, 52, 57, 0.3), 0 10px 30px rgba(0, 0, 0, 0.08);
+    margin: 8%;
+    border-radius: 10px;
+    text-align: center;
+    height: 300px;
+
+}
+
+a.btn.btn-primary h5 {
+    text-align: center;
+}
+
+a.btn.btn-primary {
+    width: 200px;
+}
+
+.nav {
+    width: 100%;
+}
+
+.fast {
+    display: flex;
+    justify-content: space-between;
+    align-content: center;
+}
+
+.nav-pills > li.active > a,
+.nav-pills > li.active > a:hover,
+.nav-pills > li.active > a:focus {
+    color: #e2d6c4;
+    background-color: #331902;
+    justify-content: space-between;
+    box-shadow: 0px -5px 15px 0 rgba(49, 52, 57, 0.3), 0 -5px 15px rgba(0, 0, 0, 0.08);
+}
+
+.nav > li > a:hover,
+.nav > li > a:focus {
+    text-decoration: none;
+    background-color: #8d8b40;
+    color: #331902;
+}
+
+.nav > li:nth-child(4) {
+    width: 21%
+}
+
+.nav > li {
+    border-top: 1px outset rgba(51, 25, 2, 0.8);
+    border-left: 1px outset rgba(51, 25, 2, 0.8);
+    border-right: 1px outset rgba(51, 25, 2, 0.8);
+    border-radius: 6px 6px 0 0;
+    margin-left: -1px !important;
+    margin-right: 0;
+}
+
+a {
+    color: #331902;
+    text-decoration: none;
+}
+
+.tab-content {
+    color: #331902;
+    font-size: 0.8em;
+    font-style: italic;
+    text-align: center;
+    margin-top: 10px;
+}
+
+.Administration {
+    font-size: 1.8em;
+    font-family: 'Caveat', cursive;
+    margin: 5%;
+    text-align: center;
+}
+
+a.btn-primary:nth-child(1),
+article.row:nth-child(3) > a:nth-child(4),
+article.row:nth-child(2) > a:nth-child(4),
+article.row:nth-child(3) > a:nth-child(5) {
+    width: 130px
+}
+
+
+/* ---------------------------------------- */
+/* ==              tableaux                   */
+/*---------------------------------------- */
+
+/* ------- tableaux chapitre ---------*/
+.chapters > thead:nth-child(1) > tr:nth-child(1) > th:nth-child(1) {
+    width: 5%;
+    text-align: center;
+}
+
+.chapters > thead:nth-child(1) > tr:nth-child(1) > th:nth-child(2) {
+    width: 20%
+}
+
+.chapters > thead:nth-child(1) > tr:nth-child(1) > th:nth-child(3) {
+    width: 73%;
+}
+
+.chapters > thead:nth-child(1) > tr:nth-child(1) > th:nth-child(4) {
+    width: 7%;
+    text-align: center;
+}
+
+.chapters > thead:nth-child(1) > tr:nth-child(1) > th:nth-child(5) {
+    width: 5%;
+    text-align: center;
+}
+
+
+/*----------- tableau commentaires -------------------*/
+
+.comments > thead:nth-child(1) > tr:nth-child(1) > th:nth-child(1) {
+    width: 5%;
+    text-align: center;
+}
+
+.comments > thead:nth-child(1) > tr:nth-child(1) > th:nth-child(2) {
+    width: 5%;
+    text-align: center;
+}
+
+.comments > thead:nth-child(1) > tr:nth-child(1) > th:nth-child(3) {
+    width: 5%;
+    text-align: center;
+}
+
+.comments > thead:nth-child(1) > tr:nth-child(1) > th:nth-child(4) {
+    width: 75%;
+}
+
+.comments > thead:nth-child(1) > tr:nth-child(1) > th:nth-child(5) {
+    width: 5%;
+    text-align: center;
+}
+
+.comments > thead:nth-child(1) > tr:nth-child(1) > th:nth-child(6) {
+    width: 5%;
+    text-align: center;
+}
+
+i.far.fa-times-circle {
+    color: darkred;
+}
+
+
+i.fas.fa-check-square {
+    color: #8d8b40;
+}
+
+#plus {
+    color: darkred;
+    font-size: 1.5em;
+}
+
+#moins {
+    color: darkred;
+}
+
+#no {
+    color: :#331902;
+}
+
+#confirm {
+    font-size: 1.5em;
+    color: darkred;
+}
+
+.modal {
+    position: fixed;
+    top: 50%;
+    z-index: 1040;
+    overflow: auto;
+}
+
+.modal-backdrop {
+    background-color: transparent;
+}
+
+.modal-body p {
+    text-align: center;
+    color: darkred;
+    font-size: 1.5em;
+}
+
+.modal-dialog {
+
+    height: 62%;
+
+}
+
+.modal-open label article#fast.row table.table.table-striped.comments tbody tr td div#delet.modal.show div.modal-dialog div.modal-content button.btn.btn-danger {
+    background-color: darkred;
+    color: #e2d6c4;
+    border: 2px solid #e2d6c4 !important;
+    padding: 5px 10px;
+    border-radius: 10px;
+    display: block !important;
+    margin: 15px;
+}
+
+/* ---------------------------------------- */
+/* ==   Page administration MDP      */
+/*---------------------------------------- */
+
+.adminPW {
+    background-color: #e2d6c4;
+    padding: 5% 0;
+    margin-top: -2%;
+}
+
+.adminPW > h5 {
+    margin: auto;
+    width: 31%;
+    font-size: 1.2em;
+}
+
+.adminPW > form {
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 2%;
+    width: 250px;
+    height: 450px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    padding: 0;
+}
+
+/* ---------------------------------------- */
+/* == Administration Chapter                         */
+/*---------------------------------------- */
+
+#administrationChapter {
+
+    align-content: center;
+    display: flex;
+    flex-direction: column;
+}
+
+#create {
+
+    width: 84%;
+}
+
+#mceu_11 {
+
+    background-color: white;
+    padding: 30px 0px;
+    border-radius: 10px;
+    text-align: center;
+    margin-left: 0;
+    margin-right: 0;
+    width: 100% !important;
+    width: 80%;
+
+}
+
+div#mceu_21.mce-tinymce.mce-container.mce-panel {
+    width: 80% !important;
+}
+
+html body div#administrationChapter article#fast.row table.table.table-striped.chapters tbody tr th button.btn.btn-light i.far.fa-edit {
+    font-size: 30px;
+}
+
+html body div#administrationChapter article#create form {
+    margin-bottom: 20px;
+}
+
+html body div#administrationChapter article#create form div.row div.col-sm-12.col-md-6.col-lg-6 input#title {
+    width: 500px;
+}
+
+html body div#administrationChapter article#create form div.row div.col-sm-12.col-md-6.col-lg-6 input#number {
+    width: 50px;
+}
+
+button.btn p {
+    text-align: center;
+}
+
+#id_chapter {
+    width: 50px;
+}
