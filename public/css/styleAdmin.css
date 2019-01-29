@@ -14,7 +14,7 @@ maron foncé (text) :            #331902
 blanc:                          white
 beige :                         #e2d6c4
 kaki:                           #8d8b40
-rouge:                          darkred
+rouge:                          crimson
 */
 
 /* ---------------------------------------- */
@@ -28,7 +28,9 @@ body {
     text-align: justify;
     z-index: 0;
     background-color: #e2d6c4;
+
 }
+
 
 h1 {
     font-family: 'Caveat', cursive;
@@ -67,9 +69,9 @@ article {
 }
 
 .warning {
-    color: darkred;
-    font-size: 20px;
-
+    color: crimson;
+    font-size: 25px;
+    margin-top: 40px;
 }
 
 article p {
@@ -116,7 +118,7 @@ article .btn-secondary {
 }
 
 btn-danger {
-    background-color: darkred;
+    background-color: crimson;
     color: #e2d6c4;
     border: 2px solid #e2d6c4 !important;
     padding: 5px 10px;
@@ -309,7 +311,7 @@ article.row:nth-child(3) > a:nth-child(5) {
 }
 
 i.far.fa-times-circle {
-    color: darkred;
+    color: crimson;
 }
 
 
@@ -318,12 +320,12 @@ i.fas.fa-check-square {
 }
 
 #plus {
-    color: darkred;
+    color: crimson;
     font-size: 1.5em;
 }
 
 #moins {
-    color: darkred;
+    color: crimson;
 }
 
 #no {
@@ -332,7 +334,7 @@ i.fas.fa-check-square {
 
 #confirm {
     font-size: 1.5em;
-    color: darkred;
+    color: crimson;
 }
 
 .modal {
@@ -348,7 +350,7 @@ i.fas.fa-check-square {
 
 .modal-body p {
     text-align: center;
-    color: darkred;
+    color: crimson;
     font-size: 1.5em;
 }
 
@@ -359,7 +361,7 @@ i.fas.fa-check-square {
 }
 
 .modal-open label article#fast.row table.table.table-striped.comments tbody tr td div#delet.modal.show div.modal-dialog div.modal-content button.btn.btn-danger {
-    background-color: darkred;
+    background-color: crimson;
     color: #e2d6c4;
     border: 2px solid #e2d6c4 !important;
     padding: 5px 10px;

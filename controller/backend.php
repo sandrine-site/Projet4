@@ -149,6 +149,20 @@ function newPws($name,$pwActuel,$pwNew){
  * 
  * @return[array] containing the carracteristique of chapter
  */
+function createNewChapters(){
+    $adminManager=new jeanForteroche\Model\AdminManager;
+    $resume=$adminManager->resumeChapter();
+    $number=$adminManager->lenChapter();
+    $numberChap=$number['COUNT(id_chapter)'] + 1;
+    $chapter=[
+        "id_chapter"=>$numberChap,
+        "title"=>"",
+        "content"=>"",
+        "from"=>"new"
+    ];
+
+    require('view/backend/AdminCreateChapter.php');}
+
 function adminChapters(){
     $adminManager=new jeanForteroche\Model\AdminManager;
     $resume=$adminManager->resumeChapter();
@@ -158,7 +172,7 @@ function adminChapters(){
         "id_chapter"=>$numberChap,
         "title"=>"",
         "content"=>"",
-        "from"=>"adminChapters"
+        "from"=>"new"
     ];
     
     require('view/backend/AdminEditChapter.php');}

@@ -66,11 +66,10 @@ article p {
 }
 
 .warning {
-    color: darkred;
-    font-size: 20px;
-
+    color: crimson;
+    font-size: 25px;
+    margin-top: 40px;
 }
-
 
 /*     boutons     */
 .btn.btn-primary,

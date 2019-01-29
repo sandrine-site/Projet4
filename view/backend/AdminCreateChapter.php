@@ -4,7 +4,7 @@
 <?php ob_start(); ?>
 <div id="administrationChapter">
     <article id="create">
-        <form action="./index.php?action=save&&from=<?='AdminEditChapter'?>" method="post" value="save" class="chapitre">
+        <form action="./index.php?action=saveNew&&id_chapter=<?=$chapter['id_chapter']?>" method="post" value="save" class="chapitre">
             <div class="col-sm-12 col-md-6 col-lg-6">
                 <h2> Créer un nouveau chapitre : </h2>
             </div>
@@ -47,7 +47,7 @@
     </article>
     <article id="fast" class="row">
         <div class="col-sm-12 col-md-6 col-lg-6">
-            <h3>Chapitres :</h3>
+            <h3>Chapitres déjà enregistés:</h3>
         </div>
 
         <table class="table table-striped chapters">

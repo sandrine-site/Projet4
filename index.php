@@ -104,8 +104,19 @@ try{
             case 'AdminChapter':
                 adminChapters();
                 break;
+            case 'CreeNewChapter':
+                createNewChapters();
+                break;
 
-            case 'save': 
+            case 'saveNew':
+                if ($_POST["idChapter"]<$_GET['id_chapter']&&$_GET['message']!="Attention ce chapitre existe déjà!"){
+                    $message="Attention ce chapitre existe déjà!";
+                    $chapter=[
+        "id_chapter"=>$_POST['id_chapter'],
+        "title"=>$_POST['title'],
+        "content"=>strip_tags($_POST['mytextarea'])
+    ];
+                    header('Location: index.php?action=edit&&id_chapter='.$_GET['id_chapter'].'&&message='.$message );}
                 saveChapter($_POST["idChapter"],$_POST['title'],$_POST['mytextarea'],$_GET['from']);
                 break;
             case 'edit':
