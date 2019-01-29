@@ -15,13 +15,12 @@
             <label for="Name">
                 <p>Nom :</p>
             </label>
-
-            <input title="texte" name="Name" />
+            <input title="texte" name="Name" value="<?=$post['logins']?>" />
         </div>
         <div><label for="Password">
                 <p>Mot de passe :</p>
             </label>
-            <input title="texte" name="Password" /></div>
+            <input type="password" name="Password" /></div>
 
         <input type="submit" value="Envoyer" />
     </form>

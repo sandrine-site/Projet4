@@ -110,4 +110,5 @@ function addComment($id_chapter,$author,$comment){
     else {
         header('Location: index.php?action=comments&id=' . $id_chapter);
     }
+
 }

@@ -15,20 +15,20 @@
                 <p>Nom :</p>
             </label>
 
-            <input title="texte" name="Name" />
+            <input title="texte" name="Name" value="<?=$post['logins']?>" />
         </div>
         <div><label for="PasswordActuel">
                 <p>Mot de passe actuel :</p>
             </label>
-            <input title="texte" name="Password" /></div>
+            <input type="password" name="Password" /></div>
         <div><label for="Password1">
                 <p>Nouveau mot de passe :</p>
             </label>
-            <input title="texte" name="Password1" /></div>
+            <input type="password" name="Password1" /></div>
         <div><label for="Password1">
                 <p>Confirmer le mot de passe :</p>
             </label>
-            <input title="texte" name="Password2" /></div>
+            <input type="password" name="Password2" /></div>
         <input type="submit" value="Envoyer" />
     </form>
 </div>

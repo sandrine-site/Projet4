@@ -23,7 +23,19 @@ function verifiePws($login,$pw){
      header("Location: index.php?action=adminAccueil&&message=$message");}
     else
     {$message='le nom d\'utilisateur et le mot de passe ne correspondent pas';
-     require('view/frontend/password.php');}
+    interfaceAdminPW($message);}
+}
+
+function admPW($message){
+    $adminManager=new jeanForteroche\Model\AdminManager;
+    $post=$adminManager->AdmPW();
+    require('view/backend/Adminpassword.php');
+}
+function interfaceAdminPW($message){
+    $adminManager=new jeanForteroche\Model\AdminManager;
+    $post=$adminManager->AdmPW();
+    require("view/frontend/password.php");
+
 }
 
 /**
@@ -130,7 +142,7 @@ function newPws($name,$pwActuel,$pwNew){
 
     }
     else $message='le mot de passe et le nom ne correspondent pas.';
-    require("view/backend/Adminpassword.php");}
+    admPW($message);}
 
 /** this function display the admin chapter page
  * @use adminManager

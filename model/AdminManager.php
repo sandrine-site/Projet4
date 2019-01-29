@@ -29,6 +29,14 @@ class AdminManager extends Manager{
         $pwVerif= password_verify($pw,$resultat['passwords']);
         return $pwVerif;
     }
+    public function AdmPW(){
+        $db = $this->dbConnect();
+        $req = $db->prepare('SELECT logins FROM Passwordtable WHERE  ?');
+        $req->execute(array(1));
+        $resultat = $req->fetch();
+        return $resultat;
+    }
+
 
     public function changedPW($name,$pw){
         $db=$this->dbConnect();

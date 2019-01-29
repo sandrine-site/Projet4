@@ -58,11 +58,11 @@ try{
                     $message='Attention vous devez renseigner un mot de passe et un nom d\'utilisateur';
                     require("view/frontend/password.php");}
                 else{
-                    require("view/frontend/password.php");}
+                    interfaceAdminPW("");}
                 break;
             case 'AllComments':
                 if (isset($_GET['message'])){
-                adminAllComments($_GET['message']);}
+                    adminAllComments($_GET['message']);}
                 else{adminAllComments("");}
                 break;
 
@@ -89,8 +89,7 @@ try{
                     throw new exception('Aucun identifiant de chapitre envoyé');}
                 break;
             case'Adminpw':
-
-                require('view/backend/Adminpassword.php');
+                admPW("");
                 break;
             case'AdminPW':
                 if(!empty($_POST['Name'])&&!empty($_POST['Password'])&&!empty($_POST['Password1'])&&!empty($_POST['Password2']))
@@ -98,9 +97,9 @@ try{
                     if ($_POST['Password1']==$_POST['Password2']) {newPws($_POST['Name'],$_POST['Password'],$_POST['Password1']);}
                     else 
                     {$message='Les deux mots de passe doivent etre identiques';
-                     require("view/backend/Adminpassword.php");}}
+                     admPW($message);}}
                 else{$message='Tous les champs doivent être remplis' ;
-                     require("view/backend/Adminpassword.php");}
+                     admPW($message);}
                 break;
             case 'AdminChapter':
                 adminChapters();
@@ -111,7 +110,7 @@ try{
                 break;
             case 'edit':
                 if (isset($_GET['message'])){
-               $_message=$_GET['message'];}
+                    $_message=$_GET['message'];}
                 else{$_message="";}
                 editAchapter($_GET['id_chapter'],$_message);
                 break;
