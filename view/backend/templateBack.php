@@ -38,9 +38,9 @@
             //            skin_url: Projet4 / public / custom / skin,
             width: 600,
             height: 300,
-            plugins: "image preview save insertdatetime",
+            plugins: " ",
             toolbar: [
-                " cut, copy, paste, undo, redo,bold, italic, underline, strikethrough, alignjustify, alignleft, aligncenter, alignright,styleselect, bullist, numlist, outdent, indent, blockquote"
+                " cut, copy, paste, undo, redo,styleselect,,bold, italic, underline, strikethrough, alignjustify, alignleft, aligncenter, alignright, bullist, numlist, outdent, indent, blockquote"
             ],
             automatic_uploads: true,
             image_prepend_url: "http://jeanforteroche.slashcreations.fr/images/",

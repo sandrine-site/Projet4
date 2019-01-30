@@ -3,52 +3,9 @@
 
 <?php ob_start(); ?>
 <div id="administrationChapter">
-    <article id="create">
-        <form action="./index.php?action=update" method="post" value="save" class="chapitre">
-            <div class="col-sm-12 col-md-6 col-lg-6">
-                <h2> Edition du Chapitre :
-                    <?=$chapter['id_chapter']?>
-                </h2>
-            </div>
-            <div class="col-sm-12 col-md-6 col-lg-6">
-                <button type="submit" role="submit" class="btn btn-primary">
-                    <h5> Enregistrer<br /></h5>
-                    <i class="far fa-save"></i>
-                </button>
-            </div>
-
-            <div class="row">
-                <div class="col-sm-12 col-md-6 col-lg-6">
-                    <label for="title">
-                        <h3> Titre : </h3>
-                    </label>
-                    <input type="text" id="title" name="title" value="<?=$chapter['title']?>" />
-                </div>
-                <div class="col-sm-12 col-md-6 col-lg-6">
-                    <div id=numberChapter>
-                        <input type="hidden" id="id_chapter" name="id_chapter" value="<?=$chapter['id_chapter']?>" type="hidden" />
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-
-                <div class="col-sm-12 col-md-12 col-lg-12">
-                    <textarea id="mytextarea" name="mytextarea" rows="25"><?=$chapter['content']?></textarea>
-                </div>
-            </div>
-
-            <div class="col-sm-12 col-md-12 col-lg-12">
-
-                <button type="submit" role="submit" class="btn btn-primary">
-                    <h5> Enregistrer<br /></h5>
-                    <i class="far fa-save"></i>
-                </button>
-            </div>
-        </form>
-    </article>
     <article id="fast" class="row">
         <div class="col-sm-12 col-md-6 col-lg-6">
-            <h3>Chapitres :</h3>
+            <h3>Vous pouvez choisir le chapitre à édité dans la liste çi dessous :</h3>
         </div>
 
         <table class="table table-striped chapters">

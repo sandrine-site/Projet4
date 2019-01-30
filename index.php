@@ -120,16 +120,17 @@ try{
                 }
                 else{
                     saveChapter($_POST["id_chapter"],$_POST['title'],$_POST['mytextarea']);
-                    break;
                 }
 
                 break;
-                //
-                //            case 'edit':
-                //                if (isset($_GET['message'])){
-                //                    $_message=$_GET['message'];}
-                //                else{$_message="";}
-                //                editAchapter($_GET['id_chapter'],$_message);
+            case'ListOfChapter':
+                listChapters();
+                break;
+            case 'edit':
+                editAchapter($_GET['id_chapter']);
+                break;
+            case 'update':
+                updateChapter($_POST["id_chapter"],$_POST['title'],$_POST['mytextarea']);
                 break;
             case 'creditsPhoto':
                 require('view/frontend/creditsPhoto.php');

@@ -29,6 +29,7 @@
             <?php
             while ($res = $resume->fetch())
             { $limit=500;
+            $res['content']= strip_tags($res['content']);
              if (strlen($res['content'])>=$limit){
                  $res['content']=substr($res['content'],0,$limit);
                  $space=strrpos($res['content'],' ');

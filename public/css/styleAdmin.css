@@ -418,17 +418,16 @@ i.fas.fa-check-square {
 #mceu_11 {
 
     background-color: white;
-    padding: 30px 0px;
+    padding: 0px 0px;
     border-radius: 10px;
     text-align: center;
     margin-left: 0;
     margin-right: 0;
-    width: 100% !important;
-    width: 80%;
+    width: auto;
 
 }
 
-div#mceu_21.mce-tinymce.mce-container.mce-panel {
+#mceu_17 {
     width: 80% !important;
 }
 

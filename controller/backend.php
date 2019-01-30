@@ -23,7 +23,7 @@ function verifiePws($login,$pw){
      header("Location: index.php?action=adminAccueil&&message=$message");}
     else
     {$message='le nom d\'utilisateur et le mot de passe ne correspondent pas';
-    interfaceAdminPW($message);}
+     interfaceAdminPW($message);}
 }
 
 function admPW($message){
@@ -174,18 +174,17 @@ function adminChapters(){
         "content"=>"",
         "from"=>"new"
     ];
-    
+
     require('view/backend/AdminCreateChapter.php');}
 
 /** this function display the admin chapter page whit a alraydy saved chapter
  * @param[integer] the id of chapter
  * @use adminManager
  */
-function editAChapter($id,$message){
+function editAChapter($id){
     $adminManager=new jeanForteroche\Model\AdminManager;
     $chapter=$adminManager->resumeAChapter($id);
     $resume=$adminManager->resumeChapter();
-    $message=$message;
 
     require('view/backend/AdminEditChapter.php');
 }
@@ -210,12 +209,27 @@ function saveChapter($id,$title,$content){
     if ($id>$number['COUNT(id_chapter)']){
         $post=$adminManager->createChapter($id,$title,$content);
     }
-        else{
-            $post=$adminManager->saveChapter($id,$title,$content);
-        }
+    else{
+        $post=$adminManager->saveChapter($id,$title,$content);
+    }
     $resume=$adminManager->resumeChapter();
     $resume2=$adminManager->resumeAChapter($id);
 
-        $message='le chapitre a bien été sauvegardé';
-        require('view/backend/AdminCreateChapter.php');
+    $message='le chapitre a bien été sauvegardé';
+    require('view/backend/AdminCreateChapter.php');
+}
+
+function updateChapter($id,$title,$content){
+    $adminManager=new jeanForteroche\Model\AdminManager;
+    $post=$adminManager->saveChapter($id,$title,$content);
+    $chapter=$adminManager->resumeAChapter($id);
+    $resume=$adminManager->resumeChapter();
+    $message='le chapitre a bien été sauvegardé';
+    require('view/backend/AdminEditChapter.php');
+
+}
+function listChapters(){
+    $adminManager=new jeanForteroche\Model\AdminManager;
+    $resume=$adminManager->resumeChapter();
+    require('view/backend/AdminListChapters.php');
 }

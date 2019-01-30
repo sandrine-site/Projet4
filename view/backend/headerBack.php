@@ -6,7 +6,7 @@
         <a class="btn btn-primary" href="http://localhost/Projet4/index.php?action=<?='CreeNewChapter'?>" role="button">
             <h5>Créer un chapitre</h5> <i class="fas fa-pen-nib"></i>
         </a>
-        <a class="btn btn-primary" href="http://localhost/Projet4/index.php?action=<?='AdminChapter'?>" role="button">
+        <a class="btn btn-primary" href="http://localhost/Projet4/index.php?action=<?='ListOfChapter'?>" role="button">
             <h5>Editer un chapitre</h5> <i class="far fa-edit"></i>
         </a>
 
