@@ -103,9 +103,11 @@ class AdminManager extends Manager{
      */
     public function deletComments($id){
         $db = $this->dbConnect();
+        $comment = $db->prepare('SELECT author, DATE_FORMAT(dateComment, \'%d/%m/%Y \') AS DateComment_fr FROM comments WHERE id_comment=? ');
+        $comment->execute(array($id));
         $req=$db->prepare('DELETE FROM comments WHERE id_comment=?');
         $req->execute(array($id));
-        $confirm="Le message n° ".$id." a bien été supprimé.";
+         while ($res = $comment->fetch()){$confirm="Le message ecrit par ".$res['author'].", le ".$res['DateComment_fr']." a bien été supprimé.";}
         return $confirm;
     }
 
@@ -154,8 +156,6 @@ class AdminManager extends Manager{
         $req->execute(array($id,$title,$content));
             return $req ;
     }
-    
-    
 
 
 }

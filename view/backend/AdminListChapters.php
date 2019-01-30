@@ -1,5 +1,5 @@
 <!--titre de la page -->
-<?php $title = 'Administration des chapitres';?>
+<?php $title = 'Edition des Chapitres';?>
 
 <?php ob_start(); ?>
 <div id="administrationChapter">
@@ -33,10 +33,10 @@
                         <?= htmlspecialchars($res['id_chapter'])?>
                     </th>
                     <th scope="row">
-                        <?= htmlspecialchars(strip_tags($res['title']))?>
+                        <?= strip_tags($res['title'])?>
                     </th>
                     <th>
-                        <?=nl2br( htmlspecialchars($res['content']))?>
+                        <?=strip_tags($res['content'])?>
                     </th>
                     <th>
                         <?= htmlspecialchars($res['publication_date'])?>

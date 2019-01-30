@@ -53,10 +53,10 @@ ob_start();
                     <h3>
                         chapitre :
                         <?= $post['id_chapter'] ?> -
-                        <?=htmlspecialchars($post['title'])?>
+                        <?=strip_tags($post['title'])?>
                     </h3>
                     <p>
-                        <?=nl2br(htmlspecialchars($post['content']))?><br /><br />
+                        <?=nl2br(strip_tags($post['content']))?><br /><br />
                     </p>
                     <a class="btn btn-primary" href="./index.php?action=others&&id_chapter=<?=$post['id_chapter'] ?>" role="button">Lire la suite</a>
                 </div>

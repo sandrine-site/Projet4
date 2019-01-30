@@ -126,7 +126,7 @@
                             <div class="modal-content">
                                 <div class="modal-body">
                                     <p>Êtes-vous sûr de vouloir supprimer ce commentaire<br />
-                                        <a class="btn btn-primary" href="http://localhost/Projet4/index.php?action=delete&&id_comment=<?=$comment['id_comment']?>&&from=Accueil" role="button">oui</a></p>
+                                        <a class="btn btn-primary" href="http://localhost/Projet4/index.php?action=delete&&id_comment=<?=$comment['id_comment']?>&&from=Accueil" role="button"> <i class="fas fa-check"></i> oui</a></p>
                                 </div>
 
                                 <button type="button" class="btn btn-danger" data-dismiss="modal"> <i class="fas fa-times"></i> annuler</button>

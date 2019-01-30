@@ -1,5 +1,5 @@
 <!--titre de la page -->
-<?php $title = 'Administration des chapitres';?>
+<?php $title = 'Création des chapitres';?>
 
 <?php ob_start(); ?>
 <div id="administrationChapter">
