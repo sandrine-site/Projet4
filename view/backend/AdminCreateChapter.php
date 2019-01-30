@@ -4,6 +4,7 @@
 <?php ob_start(); ?>
 <div id="administrationChapter">
     <article id="create">
+        <?php if (isset ($resume2)){$chapter=$resume2;}?>
         <form action="./index.php?action=saveNew&&id_chapter=<?=$chapter['id_chapter']?>" method="post" value="save" class="chapitre">
             <div class="col-sm-12 col-md-6 col-lg-6">
                 <h2> Créer un nouveau chapitre : </h2>
@@ -26,7 +27,7 @@
                     <label for="id_chapter">
                         <h3> Numéro : </h3>
                     </label>
-                    <input type="text" id="id_chapter" name="idChapter" value="<?=$chapter['id_chapter']?>" />
+                    <input type="text" id="id_chapter" name="id_chapter" value="<?=$chapter['id_chapter']?>" />
                 </div>
             </div>
             <div class="row">
@@ -63,7 +64,8 @@
             <tbody>
                 <?php
             while ($res = $resume->fetch())
-            { $limit=300;
+              { $res['content']= strip_tags($res['content']);
+             $limit=300;
              if (strlen($res['content'])>=$limit){
                  $res['content']=substr($res['content'],0,$limit);
                  $space=strrpos($res['content'],' ');
@@ -74,10 +76,10 @@
                         <?= htmlspecialchars($res['id_chapter'])?>
                     </th>
                     <th scope="row">
-                        <?= htmlspecialchars($res['title'])?>
+                        <?= strip_tags(htmlspecialchars($res['title']))?>
                     </th>
                     <th>
-                        <?=nl2br( htmlspecialchars($res['content']))?>
+                        <?=nl2br($res['content'])?>
                     </th>
                     <th>
                         <?= htmlspecialchars($res['publication_date'])?>

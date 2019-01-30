@@ -23,6 +23,7 @@ class ChapterManager extends Manager{
         $req = $db->query('SELECT id_chapter,title,content FROM chapter ORDER BY id_chapter DESC LIMIT 0,1');
         $post = $req->fetch();
         $limit=1000;
+         $post['content']= strip_tags($post['content']);
             if (strlen($post['content'])>=$limit){
                 $post['content']=substr($post['content'],0,$limit);
                 $space=strrpos($post['content'],' ');

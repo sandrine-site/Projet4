@@ -109,21 +109,27 @@ try{
                 break;
 
             case 'saveNew':
-                if ($_POST["idChapter"]<$_GET['id_chapter']&&$_GET['message']!="Attention ce chapitre existe déjà!"){
+                if ($_POST["id_chapter"]<$_GET['id_chapter']&&(!isset($_GET['message'])||$_GET['message']!="Attention ce chapitre existe)déjà!")){
                     $message="Attention ce chapitre existe déjà!";
                     $chapter=[
-        "id_chapter"=>$_POST['id_chapter'],
-        "title"=>$_POST['title'],
-        "content"=>strip_tags($_POST['mytextarea'])
-    ];
-                    header('Location: index.php?action=edit&&id_chapter='.$_GET['id_chapter'].'&&message='.$message );}
-                saveChapter($_POST["idChapter"],$_POST['title'],$_POST['mytextarea'],$_GET['from']);
+                        "id_chapter"=>$_POST['id_chapter'],
+                        "title"=>$_POST['title'],
+                        "content"=>$_POST['mytextarea']
+                    ];
+                    editANewChapter($chapter,$message);
+                }
+                else{
+                    saveChapter($_POST["id_chapter"],$_POST['title'],$_POST['mytextarea']);
+                    break;
+                }
+
                 break;
-            case 'edit':
-                if (isset($_GET['message'])){
-                    $_message=$_GET['message'];}
-                else{$_message="";}
-                editAchapter($_GET['id_chapter'],$_message);
+                //
+                //            case 'edit':
+                //                if (isset($_GET['message'])){
+                //                    $_message=$_GET['message'];}
+                //                else{$_message="";}
+                //                editAchapter($_GET['id_chapter'],$_message);
                 break;
             case 'creditsPhoto':
                 require('view/frontend/creditsPhoto.php');

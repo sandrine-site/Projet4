@@ -175,7 +175,7 @@ function adminChapters(){
         "from"=>"new"
     ];
     
-    require('view/backend/AdminEditChapter.php');}
+    require('view/backend/AdminCreateChapter.php');}
 
 /** this function display the admin chapter page whit a alraydy saved chapter
  * @param[integer] the id of chapter
@@ -184,12 +184,17 @@ function adminChapters(){
 function editAChapter($id,$message){
     $adminManager=new jeanForteroche\Model\AdminManager;
     $chapter=$adminManager->resumeAChapter($id);
-
     $resume=$adminManager->resumeChapter();
     $message=$message;
 
     require('view/backend/AdminEditChapter.php');
 }
+function editANewChapter($newChap,$message){
+    $adminManager=new jeanForteroche\Model\AdminManager;
+    $resume=$adminManager->resumeChapter();
+    $chapter=$newChap;
+    $message=$message;
+    require('view/backend/AdminCreateChapter.php');}
 /**
  * this function creates a new chapter
  * 
@@ -199,7 +204,7 @@ function editAChapter($id,$message){
  * @link [index.php] [pour réaficher la page]
  */
 
-function saveChapter($id,$title,$content,$from){
+function saveChapter($id,$title,$content){
     $adminManager=new jeanForteroche\Model\AdminManager;
     $number=$adminManager->lenChapter();
     if ($id>$number['COUNT(id_chapter)']){
@@ -208,21 +213,9 @@ function saveChapter($id,$title,$content,$from){
         else{
             $post=$adminManager->saveChapter($id,$title,$content);
         }
+    $resume=$adminManager->resumeChapter();
+    $resume2=$adminManager->resumeAChapter($id);
+
         $message='le chapitre a bien été sauvegardé';
-        
-        
-switch ($from) {
-    case 'AdminEditChapter':header('Location: index.php?action=edit&&id_chapter='.$id.'&&message='.$message );
-        break;
-        case'ButtonEditChapter':
-        header('Location: index.php?action=AdminChapter' );
-        break;
-    case 'Commentaire':
-        header('Location: index.php?action=AllComments' );
-        break;
-    case 'password':
-        header('Location: index.php?action=Adminpw' );
-        break;
-    case'exit':require("http://localhost/Projet4/index.php" );
-        break;
-}}
+        require('view/backend/AdminCreateChapter.php');
+}
