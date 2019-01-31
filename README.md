@@ -11,3 +11,6 @@ Vous allez donc devoir développer un moteur de blog en PHP et My sql.
 Site repris après une interruption de 2 mois (le temps de faire le P3) le premier jet est présent dans le dossier "site"
  
 En plus j'avais fait une erreur de sauvegarde avant donc j'ai recrée un repositori
+
+Pour le diagramme "untilted Diagrame" c'est l'essaie d'un diagramme du site vous pouvez l'ouvrir à l'adresse:
+https://www.draw.io/?mode=device#Hslashcreations%2FProjet4%2Fmaster%2FUntitled%20Diagram.xml
