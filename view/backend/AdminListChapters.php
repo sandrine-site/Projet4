@@ -15,14 +15,15 @@
                     <th scope="col">titre</th>
                     <th scope="col">Résumé</th>
                     <th scope="col">Date de publication</th>
+                    <th scope="col">Dernière modification</th>
                     <th scope="col">Editer</th>
                 </tr>
             </thead>
             <tbody>
                 <?php
             while ($res = $resume->fetch())
-            { $res['content']=strip_tags($res['content']);
-                $limit=300;
+            { $limit=500;
+            $res['content']= strip_tags($res['content']);
              if (strlen($res['content'])>=$limit){
                  $res['content']=substr($res['content'],0,$limit);
                  $space=strrpos($res['content'],' ');
@@ -30,7 +31,7 @@
             ?>
                 <tr>
                     <th scope="row">
-                        <?= htmlspecialchars($res['id_chapter'])?>
+                        <?= ($res['id_chapter'])?>
                     </th>
                     <th scope="row">
                         <?= strip_tags($res['title'])?>
@@ -38,10 +39,14 @@
                     <th>
                         <?=strip_tags($res['content'])?>
                     </th>
+
                     <th>
-                        <?= htmlspecialchars($res['publication_date'])?>
+                        <?= ($res['publication_date'])?>
                     </th>
-                    <th> <a role="button" class="btn btn-light" href="http://localhost/Projet4/index.php?action=edit&&id_chapter=<?=$res['id_chapter']?>" role="button"><i class="far fa-edit"></i></a></th>
+                    <th>
+                        <?= ($res['modification_date'])?>
+                    </th>
+                    <th><a role="button" class="btn btn-light" href="http://localhost/Projet4/index.php?action=edit&&id_chapter=<?=$res['id_chapter']?>" role="button"><i class="far fa-edit"></i></a></th>
                 </tr>
                 <?php
 
@@ -50,6 +55,9 @@
             ?>
 
             </tbody>
+        </table>
+
+        </tbody>
         </table>
 
     </article>

@@ -19,8 +19,9 @@
         <thead>
             <tr>
                 <th scope="col">chapitre n°</th>
-                <th scope="col">titre</th>
+                <th scope="col">Titre</th>
                 <th scope="col">Résumé</th>
+                <th scope="col">Dernière modification</th>
                 <th scope="col">Date de publication</th>
                 <th scope="col">Editer</th>
             </tr>
@@ -37,16 +38,20 @@
             ?>
             <tr>
                 <th scope="row">
-                    <?= htmlspecialchars($res['id_chapter'])?>
+                    <?= ($res['id_chapter'])?>
                 </th>
                 <th scope="row">
-                    <?= htmlspecialchars($res['title'])?>
+                    <?= strip_tags($res['title'])?>
                 </th>
                 <th>
-                    <?=nl2br( htmlspecialchars($res['content']))?>
+                    <?=strip_tags($res['content'])?>
+                </th>
+
+                <th>
+                    <?= ($res['publication_date'])?>
                 </th>
                 <th>
-                    <?= htmlspecialchars($res['publication_date'])?>
+                    <?= ($res['modification_date'])?>
                 </th>
                 <th><a role="button" class="btn btn-light" href="http://localhost/Projet4/index.php?action=edit&&id_chapter=<?=$res['id_chapter']?>" role="button"><i class="far fa-edit"></i></a></th>
             </tr>
@@ -82,7 +87,8 @@
         <thead>
             <tr>
                 <th scope="col">Chapitre n°</th>
-                <th scope="col">Commentaire n°</th>
+                <th scope="col">par</th>
+                <th scope="col">le</th>
                 <th scope="col">nb de signalement</th>
                 <th scope="col">Résumé</th>
                 <th scope="col">Garder</th>
@@ -109,10 +115,13 @@
                     <?= htmlspecialchars($comment['id_chapter'])?>
                 </th>
                 <th>
-                    <?= htmlspecialchars($comment['id_comment'])?>
+                    <?= htmlspecialchars($comment['author'])?>
                 </th>
                 <th>
-                    <div id=<?=$_id?>>
+                    <?= htmlspecialchars($comment['dateComment'])?>
+                </th>
+                <th>
+                    <div id='<?=$_id?>'>
                         <?= htmlspecialchars($comment['signalement'])?>
                     </div>
                 </th>

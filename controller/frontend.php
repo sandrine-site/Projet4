@@ -19,12 +19,13 @@ require_once('./model/CommentManager.php');
  * @return [integer] $len [nombre de chapitre]
  * @return [array] $comments [array containing different post concerning the chapter]                                             
  */
-function chapPost($id_chapter){
+function chapPost($id_chapter,$message){
     $chapterManager=new jeanForteroche\Model\ChapterManager;
     $post=$chapterManager->getChap($id_chapter);
     $len=$chapterManager->len();
     $commentsManager=new jeanForteroche\Model\CommentsManager;
     $comments=$commentsManager->getComments($post['id_chapter']);
+    $message=$message;
     require('view/frontend/pageChapters.php');
 }
 
@@ -90,8 +91,8 @@ function signalComment($id_comment,$id_chapter,$from,$message){
         case 'Site de Jean Forteroche':
             header("Location: index.php?from=Site de Jean Forteroche");
             break;
-        case "chapitre : ".$id_chapter:
-            header("Location: index.php?action=otherss&&id_comment=".$id_comment."&&id_chapter=".$id_chapter."&&from=".'chapitre : ');
+        case "chapitre":
+            header("Location: index.php?action=others&&id_comment=".$id_comment."&&id_chapter=".$id_chapter."&&from=".$title2."chapitre &&message=".$message);
             break;
         default:
             require('view/frontend/erreur.php');

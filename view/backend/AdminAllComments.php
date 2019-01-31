@@ -11,7 +11,8 @@
         <thead>
             <tr>
                 <th scope="col">Chapitre n°</th>
-                <th scope="col">Commentaire n°</th>
+                <th scope="col">par</th>
+                <th scope="col">le</th>
                 <th scope="col">nb de signalement</th>
                 <th scope="col">Résumé</th>
                 <th scope="col">Garder</th>
@@ -32,28 +33,31 @@
         }?>
             <tr>
 
-                <td>
+                <th>
                     <?= htmlspecialchars($comment['id_chapter'])?>
-                </td>
-                <td>
-                    <?= htmlspecialchars($comment['id_comment'])?>
-                </td>
-                <td>
-                    <div id=<?=$_id?> >
+                </th>
+                <th>
+                    <?= htmlspecialchars($comment['author'])?>
+                </th>
+                <th>
+                    <?= htmlspecialchars($comment['dateComment'])?>
+                </th>
+                <th>
+                    <div id='<?=$_id?>'>
                         <?= htmlspecialchars($comment['signalement'])?>
                     </div>
-                </td>
-                <td>
+                </th>
+                <th>
                     <?=nl2br( htmlspecialchars($comment['comment']))?>
-                </td>
-                <td><a role="button" class="btn btn-light" href="http://localhost/Projet4/index.php?action=keepComment&&id_comment=<?=$comment['id_comment']?>&&from=AllComment" role="button"><i class="fas fa-check-square"></i></a></td>
+                </th>
+                <th><a role="button" class="btn btn-light" href="http://localhost/Projet4/index.php?action=keepComment&&id_comment=<?=$comment['id_comment']?>&&from=Accueil" role="button"><i class="fas fa-check-square"></i></a></th>
                 <td><button type="button" class="btn btn-light" data-toggle="modal" data-target="#delet"><i class="far fa-times-circle"></i></button>
                     <div class="modal" id="delet" role="dialog">
                         <div class="modal-dialog">
                             <div class="modal-content">
                                 <div class="modal-body">
                                     <p>Êtes-vous sûr de vouloir supprimer ce commentaire<br />
-                                        <a class="btn btn-primary" href="http://localhost/Projet4/index.php?action=delete&&id_comment=<?=$comment['id_comment']?>&&from=AllComment" role="button"> <i class="fas fa-check"></i> oui</a></p>
+                                        <a class="btn btn-primary" href="http://localhost/Projet4/index.php?action=delete&&id_comment=<?=$comment['id_comment']?>&&from=Accueil" role="button"> <i class="fas fa-check"></i> oui</a></p>
                                 </div>
 
                                 <button type="button" class="btn btn-danger" data-dismiss="modal"> <i class="fas fa-times"></i> annuler</button>
@@ -61,8 +65,10 @@
                         </div>
                     </div>
                 </td>
+
             </tr>
-            <?php } $resumecomments->closeCursor();
+            <?php };
+            $resumecomments->closeCursor();
 
                 ?>
         </tbody>

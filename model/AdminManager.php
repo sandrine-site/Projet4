@@ -52,7 +52,7 @@ class AdminManager extends Manager{
   */
     public function resumeChapter(){
         $db = $this->dbConnect();
-        $req = $db->prepare('SELECT id_chapter,title,content, DATE_FORMAT(publication_date, \'%d/%m/%Y \') AS publication_date FROM chapter WHERE ? ORDER BY id_chapter DESC ');
+        $req = $db->prepare('SELECT id_chapter,title,content,DATE_FORMAT(publication_date, \'%d/%m/%Y \')AS publication_date,DATE_FORMAT(modification_date, \'%d/%m/%Y \') AS modification_date FROM chapter WHERE ? ORDER BY id_chapter DESC ');
         $req->execute(array(1));
         return $req;
     }
@@ -63,7 +63,7 @@ class AdminManager extends Manager{
   */
     public function resumeAChapter($id){
         $db = $this->dbConnect();
-        $req = $db->prepare('SELECT *  FROM chapter WHERE id_chapter=?');
+        $req = $db->prepare('SELECT id_chapter,title,content,DATE_FORMAT(publication_date, \'%d/%m/%Y \')AS publication_date,DATE_FORMAT(modification_date, \'%d/%m/%Y \') AS modification_date  FROM chapter WHERE id_chapter=?');
         $req->execute(array($id));
         $resultat = $req->fetch();
         return $resultat;
@@ -89,7 +89,7 @@ class AdminManager extends Manager{
   */
     public function getComments(){
         $db = $this->dbConnect();
-        $req = $db->prepare('SELECT id_comment,signalement,id_chapter,comment FROM comments WHERE ? ORDER BY id_comment DESC ');
+        $req = $db->prepare('SELECT id_comment,signalement,id_chapter,author,comment,DATE_FORMAT(dateComment, \'%d/%m/%Y \') AS dateComment FROM comments WHERE ? ORDER BY id_comment DESC ');
         $req->execute(array(1));
 
         return $req;
@@ -136,7 +136,7 @@ class AdminManager extends Manager{
     public function saveChapter($id,$title,$content)
     {
         $db = $this->dbConnect();
-        $req = $db->prepare('UPDATE chapter SET title=?, content=? WHERE id_chapter=?');
+        $req = $db->prepare('UPDATE chapter SET title=?,modification_date=NOW(), content=? WHERE id_chapter=?');
         $req->execute(array($title,$content,$id));
             return $req ;
     }
@@ -152,7 +152,7 @@ class AdminManager extends Manager{
     public function createChapter($id,$title,$content)
     {
         $db = $this->dbConnect();
-        $req = $db->prepare('INSERT INTO chapter (id_chapter, publication_date,title,content) VALUES(?, NOW(), ?,?) ');
+        $req = $db->prepare('INSERT INTO chapter (id_chapter, publication_date,title,content,modification_date) VALUES(?, NOW(), ?,?,NOW()) ');
         $req->execute(array($id,$title,$content));
             return $req ;
     }

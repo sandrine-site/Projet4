@@ -13,7 +13,7 @@
                 </h1>
                 <?php
                     while ($comment = $comments->fetch())
-                    {
+                    {$id=$comment['id_comment'];
                 ?>
                 <div class="col-sm-12 col-md-6 col-lg-3 Avis">
                     <h4> Par :
@@ -25,8 +25,21 @@
                         <br />
                         <span>le :
                             <?= $comment['DateComment_fr'] ?></span>
-                        <a class="btn btn-secondary" href="./index.php?action=signalComment&&id_comment=<?=$comment['id_comment']?>&&id_chapter=<?=$comment['id_chapter'] ?>&&from=<?=$title?>"><em>signaler ce commentaire</em></a>
-                    </p>
+                        <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="<?='#signal'.$id?>"><em>signaler ce commentaire</em></button>
+                        <div class="modal" id="<?='signal'.$id?>" role="dialog">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+
+                                    <p>Êtes-vous sûr de vouloir signaler ce commentaire<br /></p>
+                                    <div class="modal-footer">
+                                        <a class="btn btn-primary" href="./index.php?action=signalComment&&id_comment=<?=$id?>&&id_chapter=<?=$comment['id_chapter'] ?>&&from=<?=$title?>" role="button"> <i class="fas fa-check"></i> oui</a>
+
+                                        <button type="button" class="btn btn-danger" data-dismiss="modal"> <i class="fas fa-times"></i> annuler</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
                 </div>
                 <?php
     }

@@ -197,6 +197,7 @@ body > header:nth-child(3) > nav:nth-child(1) > div:nth-child(2) > a {
 a.btn.btn-primary.active {
     background-color: #331902 !important;
     color: #e2d6c4 !important;
+    border: 2px solid #331902;
 }
 
 .nav {
@@ -281,15 +282,20 @@ article.row:nth-child(3) > a:nth-child(5) {
 }
 
 .chapters > thead:nth-child(1) > tr:nth-child(1) > th:nth-child(3) {
-    width: 73%;
+    width: 60%;
 }
 
 .chapters > thead:nth-child(1) > tr:nth-child(1) > th:nth-child(4) {
-    width: 7%;
+    width: 5%;
     text-align: center;
 }
 
 .chapters > thead:nth-child(1) > tr:nth-child(1) > th:nth-child(5) {
+    width: 5%;
+    text-align: center;
+}
+
+.chapters > thead:nth-child(1) > tr:nth-child(1) > th:nth-child(6) {
     width: 5%;
     text-align: center;
 }
@@ -313,15 +319,20 @@ article.row:nth-child(3) > a:nth-child(5) {
 }
 
 .comments > thead:nth-child(1) > tr:nth-child(1) > th:nth-child(4) {
-    width: 75%;
-}
-
-.comments > thead:nth-child(1) > tr:nth-child(1) > th:nth-child(5) {
     width: 5%;
     text-align: center;
 }
 
+.comments > thead:nth-child(1) > tr:nth-child(1) > th:nth-child(5) {
+    width: 70%;
+}
+
 .comments > thead:nth-child(1) > tr:nth-child(1) > th:nth-child(6) {
+    width: 5%;
+    text-align: center;
+}
+
+.comments > thead:nth-child(1) > tr:nth-child(1) > th:nth-child(7) {
     width: 5%;
     text-align: center;
 }
@@ -428,11 +439,18 @@ div.show:nth-child(2) > div:nth-child(1) > div:nth-child(1) {
 /* == Administration Chapter                         */
 /*---------------------------------------- */
 
+#create,
+#fast,
+#create {
+    margin: 2% 8%;
+}
+
 #administrationChapter {
 
     align-content: center;
     display: flex;
     flex-direction: column;
+    margin-top: -2%;
 }
 
 #create {

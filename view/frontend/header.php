@@ -16,7 +16,7 @@
         </nav>
     </div>
     <?php
-    if ($title != 'Site de Jean Forteroche'&&isset($message)&&$message!=""){?>
+    if (isset($message)&&$message!=""){?>
     <article>
 
         <div class="warning">

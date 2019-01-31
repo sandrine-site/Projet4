@@ -111,6 +111,17 @@ a.btn.btn-secondary em {
     color: #8d8b40;
 }
 
+button > em:nth-child(1) {
+    color: #8d8b40
+}
+
+.Avis p button.btn.btn-secondary {
+    background-color: transparent;
+    display: block;
+    align-self: flex-end;
+    margin-right: 0;
+}
+
 a.btn.btn-secondary:hover em {
     color: #331902;
 }
@@ -123,6 +134,58 @@ article span {
 article .btn-secondary {
     text-align: right;
     display: block;
+}
+
+.modal {
+    position: fixed;
+    top: 50%;
+    z-index: 3040;
+    overflow: auto;
+}
+
+div.show:nth-child(2) > div:nth-child(1) > div:nth-child(1) {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.modal-backdrop {
+    background-color: transparent;
+}
+
+.modal-content p {
+    text-align: center;
+    color: crimson;
+    font-size: 1.2em;
+}
+
+.modal-footer {
+    display: flex;
+    justify-content: space-around;
+}
+
+.modal-dialog {
+
+    height: 62%;
+}
+
+.modal .btn,
+.modal .btn-danger {
+
+    padding: 15px 30px;
+    border-radius: 10px;
+}
+
+
+.modal-open label article#fast.row table.table.table-striped.comments tbody tr td div#delet.modal.show div.modal-dialog div.modal-content button.btn.btn-danger {
+    background-color: crimson;
+    color: #e2d6c4;
+    border: 2px solid #e2d6c4 !important;
+    padding: 5px 10px;
+    border-radius: 10px;
+    display: block !important;
+    margin: 15px;
 }
 
 /* ---------------------------------------- */

@@ -7,7 +7,11 @@ try{
             case 'others':
                 if (isset($_GET['id_chapter'])&& $_GET['id_chapter']>0)
                 {
-                    chapPost($_GET['id_chapter']);
+                    if (isset($_GET['message'])){$message=$_GET['message'];}
+                    elseif(isset($_GET['ErreurMessage'])){$message=$_GET['ErreurMessage'];}
+                    else{$message="";}
+
+                    chapPost($_GET['id_chapter'],$message);
                 }
                 else
                 {
@@ -114,7 +118,7 @@ try{
         break;
 
         case 'saveNew':
-        if ($_POST["id_chapter"]<$_GET['id_chapter']&&(!isset($_GET['message'])||$_GET['message']!="Attention ce chapitre existe)déjà!")){
+        if ($_POST["id_chapter"]<$_GET['id_chapter']&&(!isset($_GET['message'])||$_GET['message']!="Attention ce chapitre existe déjà!")){
             $message="Attention ce chapitre existe déjà!";
             $chapter=[
                 "id_chapter"=>$_POST['id_chapter'],
