@@ -15,4 +15,15 @@
             <a href="http://localhost/Projet4/index.php?action=interfaceAdmin&&message<?=0 ?>">Administration</a>
         </nav>
     </div>
+    <?php
+    if ($title != 'Site de Jean Forteroche'&&isset($message)&&$message!=""){?>
+    <article>
+
+        <div class="warning">
+
+            <?=$message?>
+
+        </div>
+    </article>
+    <?php }?>
 </header>

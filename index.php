@@ -17,7 +17,10 @@ try{
             case 'comments':
                 if (isset($_GET['id_chapter'])&& $_GET['id_chapter']>0)
                 {
-                    commentChapter($_GET['id_chapter']);
+                    if (isset($_GET['message'])){$message=$_GET['message'];}
+                    elseif(isset($_GET['ErreurMessage'])){$message=$_GET['ErreurMessage'];}
+                    else{$message="";}
+                    commentChapter($_GET['id_chapter'],$message);
                 }
                 else
                 {
@@ -25,12 +28,11 @@ try{
                 break;
             case 'addComment':
                 if (isset($_GET['id_chapter'])&&$_GET['id_chapter']>0){
-                    if(isset($_POST['author'])&&isset($_POST['comment'])){
-                        addComment($_GET['id_chapter'],$_POST['author'],$_POST['comment']);
+                    if(isset($_POST['author'])&&isset($_POST['comment'])&&$_POST['author']!=""&&$_POST['comment']!=""){
+                        addComment($_GET['id_chapter'],$_POST['author'],htmlspecialchars($_POST['comment']));
                     }
                     else{
-                        header('Location: index.php?action=comments&id_chapter=' . $_GET['id_chapter']."&& ErreurMessage=".true );
-                    }
+                        header('Location: index.php?action=comments&&id_chapter=' . $_GET['id_chapter']."&&ErreurMessage=Désolés, nous n'avons pas pu enregistrer votre message" );}
                }
                 else
                 {
@@ -42,7 +44,10 @@ try{
         if (isset($_GET['id_comment'])&&$_GET['id_comment']>0&&$_GET['id_chapter']&&$_GET['id_chapter']>0)
         {
             $from=$_GET['from'];
-            signalComment($_GET['id_comment'],$_GET['id_chapter'],$from);
+            if (isset($message)){
+            signalComment($_GET['id_comment'],$_GET['id_chapter'],$from,$message);}
+            else{
+            signalComment($_GET['id_comment'],$_GET['id_chapter'],$from,"");}
         }
         else
         {

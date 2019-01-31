@@ -80,6 +80,14 @@ article p {
     text-align: center;
 }
 
+html body header article div.warning div#thank {
+    font-family: 'Caveat', cursive;
+    color: #8d8b40;
+    font-size: 1.2em;
+    line-height: 1em;
+    text-align: center;
+}
+
 /*     boutons     */
 .btn.btn-primary,
 input[type="submit"] {
@@ -131,6 +139,13 @@ header {
 [type="checkbox"]:checked {
     position: absolute;
     left: -9999px;
+}
+
+html body header article {
+    position: absolute;
+    width: 84%;
+    margin-top: 2%;
+
 }
 
 .bar {
@@ -782,6 +797,12 @@ article#list.row .conteneur.col-12 h4 {
 
 article#list.row .conteneur.col-12 div.col-sm-12.col-md-6.col-lg-3 h4 {
     color: #331902;
+}
+
+article#letComment.row div#method p {
+    text-align: center;
+    font-style: italic;
+    font-size: 0.8em;
 }
 
 /* ---------------------------------------- */

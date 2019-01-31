@@ -35,7 +35,7 @@ class CommentsManager extends Manager{
     $db = $this->dbConnect();
     $comment = $db->prepare( 'UPDATE comments SET signalement=signalement + 1 WHERE id_comment=?');
     $comment->execute( array($id_comment));
-    $message=' Merci de nous avoir signalé ce message, nous allons examiner votre requette';
+    $message='<div id="thank">Merci de nous avoir signalé ce message, nous allons examiner votre requette</div>';
       return $message;
   }
 

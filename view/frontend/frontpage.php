@@ -25,7 +25,7 @@ ob_start();
         <!--Article à propos de l'auteur -->
         <article id="about" class="row">
             <div class="col-12 conteneur">
-                <h1>A propos de l'auteur </h1>
+                <h2>A propos de l'auteur </h2>
                 <div class="col-sm-6 col-md-5 col-lg-4 photo"><img src="./public/images/dmitry-ratushny-412448-unsplash.jpg" alt="Photo de Jean Forteroche"></div>
                 <div class="col-sm-6 col-md-7 col-lg-8 texteAPropos">
                     <p>Jean Forteroche écrit des romans qui expriment sa passion pour le voyage, l'idéologie et le développement personnel.
@@ -40,7 +40,7 @@ ob_start();
         <!--Article billet simple pour l'Alaska -->
         <article id="extracts" class="row">
             <div class="col-12 conteneur">
-                <h1>Billet simple pour l'Alaska </h1>
+                <h2>Billet simple pour l'Alaska </h2>
                 <br />
                 <div id="title">
                     <p>Je griffonne ces quelques lignes sur le joli calepin que tu m’as offert avant mon départ.<br />
@@ -50,11 +50,11 @@ ob_start();
 
                 </div>
                 <div class="col-sm-6 col-md-7 col-lg-8 texteAPropos">
-                    <h3>
+                    <h2>
                         chapitre :
                         <?= $post['id_chapter'] ?> -
                         <?=strip_tags($post['title'])?>
-                    </h3>
+                    </h2>
                     <p>
                         <?=nl2br(strip_tags($post['content']))?><br /><br />
                     </p>
@@ -84,10 +84,10 @@ ob_start();
 
                         $number= $post['id_chapter'];
                 ?>
-                <h1>
+                <h2>
                     Les derniers commentaires sur le chapitre :
                     <?=$number?>
-                </h1>
+                </h2>
                 <div class="row">
                     <?php
     $i=1;
@@ -107,7 +107,7 @@ ob_start();
                             <br />
                             <span>le :
                                 <?= $comment['DateComment_fr'] ?></span>
-                            <a class="btn btn-secondary" href="./index.php?action=signalComment&&id_comment=<?=$comment['id_comment'] ?>&&id_chapter=<?=$comment['id_chapter'] ?>&&from='Front'"><em>signaler ce commentaire</em></a>
+                            <a class="btn btn-secondary" href="./index.php?action=signalComment&&id_comment=<?=$comment['id_comment'] ?>&&id_chapter=<?=$comment['id_chapter'] ?>&&from=<?=$title?>"><em>signaler ce commentaire</em></a>
                     </div>
                     <?php
                         $i++; 

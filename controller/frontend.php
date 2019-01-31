@@ -38,11 +38,12 @@ function chapPost($id_chapter){
  * @return [array] $comments [containing the different post concerning the chapter]
  * @return [array] $post [array containing the element of the chapter]
  */
-function commentChapter($id_chapter){
+function commentChapter($id_chapter,$message){
     $chapterManager=new jeanForteroche\Model\ChapterManager;
     $commentsManager=new jeanForteroche\Model\CommentsManager;
     $post=$chapterManager->getChap($id_chapter);
     $comments=$commentsManager->getComments($id_chapter);
+    $message=$message;
     require('view/frontend/pageComments.php');
 }
 
@@ -77,20 +78,24 @@ function post(){
  * @return [array] commented [containing the comment signaled]
  */
 
-function signalComment($id_comment,$id_chapter,$from){
+function signalComment($id_comment,$id_chapter,$from,$message){
 
     $commentsManager=new jeanForteroche\Model\CommentsManager;
     $message=$commentsManager->getSignal($id_comment,$id_chapter);
     $comments=$commentsManager->getComments($id_chapter);
-    if ($from=='Comments') {
-        header("Location: index.php?action=comments&&id_comment=".$id_comment."&&id_chapter=".$id_chapter."&&from=".'frontend');}
-        elseif($from="Front"){
-            header("Location: index.php?from=frontend");}
-        elseif($from='Chapter'){
-            header("Location: index.php?action=comments&&id_comment=".$id_comment."&&id_chapter=".$id_chapter."&&from=".'frontend');}
-           else{
-            require('view/frontend/erreur.php');}
-}
+    switch ($from){
+        case  'Commentaires':
+            header("Location: index.php?action=comments&&id_comment=".$id_comment."&&id_chapter=".$id_chapter."&&from= Commentaires&&message=".$message);
+        break;
+        case 'Site de Jean Forteroche':
+            header("Location: index.php?from=Site de Jean Forteroche");
+            break;
+        case "chapitre : ".$id_chapter:
+            header("Location: index.php?action=otherss&&id_comment=".$id_comment."&&id_chapter=".$id_chapter."&&from=".'chapitre : ');
+            break;
+        default:
+            require('view/frontend/erreur.php');
+    }}
 
 /**
  * this function allows you to add a comment
@@ -103,9 +108,12 @@ function signalComment($id_comment,$id_chapter,$from){
 function addComment($id_chapter,$author,$comment){
     $commentsManager=new jeanForteroche\Model\CommentsManager;
     $signalReturn=$commentsManager->postComment($id_chapter, $author, $comment);
-        if ($signalReturn){
-            header('Location: index.php?action=comments&id_chapter=' . $_GET['id_chapter'] );
-        }
+    if ($signalReturn=1){
+        header('Location: index.php?action=comments&id_chapter=' . $_GET['id_chapter'] );
+    }
     else{
-        header('Location: index.php?action=comments&id_chapter=' . $_GET['id_chapter']."&& ErreurMessage=".true );}
+        header('Location: index.php?action=comments&id_chapter=' . $_GET['id_chapter']."&& ErreurMessage=<div class='warning'>
+                    <p>Désolés, nous n'avons pas pu enregistrer votre message. <br />
+                        Les deux champs doivent être remplis, ils ne doivent pas contenir de caractères spéciaux.</p>
+                </div>" );}
 }

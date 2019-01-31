@@ -1,5 +1,5 @@
 <!--titre de la page -->
-<?php $title = 'Billet simple pour l\'alaska';?>
+<?php $title = "chapitre : ".$post['id_chapter'];?>
 
 <?php ob_start(); ?>
 <div id="backChapter">
