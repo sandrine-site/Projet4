@@ -33,10 +33,8 @@ class CommentsManager extends Manager{
   public function getSignal($id_comment)
   {
     $db = $this->dbConnect();
-
     $comment = $db->prepare( 'UPDATE comments SET signalement=signalement + 1 WHERE id_comment=?');
     $comment->execute( array($id_comment));
-
     $message=' Merci de nous avoir signalé ce message, nous allons examiner votre requette';
       return $message;
   }
@@ -51,10 +49,9 @@ class CommentsManager extends Manager{
  */
   public function postComment($id_chapter, $author, $comment)
   {
-    $db = $this->dbConnect();
-    $comments = $db->prepare('INSERT INTO comments(id_chapter, author, comment, dateComment) VALUES(?, ?, ?, NOW())');
-    $affectedLines = $comments->execute(array($id_chapter, $author, $comment));
-        return $affectedLines;
+      $db = $this->dbConnect();
+    $req = $db->prepare('INSERT INTO comments(id_comment,signalement,id_chapter,author,comment,dateComment) VALUES (NULL,0,?,?,?,NOW())');
+        $req->execute(array($id_chapter,$author,$comment));
+            return $req ;
   }
-
 }

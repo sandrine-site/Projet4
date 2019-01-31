@@ -90,8 +90,6 @@ function signalComment($id_comment,$id_chapter,$from){
             header("Location: index.php?action=comments&&id_comment=".$id_comment."&&id_chapter=".$id_chapter."&&from=".'frontend');}
            else{
             require('view/frontend/erreur.php');}
-         
-    
 }
 
 /**
@@ -101,14 +99,13 @@ function signalComment($id_comment,$id_chapter,$from){
  * @param [text] $comment [commentaire]
  * @use commentsManager        
  */
+
 function addComment($id_chapter,$author,$comment){
     $commentsManager=new jeanForteroche\Model\CommentsManager;
-    $affectedLines = $commentsManager->postComment($id_chapter, $author, $comment);
-    if ($affectedLines === false){
-        header('Location: index.php?action=comments&id_chapter=' . $id_chapter."&& ErreurMessage=".true);
-    }
-    else {
-        header('Location: index.php?action=comments&id=' . $id_chapter);
-    }
-
+    $signalReturn=$commentsManager->postComment($id_chapter, $author, $comment);
+        if ($signalReturn){
+            header('Location: index.php?action=comments&id_chapter=' . $_GET['id_chapter'] );
+        }
+    else{
+        header('Location: index.php?action=comments&id_chapter=' . $_GET['id_chapter']."&& ErreurMessage=".true );}
 }
