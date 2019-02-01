@@ -132,7 +132,8 @@ div.show:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) >
     width: 130px;
 }
 
-a.btn.btn-light {
+a.btn.btn-light,
+button.btn.btn-light {
     display: inline-block;
     padding: 6px 12px;
     margin-bottom: 0;
@@ -143,7 +144,7 @@ a.btn.btn-light {
     white-space: nowrap;
     vertical-align: middle;
     cursor: pointer;
-    background-color: #f0f0f0;
+    background-color: #e2d6c4;
     border: 1px solid transparent;
     border-radius: 4px;
 

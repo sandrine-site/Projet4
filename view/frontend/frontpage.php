@@ -124,7 +124,7 @@ ob_start();
         <!--Article principaix titres -->
         <article id="mainTitles" class="row">
             <div class="col-12 conteneur">
-                <h1>Du même auteur</h1>
+                <h2>Du même auteur</h2>
                 <figure class="col-sm-6 col-md-4 col-lg-2 photo"><img src="./public/images/cover1.jpg" alt="couverture du livre Wall street" />
                     <figcaption>
                         <h4>Wall Street</h4>

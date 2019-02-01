@@ -24,15 +24,15 @@
         <!-- commentaires -->
         <article id="comments">
             <div class="row">
-                <h1>
+                <h2>
                     Les derniers commentaires sur le chapitre :
                     <?=$post['id_chapter']?>
-                </h1>
+                </h2>
                 <?php
-            $i=1;
-while ($comment = $comments->fetch())
-{$id=$comment['id_comment'];
-if ($i<=4) { ?>
+                        $i=1;
+                        while ($comment = $comments->fetch())
+                        {$id=$comment['id_comment'];
+                         if ($i<=4) { ?>
 
                 <div class="col-sm-12 col-md-6 col-lg-3 Avis">
                     <h4> Par :
@@ -60,11 +60,11 @@ if ($i<=4) { ?>
                         </div>
                 </div>
                 <?php
-                $i++;
-              }
-            }
-            $comments->closeCursor();
-          ?>
+                             $i++;
+                                    }
+                        }
+                        $comments->closeCursor();
+                ?>
             </div>
             <div class="row">
                 <a class="btn btn-primary" href="./index.php?action=comments&&id_chapter=<?=$post['id_chapter'] ?>" role="button">Tous les commentaires/Laisser un commentaire</a>
@@ -77,18 +77,18 @@ if ($i<=4) { ?>
         <div class="othersChapter">
             <p>
                 <?php
-          $i=1;
-          while ($i<=$len['COUNT(id_chapter)'])
-          {
-        ?>
+    $i=1;
+                   while ($i<=$len['COUNT(id_chapter)'])
+                   {
+                ?>
                 <a class="btn btn-primary" href="./index.php?action=others&&id_chapter=<?=$i ?>" role="button">
                     Chapitre
                     <?=$i?>
                 </a>
                 <?php
-          $i++;
-          }
-        ?>
+                    $i++;
+                   }
+                ?>
             </p>
         </div>
     </article>
