@@ -1,7 +1,7 @@
 <?php
 require('controller/frontend.php');
 require('controller/backend.php');
-try{
+//try{
     if (isset($_GET['action'])){
         switch ($_GET['action']) {
             case 'others':
@@ -152,9 +152,9 @@ try{
 else {
     post();
 }
-}
-
-catch(Exception $e)
-{
-    require("view/frontend/erreur.php");
-}
+//}
+//
+//catch(Exception $e)
+//{
+// require("view/frontend/erreur.php");
+//}

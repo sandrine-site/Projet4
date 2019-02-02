@@ -67,7 +67,8 @@
                 ?>
             </div>
             <div class="row">
-                <a class="btn btn-primary" href="./index.php?action=comments&&id_chapter=<?=$post['id_chapter'] ?>" role="button">Tous les commentaires/Laisser un commentaire</a>
+                <a class="btn btn-primary" href="./index.php?action=comments&&id_chapter=<?=$post['id_chapter'] ?>" role="button">Tous les commentaires<br />
+                    Laisser un commentaire</a>
             </div>
         </article>
     </div>

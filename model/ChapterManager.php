@@ -58,4 +58,29 @@ class ChapterManager extends Manager{
         $len=$req->fetch();
         return $len;
     }
+
+     /**
+  *this function give an absract of evry chapter
+  *
+  * @return[array]$resum = the caracteres of the chapter
+  */
+    public function resumeChapter(){
+        $db = $this->dbConnect();
+        $req = $db->prepare('SELECT id_chapter,title,content,DATE_FORMAT(publication_date, \'%d/%m/%Y \')AS publication_date,DATE_FORMAT(modification_date, \'%d/%m/%Y \') AS modification_date FROM chapter WHERE ? ORDER BY id_chapter DESC ');
+        $req->execute(array(1));
+        return $req;
+    }
+    /**
+  *this function give an absract of one chapter
+  *
+  * @return[array]$resum = the caracteres of the chapter
+  */
+    public function resumeAChapter($id){
+        $db = $this->dbConnect();
+        $req = $db->prepare('SELECT id_chapter,title,content,DATE_FORMAT(publication_date, \'%d/%m/%Y \')AS publication_date,DATE_FORMAT(modification_date, \'%d/%m/%Y \') AS modification_date  FROM chapter WHERE id_chapter=?');
+        $req->execute(array($id));
+        $resultat = $req->fetch();
+        return $resultat;
+    }
+
 }

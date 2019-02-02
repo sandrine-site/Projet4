@@ -22,6 +22,7 @@ body {
     text-align: justify;
 }
 
+
 h1 {
     font-family: 'Caveat', cursive;
     text-transform: uppercase;
@@ -68,6 +69,8 @@ article {
     border-radius: 10px;
     text-align: center;
 }
+
+
 
 article p {
     text-align: justify;
@@ -260,6 +263,7 @@ nav {
     background-color: white;
 }
 
+
 nav a {
     color: black;
     padding: 12px 16px;
@@ -321,8 +325,9 @@ hr {
     color: #331902;
 }
 
-article#intro.row {
-    margin-top: 38%;
+
+article#intro {
+    margin-top: 45%;
 }
 
 /*     photo      */
@@ -400,7 +405,7 @@ figure:hover p {
     top: 35%;
     width: 150px;
     height: 150px;
-    animation: bird1 7s linear 3;
+    animation: bird1 7s linear 2;
     animation-delay: 0.5s;
     animation-fill-mode: both;
     overflow: hidden;
@@ -464,6 +469,7 @@ figure:hover p {
         left: 1%;
         top: -4%;
         background-image: url(../images/Birds/bird19.png);
+        visibility: hidden;
     }
 }
 
@@ -530,6 +536,7 @@ figure:hover p {
         left: 12%;
         top: -6%;
         background-image: url(../images/Birds/bird28.png);
+        visibility: hidden;
     }
 }
 
@@ -547,6 +554,7 @@ figure:hover p {
     background-position: top;
     background-size: initial;
     background-repeat: no-repeat;
+    visibility: hidden;
 }
 
 @keyframes bird3 {
@@ -602,6 +610,7 @@ figure:hover p {
         left: -13%;
         top: 25%;
         background-image: url(../images/Birds/bird39.png);
+        visibility: hidden;
     }
 }
 
@@ -674,6 +683,7 @@ figure:hover p {
         left: -10%;
         top: 12%;
         background-image: url(../images/Birds/bird49.png);
+        visibility: hidden;
     }
 }
 
@@ -734,6 +744,7 @@ figure:hover p {
         left: -10%;
         top: 10%;
         background-image: url(../images/Birds/bird57.png);
+        visibility: hidden;
     }
 }
 
@@ -765,12 +776,19 @@ div#backChapter div#nav {
     color: #f1e8da;
 }
 
+/*
 article#extracts.row .conteneur.col-12 div#title p {
     margin: 15px;
 }
+*/
 
+#extracts,
+#intro p,
+#intro,
+#list,
 #about,
-#list {
+#comments,
+    {
     background-color: white;
     padding: 30px;
     box-shadow: 0px 10px 30px 0 rgba(49, 52, 57, 0.3), 0 10px 30px rgba(0, 0, 0, 0.08);
@@ -780,10 +798,6 @@ article#extracts.row .conteneur.col-12 div#title p {
     margin-bottom: 8%;
     z-index: 4;
     border-radius: 10px;
-}
-
-#list {
-    padding: 20px;
 }
 
 #comment input,
@@ -997,63 +1011,137 @@ div.row.credits {
     margin-top: -25px;
 }
 
-/*
---- jolies petite cases à coché pour l'interface admin--
-input:not([type="submit"]) {
-margin-top: 0px;
-margin-bottom: 30px;
-border-radius: 5px;
-padding: 10px;
-font-family: 'Ubuntu', sans-serif;
+/* ---------------------------------------- */
+/* ==        responsive:                   */
+/*---------------------------------------- */
+@media all and (max-device-width: 800px) {
+
+    #extracts,
+    #intro p,
+    #intro,
+    #list,
+    #about,
+    #comments,
+        {
+        padding: 3px !important;
+        margin: 5px !important;
+    }
+
+    article#intro,
+    #chapter {
+        margin-top: 90%;
+    }
+
+    #list {
+        margin-top: 45%;
+    }
+
+
+    article p {
+        padding: 0;
+    }
+
+    body {
+        font-size: 11px;
+    }
+
+    h1 {
+        font-size: 2.8em;
+    }
+
+    h2 {
+
+        font-size: 1.6em;
+    }
+
+    h4 {
+        font-size: 1em;
+        line-height: 2em;
+        text-align: center;
+    }
+
+    .row {
+        margin-right: 5px;
+        margin-left: 5px;
+    }
+
+    .othersChapter > p:nth-child(1) > a {
+        display: block;
+        align-self: center;
+    }
+
+    #back,
+    #backChapter {
+        background-attachment: fixed;
+        background-position: top;
+        background-size: contain;
+        margin-top: -122px;
+        background-repeat: no-repeat;
+        background-color: #D9B986;
+    }
+
+    #backChapter {
+        background-attachment: fixed;
+        background-position: top;
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-color: #8AB975;
+        margin-top: -179px;
+        background-repeat: no-repeat;
+    }
+
+    #backComments {
+        background-attachment: fixed;
+        background-position: top;
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-color: #4D8642;
+        background-repeat: no-repeat;
+    }
+
+    #bird1,
+    #bird2,
+    #bird3 {
+        display: none;
+    }
+
+    footer {
+        height: 300px;
+    }
+
+    article {
+
+        padding: 5px 10px;
+        margin-right: 5px;
+        margin-left: 5px;
+        margin-bottom: 5px;
+        border-radius: 10px;
+        text-align: center;
+    }
+
+    .warning {
+        font-size: 1.2em;
+        margin-top: 10px;
+    }
+
+    html body header article div.warning div#thank {
+
+        font-size: 1em;
+    }
+
+    /*     boutons     */
+    .btn.btn-primary,
+    input[type="submit"] {
+
+        padding: 5px 3p0x;
+        border-radius: 5px;
+    }
+
+    .btn.btn-primary:hover,
+    input[type="submit"]:hover {
+
+        padding: 5px 30px;
+        border-radius: 5px;
+    }
+
 }
-
-[type="radio"]:not(:checked),
-[type="radio"]:checked {
-position: absolute;
-left: -9999px;
-}
-
-[type="radio"]:not(:checked) + label,
-[type="radio"]:checked + label {
-position: relative;
-padding-left: 45px;
-cursor: pointer;
-}
-
-[type="radio"]:not(:checked) + label::before,
-[type="radio"]:checked + label::before {
-content: '';
-position: absolute;
-left: 0;
-top: -6px;
-width: 30px;
-height: 30px;
-border: 1px solid #331902;
-background: #cbc2ba;
-border-radius: 3px;
-box-shadow: inset 0 1px 3px rgba(0, 0, 0, .3);
-}
-
-
-
-[type="radio"]:not(:checked) + label::after,
-[type="radio"]:checked + label::after {
-content: '✔';
-position: absolute;
-top: -9px;
-left: 4px;
-font-size: 25px;
-color: #331902;
-transition: all .2s;
-}
-
-[type="radio"]:not(:checked) + label::after {
-opacity: 0;
-transform: scale(0);
-}
-
-[type="radio"]:checked + label::after {
-opacity: 1;
-transform: scale(1);
-}
-*/

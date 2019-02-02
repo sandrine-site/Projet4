@@ -12,7 +12,7 @@ class Manager{
   {
     try
     {
-      $db = new \PDO('mysql:host=localhost;dbname=jeanforteroche;charset=utf8', 'root', '');
+      $db = new \PDO('mysql:host=localhost;dbname=slash1040766_1oujev;charset=utf8', 'root','');
       return $db;
     }
     catch(Exception $e)
