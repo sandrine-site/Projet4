@@ -6,16 +6,13 @@
     <form action="./index.php?action=interfaceAdmin" method="post">
         <div>
             <div class="warning">
-                <?php
-                      if (isset($message)){
-                     echo ($message);
-                      }
-                      ?>
+
             </div>
             <label for="Name">
                 <p>Nom :</p>
             </label>
-            <input title="texte" name="Name" value="<?=$post['logins']?>" />
+            <?php if( isset ($post['logins'])) {$login=$post['logins'];}?>
+            <input title="texte" name="Name" value="<?=$login?>" />
         </div>
         <div><label for="Password">
                 <p>Mot de passe :</p>

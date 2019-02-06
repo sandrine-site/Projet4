@@ -65,6 +65,7 @@ require('controller/backend.php');
         }
         elseif (!empty($_POST['Name']) xor !empty($_POST['password'])) {
             $message='Attention vous devez renseigner un mot de passe et un nom d\'utilisateur';
+        $login=$_POST['Name'];
             require("view/frontend/password.php");}
         else{
             interfaceAdminPW("");}
@@ -125,10 +126,13 @@ require('controller/backend.php');
                 "title"=>$_POST['title'],
                 "content"=>$_POST['mytextarea']
             ];
+
             editANewChapter($chapter,$message);
         }
         else{
-            saveChapter($_POST["id_chapter"],$_POST['title'],$_POST['mytextarea']);
+            $from="".$_POST['from'];
+
+            saveChapter($_POST["id_chapter"],$_POST['title'],$_POST['mytextarea'],$from);
         }
 
         break;
@@ -156,5 +160,5 @@ else {
 //
 //catch(Exception $e)
 //{
-// require("view/frontend/erreur.php");
+//require("view/frontend/erreur.php");
 //}

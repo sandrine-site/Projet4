@@ -133,7 +133,8 @@ div.show:nth-child(2) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) >
 }
 
 a.btn.btn-light,
-button.btn.btn-light {
+button.btn.btn-light,
+    {
     display: inline-block;
     padding: 6px 12px;
     margin-bottom: 0;
@@ -188,14 +189,34 @@ a.btn.btn-primary h5 {
 
 
 body > header:nth-child(1) > nav:nth-child(1) > div:nth-child(2) > a,
-body > header:nth-child(3) > nav:nth-child(1) > div:nth-child(2) > a {
+body > header:nth-child(3) > nav:nth-child(1) > div:nth-child(2) > a,
+body > header:nth-child(1) > nav:nth-child(1) > form:nth-child(2) > div:nth-child(1) > button:nth-child(1),
+body > header:nth-child(1) > nav:nth-child(1) > form:nth-child(2) > div:nth-child(1) > button:nth-child(3),
+body > header:nth-child(1) > nav:nth-child(1) > form:nth-child(2) > div:nth-child(1) > button:nth-child(5),
+body > header:nth-child(1) > nav:nth-child(1) > form:nth-child(2) > div:nth-child(1) > button:nth-child(7),
+body > header:nth-child(1) > nav:nth-child(1) > form:nth-child(2) > div:nth-child(1) > button:nth-child(9) {
     width: auto;
     background-color: #e2d6c4;
     color: #331902;
     padding: 5px;
 }
 
-a.btn.btn-primary.active {
+body > header:nth-child(1) > nav:nth-child(1) > form:nth-child(2) > div:nth-child(1) > button:nth-child(1),
+body > header:nth-child(1) > nav:nth-child(1) > form:nth-child(2) > div:nth-child(1) > button:nth-child(3),
+body > header:nth-child(1) > nav:nth-child(1) > form:nth-child(2) > div:nth-child(1) > button:nth-child(5),
+body > header:nth-child(1) > nav:nth-child(1) > form:nth-child(2) > div:nth-child(1) > button:nth-child(7),
+body > header:nth-child(1) > nav:nth-child(1) > form:nth-child(2) > div:nth-child(1) > button:nth-child(9) {
+    width: 20%;
+    margin-left: -4px;
+}
+
+body > header:nth-child(1) > nav:nth-child(1) > form:nth-child(2) > div:nth-child(1) > button:nth-child(9) {
+    border-bottom-right-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+a.btn.btn-primary.active,
+div.btn-group.btn-group-justified button.btn.btn-primary.active {
     background-color: #331902 !important;
     color: #e2d6c4 !important;
     border: 2px solid #331902;
@@ -213,7 +234,8 @@ a.btn.btn-primary.active {
 
 .nav-pills > li.active > a,
 .nav-pills > li.active > a:hover,
-.nav-pills > li.active > a:focus {
+.nav-pills > li.active > a:focus,
+    {
     color: #e2d6c4;
     background-color: #331902;
     justify-content: space-between;
@@ -243,6 +265,17 @@ a.btn.btn-primary.active {
 a {
     color: #331902;
     text-decoration: none;
+}
+
+.modal-footer {
+    display: flex;
+    justify-content: space-between;
+}
+
+div.modal-footer button.btn.btn-danger {
+    width: 130px;
+    border-radius: 10px;
+
 }
 
 .tab-content {

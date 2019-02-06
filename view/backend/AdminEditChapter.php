@@ -34,7 +34,7 @@
                         </p>
                     </div>
                     <div id=numberChapter>
-                        <input type="hidden" id="id_chapter" name="id_chapter" value="<?=$chapter['id_chapter']?>" type="hidden" />
+                        <input type="hidden" id="id_chapter" name="id_chapter" value="<?=$chapter['id_chapter']?>" />
                     </div>
                 </div>
             </div>

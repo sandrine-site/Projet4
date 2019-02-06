@@ -92,7 +92,7 @@ function signalComment($id_comment,$id_chapter,$from,$message){
             header("Location: index.php?from=Site de Jean Forteroche");
             break;
         case "chapitre":
-            header("Location: index.php?action=others&&id_comment=".$id_comment."&&id_chapter=".$id_chapter."&&from=".$title2."chapitre &&message=".$message);
+            header("Location: index.php?action=others&&id_chapter=".$id_chapter." &&message=".$message);
             break;
         default:
             require('view/frontend/erreur.php');

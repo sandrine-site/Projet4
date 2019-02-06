@@ -51,7 +51,7 @@
 
                                     <p>Êtes-vous sûr de vouloir signaler ce commentaire<br /></p>
                                     <div class="modal-footer">
-                                        <a class="btn btn-primary" href="./index.php?action=signalComment&&id_comment=<?=$id?>&&id_chapter=<?=$comment['id_chapter'] ?>&&from=<?=$title?>" role="button"> <i class="fas fa-check"></i> oui</a>
+                                        <a class="btn btn-primary" href="./index.php?action=signalComment&&id_comment=<?=$id?>&&id_chapter=<?=$comment['id_chapter'] ?>&&from=<?=$title2?>" role="button"> <i class="fas fa-check"></i> oui</a>
 
                                         <button type="button" class="btn btn-danger" data-dismiss="modal"> <i class="fas fa-times"></i> annuler</button>
                                     </div>

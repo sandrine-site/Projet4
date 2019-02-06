@@ -203,7 +203,7 @@ function editANewChapter($newChap,$message){
  * @link [index.php] [pour réaficher la page]
  */
 
-function saveChapter($id,$title,$content){
+function saveChapter($id,$title,$content,$from){
     $adminManager=new jeanForteroche\Model\AdminManager;
     $number=$adminManager->lenChapter();
     if ($id>$number['COUNT(id_chapter)']){
@@ -216,7 +216,22 @@ function saveChapter($id,$title,$content){
     $resume2=$adminManager->resumeAChapter($id);
 
     $message='le chapitre a bien été sauvegardé';
-    require('view/backend/AdminCreateChapter.php');
+
+            switch ($from){
+                    case 'active1':
+                    header("Location: index.php?action=CreeNewChapter&&message=$message");;
+                    break;
+                case 'active2':
+                    header("Location: index.php?action=ListOfChapter&&message=$message");
+                    break;
+                 case 'active3':
+                    header("Location: index.php?action=AllComments&&message=$message");
+                    break;
+
+
+                default:
+                require('view/backend/AdminCreateChapter.php');
+            break;}
 }
 
 function updateChapter($id,$title,$content){

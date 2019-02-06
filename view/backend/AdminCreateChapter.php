@@ -5,7 +5,7 @@
 <div id="administrationChapter">
     <article id="create">
         <?php if (isset ($resume2)){$chapter=$resume2;}?>
-        <form action="./index.php?action=saveNew&&id_chapter=<?=$chapter['id_chapter']?>" method="post" value="save" class="chapitre">
+        <form action="./index.php?action=saveNew&&id_chapter=<?=$chapter['id_chapter']?>" method="post" value="save" class="chapitre" id="chapitre">
             <div class="col-sm-12 col-md-6 col-lg-6">
                 <h2> Créer un nouveau chapitre : </h2>
             </div>
@@ -39,7 +39,7 @@
 
             <div class="col-sm-12 col-md-12 col-lg-12">
 
-                <button type="submit" role="submit" class="btn btn-primary">
+                <button type="submit" role="submit" id="chapitre" class="btn btn-primary">
                     <h5> Enregistrer<br /></h5>
                     <i class="far fa-save"></i>
                 </button>
