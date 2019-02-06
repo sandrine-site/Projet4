@@ -6,13 +6,17 @@
  * @return $db 
  */
 namespace jeanForteroche\Model;
+require_once("ManagerLog.php");
 
-class Manager{
+class Manager extends ManagerLog  {
+
   protected function dbConnect()
-  {
+
+  {  $managerLog=new ManagerLog;
+
     try
     {
-      $db = new \PDO('mysql:host=localhost;dbname=slash1040766_1oujev;charset=utf8', 'root','');
+      $db = new \PDO($managerLog->_dsn ,$managerLog->_user, $managerLog->_password);
       return $db;
     }
     catch(Exception $e)
