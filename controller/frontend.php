@@ -78,13 +78,13 @@ function post(){
  * @return [array] $comments containing the different post concerning the chapter
  * @return [array] commented [containing the comment signaled]
  */
-
 function signalComment($id_comment,$id_chapter,$from,$message){
 
     $commentsManager=new jeanForteroche\Model\CommentsManager;
     $message=$commentsManager->getSignal($id_comment,$id_chapter);
     $comments=$commentsManager->getComments($id_chapter);
-    switch ($from){
+    switch ($from)
+    {
         case  'Commentaires':
             header("Location: index.php?action=comments&&id_comment=".$id_comment."&&id_chapter=".$id_chapter."&&from= Commentaires&&message=".$message);
         break;
@@ -96,7 +96,8 @@ function signalComment($id_comment,$id_chapter,$from,$message){
             break;
         default:
             require('view/frontend/erreur.php');
-    }}
+    }
+}
 
 /**
  * this function allows you to add a comment
@@ -105,16 +106,18 @@ function signalComment($id_comment,$id_chapter,$from,$message){
  * @param [text] $comment [commentaire]
  * @use commentsManager        
  */
-
 function addComment($id_chapter,$author,$comment){
     $commentsManager=new jeanForteroche\Model\CommentsManager;
     $signalReturn=$commentsManager->postComment($id_chapter, $author, $comment);
-    if ($signalReturn=1){
+    if ($signalReturn=1)
+    {
         header('Location: index.php?action=comments&id_chapter=' . $_GET['id_chapter'] );
     }
-    else{
+    else
+    {
         header('Location: index.php?action=comments&id_chapter=' . $_GET['id_chapter']."&& ErreurMessage=<div class='warning'>
                     <p>Désolés, nous n'avons pas pu enregistrer votre message. <br />
                         Les deux champs doivent être remplis, ils ne doivent pas contenir de caractères spéciaux.</p>
-                </div>" );}
+                </div>" );
+    }
 }

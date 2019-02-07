@@ -2,7 +2,6 @@
 $title = 'Site de Jean Forteroche';
 ob_start();
 ?>
-
 <div id=back>
     <!--       Annimation oiseaux -->
     <div id="bird1"></div>
@@ -12,7 +11,7 @@ ob_start();
     <div id="bird5"></div>
 
     <div id=front>
-        <!--Article titre -->
+        <!-- intro -->
         <article id="intro" class="row">
             <div class="col-12 conteneur">
                 <h1>Billet simple pour l'Alaska </h1>
@@ -22,7 +21,7 @@ ob_start();
                     N'hésitez pas à me laisser des commentaires. Je pourrais les utiliser pour la suite de mon voyage.</p>
             </div>
         </article>
-        <!--Article à propos de l'auteur -->
+        <!-- à propos de l'auteur -->
         <article id="about" class="row">
             <div class="col-12 conteneur">
                 <h2>A propos de l'auteur </h2>
@@ -37,7 +36,7 @@ ob_start();
                 </div>
             </div>
         </article>
-        <!--Article billet simple pour l'Alaska -->
+        <!-- billet simple pour l'Alaska -->
         <article id="extracts" class="row">
             <div class="col-12 conteneur">
                 <h2>Billet simple pour l'Alaska </h2>
@@ -47,7 +46,6 @@ ob_start();
                         Ce livre est l'histoire de Pierre explorateur, imaginée par sa fille Maud.<br />
                         Jour aprés jour elle raconte le voyage de son père, parti pour l'Alaska. Mais reviendra-t-il? </p>
                     <br />
-
                 </div>
                 <div class="col-sm-6 col-md-7 col-lg-8 texteAPropos">
                     <h2>
@@ -58,12 +56,14 @@ ob_start();
                     <p>
                         <?=nl2br(strip_tags($post['content']))?><br /><br />
                     </p>
-                    <a class="btn btn-primary" href="./index.php?action=others&&id_chapter=<?=$post['id_chapter'] ?>" role="button">Lire la suite</a>
+                    <a class="btn btn-primary" href="./index.php?action=others&&id_chapter=<?=$post['id_chapter'] ?>" role="button">Lire la suite
+                    </a>
                 </div>
-                <div class="col-sm-6 col-md-5 col-lg-4 photo"><img src="./public/images/coverAlaska.png" alt="Photo de couverture du livre billet simple pour l'Alaska"></div>
+                <div class="col-sm-6 col-md-5 col-lg-4 photo"><img src="./public/images/coverAlaska.png" alt="Photo de couverture du livre billet simple pour l'Alaska">
+                </div>
             </div>
         </article>
-        <!--Article derniers avis -->
+        <!-- derniers avis -->
         <article id="comments">
             <div class="col-12 conteneur">
                 <?php
@@ -81,36 +81,31 @@ ob_start();
                 </div>
                 <?php
                         }
-
                         $number= $post['id_chapter'];
                 ?>
-                <h2>
-                    Les derniers commentaires sur le chapitre :
+                <h2>Les derniers commentaires sur le chapitre :
                     <?=$number?>
                 </h2>
                 <div class="row">
                     <?php
     $i=1;
-                    while ($comment = $comments->fetch())
-                    {
-                        if ($i<=4)
-                        {
+                    while ($comment = $comments->fetch()){
+                        if ($i<=4){
                     ?>
                     <div class="col-sm-12 col-md-6 col-lg-3 Avis">
-
                         <h4> Par :
                             <?= htmlspecialchars($comment['author']) ?>
                         </h4>
                         <p>
                             <?= nl2br(htmlspecialchars($comment['comment'])) ?>
-                            <br />
-                            <br />
+                            <br /><br />
                             <span>le :
                                 <?= $comment['DateComment_fr'] ?></span>
-                            <a class="btn btn-secondary" href="./index.php?action=signalComment&&id_comment=<?=$comment['id_comment'] ?>&&id_chapter=<?=$comment['id_chapter'] ?>&&from=<?=$title?>"><em>signaler ce commentaire</em></a>
+                            <a class="btn btn-secondary" href="./index.php?action=signalComment&&id_comment=<?=$comment['id_comment'] ?>&&id_chapter=<?=$comment['id_chapter'] ?>&&from=<?=$title?>"><em>signaler ce commentaire</em>
+                            </a>
                     </div>
                     <?php
-                        $i++; 
+                        $i++;
                         }
                     }
                     $comments->closeCursor();
@@ -121,11 +116,12 @@ ob_start();
                 <a class="btn btn-primary" href="./index.php?action=comments&&id_chapter=<?=$post['id_chapter'] ?>" role="button">Tous les commentaires<br /> Laisser un commentaire</a>
             </div>
         </article>
-        <!--Article principaix titres -->
+        <!-- principaix titres -->
         <article id="mainTitles" class="row">
             <div class="col-12 conteneur">
                 <h2>Du même auteur</h2>
-                <figure class="col-sm-6 col-md-4 col-lg-2 photo"><img src="./public/images/cover1.jpg" alt="couverture du livre Wall street" />
+                <figure class="col-sm-6 col-md-4 col-lg-2 photo">
+                    <img src="./public/images/cover1.jpg" alt="couverture du livre Wall street" />
                     <figcaption>
                         <h4>Wall Street</h4>
                         <p>Argent,
@@ -134,41 +130,50 @@ ob_start();
                             <br />partenaires,
                             <br />buildings,
                             <br />bourse.
-                            <br />Burn-out.</p>
+                            <br />Burn-out.
+                        </p>
                     </figcaption>
                 </figure>
-                <figure class="col-sm-6 col-md-4 col-lg-2 photo"><img src="./public/images/cover2.jpg" alt="couverture du livre Une maison dans le ciel" />
+                <figure class="col-sm-6 col-md-4 col-lg-2 photo">
+                    <img src="./public/images/cover2.jpg" alt="couverture du livre Une maison dans le ciel" />
                     <figcaption>
                         <h4>Une maison dans le ciel</h4>
                         <p>Après un énième virage dans les cieux, elle apparut, soudainement, subitement, au creux de plusieurs nuages effilés : une maison, une véritable bâtisse, que les pilotes du ballon s’empressèrent d'explorer.</p>
                     </figcaption>
                 </figure>
-                <figure class="col-sm-6 col-md-4 col-lg-2 photo"><img src="./public/images/cover3.jpg" alt="couverture du livre C'est là que le couteux tombe" />
+                <figure class="col-sm-6 col-md-4 col-lg-2 photo">
+                    <img src="./public/images/cover3.jpg" alt="couverture du livre C'est là que le couteux tombe" />
                     <figcaption>
                         <h4>C'est là que le couteau tombe</h4>
                         <p>Un lieu clôt.
                             <br />Des personnages suspects.
                             <br />Un inspecteur déboussolé,
-                            <br />dans un univers où les erreurs ne sont plus permises. </p>
+                            <br />dans un univers où les erreurs ne sont plus permises.
+                        </p>
                     </figcaption>
                 </figure>
-                <figure class="col-sm-6 col-md-4 col-lg-2 photo"><img src="./public/images/cover4.png" alt="Sur le pouvoir et l'idéologie" />
+                <figure class="col-sm-6 col-md-4 col-lg-2 photo">
+                    <img src="./public/images/cover4.png" alt="Sur le pouvoir et l'idéologie" />
                     <figcaption>
                         <h4>Sur le pouvoir et l'idéologie</h4>
                         <p>2034, le drapeau Nazis flotte sur la lune, l'allemand est langue première dans toutes les écoles d'Europe. La monarchie n'a jamais été abolie dans l'hexagone.
-                            Et si l'histoire que vous aviez connue n'était plus que songe ? </p>
+                            Et si l'histoire que vous aviez connue n'était plus que songe ?
+                        </p>
                     </figcaption>
                 </figure>
-                <figure class="col-sm-6 col-md-4 col-lg-2 photo"><img src="./public/images/cover5.jpg" alt="couverture du livre 1000 parapluies noirs" />
+                <figure class="col-sm-6 col-md-4 col-lg-2 photo">
+                    <img src="./public/images/cover5.jpg" alt="couverture du livre 1000 parapluies noirs" />
                     <figcaption>
                         <h4>1000 parapluies noirs</h4>
                         <p>1 parapluie.
                             <br /> 2 parapluies.
                             <br />3 parapluies.
-                            <br />1000 parapluies, et toujours pas protégée de l'orage qui tourmentait son esprit.</p>
+                            <br />1000 parapluies, et toujours pas protégée de l'orage qui tourmentait son esprit.
+                        </p>
                     </figcaption>
                 </figure>
-                <figure class="col-sm-6 col-md-4 col-lg-2 photo"><img src="./public/images/cover6.jpg" alt="couverture du livre Et puis il y a ça">
+                <figure class="col-sm-6 col-md-4 col-lg-2 photo">
+                    <img src="./public/images/cover6.jpg" alt="couverture du livre Et puis il y a ça">
                     <figcaption>
                         <h4>Et puis il y a ça</h4>
                         <p>En cherchant sur Google de quoi compléter leur exposé sur les sorcières, Taissa et Emilie étaient loin de se douter sur quoi elles allaient tomber. </p>
@@ -176,23 +181,23 @@ ob_start();
                 </figure>
             </div>
         </article>
+        <!--Accés aux autres chapitres -->
         <article id="nav" class="row">
             <h4>Accéder aux autres chapitres :</h4>
             <div class="othersChapter">
                 <p>
                     <?php
     $i=1;
-                   while ($i<=$len['COUNT(id_chapter)'])
-                   {
-                    ?>
+                   while ($i<=$len['COUNT(id_chapter)']){
+                ?>
                     <a class="btn btn-primary" href="./index.php?action=others&&id_chapter=<?=$i ?>" role="button">
                         Chapitre
                         <?=$i?>
                     </a>
                     <?php
-                        $i++;
+                    $i++;
                    }
-                    ?>
+                        ?>
                 </p>
             </div>
         </article>

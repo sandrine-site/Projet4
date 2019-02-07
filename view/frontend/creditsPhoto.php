@@ -42,7 +42,6 @@
             les couvertures de livre proviennent de: bookcoverarchive.com
         </div>
     </div>
-
 </body>
 <?php
   $content=ob_get_clean();

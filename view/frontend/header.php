@@ -11,19 +11,17 @@
             <a href="http://localhost/Projet4/index.php">Accueil</a><br />
             <a href="http://localhost/Projet4/index.php?action=others&&id_chapter=<?=1 ?>">Billet simple pour l'Alaska</a>
             <hr />
-
             <a href="http://localhost/Projet4/index.php?action=interfaceAdmin&&message<?=0 ?>">Administration</a>
         </nav>
     </div>
     <?php
-    if (isset($message)&&$message!=""){?>
+    if (isset($message)&&$message!=""){
+    ?>
     <article>
-
         <div class="warning">
-
             <?=$message?>
-
         </div>
     </article>
-    <?php }?>
+    <?php }
+    ?>
 </header>

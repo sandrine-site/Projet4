@@ -1,27 +1,35 @@
-/* ---------------------------------------- */
-/* ==            SOMMAIRE                   */
-/*---------------------------------------- */
-/* L        - 1 - */
-/* L        - 2 - */
-/* L        - 3 - */
-/* ---------------------------------------- */
-/* ==       CODES COULEURS           */
-/*---------------------------------------- */
+/* ----------------------------------------
+/* ==            SOMMAIRE
+/*----------------------------------------
+/* L 9 - 16     CODES COULEURS
+/* L 19 - 190   commun à toute les sections ou pages
+/* L 192 - 295  header
+/* L 297 - 748  front page
+/* L 750 - 815  chapter page
+/* L 817 - 879  page commentaire
+/* L 881 - 915  interface admin
+/* L 917 - 962  footer
+ * L 964 - 974  crédits photos
+ * L 977 - 1012 Page connexion
+ * L1014 - 1145 Responsive
+ */
+/* ----------------------------------------
+/* ==       CODES COULEURS
+/*----------------------------------------
 /*
 maron foncé (text) :            #331902
 blanc:                          white
 beige :                         #e2d6c4
 kaki:                           #8d8b40
 */
-/* ---------------------------------------- */
-/* == commun à toute les sections ou pages  */
+/* ----------------------------------------
+/* == commun à toute les sections ou pages
 /*---------------------------------------- */
 body {
     font-family: 'Ubuntu', sans-serif;
     font-size: 16px;
     text-align: justify;
 }
-
 
 h1 {
     font-family: 'Caveat', cursive;
@@ -56,9 +64,8 @@ h4 {
     width: 100%;
 }
 
-
-
 /*        Articles               */
+
 article {
     background-color: white;
     padding: 30px 50px;
@@ -69,8 +76,6 @@ article {
     border-radius: 10px;
     text-align: center;
 }
-
-
 
 article p {
     text-align: justify;
@@ -91,7 +96,13 @@ html body header article div.warning div#thank {
     text-align: center;
 }
 
+article span {
+    text-align: left;
+    display: block;
+}
+
 /*     boutons     */
+
 .btn.btn-primary,
 input[type="submit"] {
     background-color: #331902;
@@ -129,16 +140,12 @@ a.btn.btn-secondary:hover em {
     color: #331902;
 }
 
-article span {
-    text-align: left;
-    display: block;
-}
-
 article .btn-secondary {
     text-align: right;
     display: block;
 }
 
+/*     modal     */
 .modal {
     position: fixed;
     top: 50%;
@@ -180,7 +187,6 @@ div.show:nth-child(2) > div:nth-child(1) > div:nth-child(1) {
     border-radius: 10px;
 }
 
-
 .modal-open label article#fast.row table.table.table-striped.comments tbody tr td div#delet.modal.show div.modal-dialog div.modal-content button.btn.btn-danger {
     background-color: crimson;
     color: #e2d6c4;
@@ -200,7 +206,8 @@ header {
     z-index: 0;
 }
 
-/* ==           menu    burger       */
+/* ==  menu    burger       */
+
 [type="checkbox"]:not(:checked),
 [type="checkbox"]:checked {
     position: absolute;
@@ -211,7 +218,6 @@ html body header article {
     position: absolute;
     width: 84%;
     margin-top: 2%;
-
 }
 
 .bar {
@@ -262,7 +268,6 @@ nav {
     left: -400px;
     background-color: white;
 }
-
 
 nav a {
     color: black;
@@ -325,12 +330,12 @@ hr {
     color: #331902;
 }
 
-
 article#intro {
     margin-top: 45%;
 }
 
 /*     photo      */
+
 .photo {
     margin: auto;
 }
@@ -345,6 +350,7 @@ article#intro {
 }
 
 /*     illustrations principaux titres     */
+
 html body div#mainTitles.row .conteneur.col-12 .photo.col-sm-6.col-md-4.col-lg-2 a img {
     margin: 20px 10px;
     border: 6px #331902 outset;
@@ -775,12 +781,6 @@ figure:hover p {
 div#backChapter div#nav {
     color: #f1e8da;
 }
-
-/*
-article#extracts.row .conteneur.col-12 div#title p {
-    margin: 15px;
-}
-*/
 
 #extracts,
 #intro p,

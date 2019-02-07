@@ -29,11 +29,11 @@
                     <?=$post['id_chapter']?>
                 </h2>
                 <?php
-                        $i=1;
-                        while ($comment = $comments->fetch())
-                        {$id=$comment['id_comment'];
-                         if ($i<=4) { ?>
-
+    $i=1;
+                        while ($comment = $comments->fetch()){
+                            $id=$comment['id_comment'];
+                            if ($i<=4){
+                ?>
                 <div class="col-sm-12 col-md-6 col-lg-3 Avis">
                     <h4> Par :
                         <?= htmlspecialchars($comment['author']) ?>
@@ -42,17 +42,16 @@
                         <?= nl2br(htmlspecialchars($comment['comment'])) ?>
                         <br />
                         <br />
-                        <span>le :
-                            <?= $comment['DateComment_fr'] ?></span>
-                        <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="<?='#signal'.$id?>"><em>signaler ce commentaire</em></button>
+                        <span> le :
+                            <?= $comment['DateComment_fr'] ?> </span>
+                        <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="<?='#signal'.$id?>"><em>signaler ce commentaire</em>
+                        </button>
                         <div class="modal" id="<?='signal'.$id?>" role="dialog">
                             <div class="modal-dialog">
                                 <div class="modal-content">
-
                                     <p>Êtes-vous sûr de vouloir signaler ce commentaire<br /></p>
                                     <div class="modal-footer">
                                         <a class="btn btn-primary" href="./index.php?action=signalComment&&id_comment=<?=$id?>&&id_chapter=<?=$comment['id_chapter'] ?>&&from=<?=$title?>" role="button"> <i class="fas fa-check"></i> oui</a>
-
                                         <button type="button" class="btn btn-danger" data-dismiss="modal"> <i class="fas fa-times"></i> annuler</button>
                                     </div>
                                 </div>
@@ -60,15 +59,18 @@
                         </div>
                 </div>
                 <?php
-                             $i++;
-                                    }
+                    $i++;
+                            }
                         }
                         $comments->closeCursor();
                 ?>
             </div>
             <div class="row">
-                <a class="btn btn-primary" href="./index.php?action=comments&&id_chapter=<?=$post['id_chapter'] ?>" role="button">Tous les commentaires<br />
-                    Laisser un commentaire</a>
+                <a class="btn btn-primary" href="./index.php?action=comments&&id_chapter=<?=$post['id_chapter'] ?>" role="button">
+                    Tous les commentaires
+                    <br />
+                    Laisser un commentaire
+                </a>
             </div>
         </article>
     </div>
@@ -79,8 +81,7 @@
             <p>
                 <?php
     $i=1;
-                   while ($i<=$len['COUNT(id_chapter)'])
-                   {
+                   while ($i<=$len['COUNT(id_chapter)']){
                 ?>
                 <a class="btn btn-primary" href="./index.php?action=others&&id_chapter=<?=$i ?>" role="button">
                     Chapitre
