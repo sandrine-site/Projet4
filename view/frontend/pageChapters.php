@@ -1,5 +1,7 @@
 <!--titre de la page -->
-<?php $title = ("chapitre : ".$post['id_chapter']);$title2="chapitre";?>
+<?php $title = "detail chapitre ";
+   $title2="chapitre";
+?>
 
 <?php ob_start(); ?>
 <div id="backChapter">
@@ -11,7 +13,7 @@
                 <div id="title">
                     <h3>
                         chapitre :
-                        <?= $post['id_chapter'] ?> -
+                        <?= $post['number_chapter'] ?> -
                         <?=strip_tags($post['title'])?>
                     </h3>
                 </div>
@@ -26,7 +28,7 @@
             <div class="row">
                 <h2>
                     Les derniers commentaires sur le chapitre :
-                    <?=$post['id_chapter']?>
+                    <?=$post['number_chapter']?>
                 </h2>
                 <?php
     $i=1;
@@ -80,17 +82,16 @@
         <div class="othersChapter">
             <p>
                 <?php
-    $i=1;
-                   while ($i<=$len['COUNT(id_chapter)']){
+                   while($number=$num->fetch()){
                 ?>
-                <a class="btn btn-primary" href="./index.php?action=others&&id_chapter=<?=$i ?>" role="button">
+                <a class="btn btn-primary" href="./index.php?action=others&&id_chapter=<?=$number['id_chapter']?>" role="button">
                     Chapitre
-                    <?=$i?>
+                    <?=$number['number_chapter']?>
                 </a>
                 <?php
-                    $i++;
-                   }
-                ?>
+                    }
+                    $num->closeCursor();
+                    ?>
             </p>
         </div>
     </article>

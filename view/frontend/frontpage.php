@@ -50,7 +50,7 @@ ob_start();
                 <div class="col-sm-6 col-md-7 col-lg-8 texteAPropos">
                     <h2>
                         chapitre :
-                        <?= $post['id_chapter'] ?> -
+                        <?= $post['number_chapter'] ?> -
                         <?=strip_tags($post['title'])?>
                     </h2>
                     <p>
@@ -81,7 +81,7 @@ ob_start();
                 </div>
                 <?php
                         }
-                        $number= $post['id_chapter'];
+                        $number= $post['number_chapter'];
                 ?>
                 <h2>Les derniers commentaires sur le chapitre :
                     <?=$number?>
@@ -187,17 +187,16 @@ ob_start();
             <div class="othersChapter">
                 <p>
                     <?php
-    $i=1;
-                   while ($i<=$len['COUNT(id_chapter)']){
+                   while($number=$num->fetch()){
                 ?>
-                    <a class="btn btn-primary" href="./index.php?action=others&&id_chapter=<?=$i ?>" role="button">
+                    <a class="btn btn-primary" href="./index.php?action=others&&id_chapter=<?=$number['id_chapter']?>" role="button">
                         Chapitre
-                        <?=$i?>
+                        <?=$number['number_chapter']?>
                     </a>
                     <?php
-                    $i++;
-                   }
-                        ?>
+                    }
+                    $num->closeCursor();
+                    ?>
                 </p>
             </div>
         </article>

@@ -23,11 +23,13 @@ function chapPost($id_chapter,$message){
     $chapterManager=new jeanForteroche\Model\ChapterManager;
     $post=$chapterManager->getChap($id_chapter);
     $len=$chapterManager->len();
+    $num=$chapterManager->num();
     $commentsManager=new jeanForteroche\Model\CommentsManager;
     $comments=$commentsManager->getComments($post['id_chapter']);
     $message=$message;
     require('view/frontend/pageChapters.php');
 }
+
 
 /**
  * this function displays the comments of the seleted chapter
@@ -64,8 +66,10 @@ function post(){
     $post=$chapterManager->getChapter();
     $len=$chapterManager->len();
     $comments=$commentsManager->getComments($post['id_chapter']);
+    $num=$chapterManager->num();
     require('view/frontend/frontpage.php');
 }
+
 
 /**
  * this function locates a reported comment and places it in the table signal comment

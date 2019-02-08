@@ -19,7 +19,7 @@ class ChapterManager extends Manager{
 */
     public function getChapter(){
         $db = $this->dbConnect();
-        $req = $db->query('SELECT id_chapter,title,content FROM chapter ORDER BY id_chapter DESC LIMIT 0,1');
+        $req = $db->query('SELECT id_chapter,number_chapter,title,content FROM chapter ORDER BY id_chapter DESC LIMIT 0,1');
         $post = $req->fetch();
         $limit=1000;
          $post['content']= strip_tags($post['content']);
@@ -31,6 +31,11 @@ class ChapterManager extends Manager{
             }
         return $post;
     }
+public function num(){
+    $db = $this->dbConnect();
+    $req = $db->query('SELECT ALL number_chapter,id_chapter FROM chapter');
+    return $req;
+}
 
 /**
 * this function will look for and displays an excerpt from a seleted chapter, public access
@@ -38,10 +43,10 @@ class ChapterManager extends Manager{
 *
 * @return [array] $post [containing the chapter]
 */
-    public function getChap($id_chapter){
+    public function getChap($id){
         $db = $this->dbConnect();
-        $req = $db->prepare('SELECT id_chapter,title,content FROM chapter WHERE id_chapter = ?');
-        $req->execute(array($id_chapter));
+        $req = $db->prepare('SELECT id_chapter,number_chapter,title,content FROM chapter WHERE id_chapter = ?');
+        $req->execute(array($id));
         $post = $req->fetch();
         return $post;
     }
