@@ -129,20 +129,10 @@ try{
                 break;
 
             case 'saveNew':
-                if ($_POST["id_chapter"]<$_GET['id_chapter']&&(!isset($_GET['message'])||$_GET['message']!="Attention ce chapitre existe déjà!"))
-                {
-                    $message="Attention ce chapitre existe déjà!";
-                    $chapter=[
-                        "id_chapter"=>$_POST['id_chapter'],
-                        "title"=>$_POST['title'],
-                        "content"=>$_POST['mytextarea']
-                    ];
-                    editANewChapter($chapter,$message);
-                }
-                else
-                {
-                    saveChapter($_POST["id_chapter"],$_POST['title'],$_POST['mytextarea']);
-                }
+                if (isset($_GET['message'])){
+               $message=$_GET['message'];}
+                else{$message="";}
+                   saveNew($_POST["number_chapter"],$_POST['title'],$_POST['mytextarea'],$message);
                 break;
 
             case'ListOfChapter':

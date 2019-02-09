@@ -7,7 +7,7 @@
         <form action="./index.php?action=update" method="post" value="save" class="chapitre">
             <div class="col-sm-12 col-md-6 col-lg-6">
                 <h2> Edition du Chapitre :
-                    <?=$chapter['id_chapter']?>
+                    <?=$chapter['number_chapter']?>
                 </h2>
             </div>
             <div class="col-sm-12 col-md-6 col-lg-6">

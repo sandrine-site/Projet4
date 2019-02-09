@@ -35,7 +35,7 @@
             ?>
             <tr>
                 <th scope="row">
-                    <?= ($res['id_chapter'])?>
+                    <?= ($res['number_chapter'])?>
                 </th>
                 <th scope="row">
                     <?= strip_tags($res['title'])?>

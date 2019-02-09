@@ -152,7 +152,7 @@ function newPws($name,$pwActuel,$pwNew){
         header("Location: index.php?action=adminAccueil&&message=$newPW");
     }
     else{ $message='le mot de passe et le nom ne correspondent pas.';
-    admPW($message);}
+         admPW($message);}
 }
 
 /** this function looks for the numbers of the next chapter
@@ -164,15 +164,15 @@ function newPws($name,$pwActuel,$pwNew){
 function createNewChapters(){
     $adminManager=new jeanForteroche\Model\AdminManager;
     $resume=$adminManager->resumeChapter();
-    $number=$adminManager->lenChapter();
-    $numberChap=$number['COUNT(id_chapter)'] + 1;
+    $number=$adminManager->nummax();
+    $numberChap=($number['number_chapter']);
     $chapter=[
-        "id_chapter"=>$numberChap,
+        "id_chapter"=>"",
+        "number_chapter"=>$numberChap+1,
         "title"=>"",
         "content"=>"",
         "from"=>"new"
     ];
-
     require('view/backend/AdminCreateChapter.php');
 }
 
@@ -198,11 +198,11 @@ function editAChapter($id){
  *  @link ['view/backend/AdminEditChapter.php']
  */
 function editANewChapter($newChap,$message){
-    $adminManager=new jeanForteroche\Model\AdminManager;
-    $resume=$adminManager->resumeChapter();
-    $chapter=$newChap;
-    $message=$message;
-    require('view/backend/AdminCreateChapter.php');
+$adminManager=new jeanForteroche\Model\AdminManager;
+$resume=$adminManager->resumeChapter();
+$chapter=$newChap;
+    if (!isset ($message)){$message="";}
+require('view/backend/AdminCreateChapter.php');
 }
 
 /**
@@ -215,23 +215,58 @@ function editANewChapter($newChap,$message){
  * @return [text] $message [confimation message]
  * @link ['view/backend/AdminCreateChapter.php']
  */
-function saveChapter($id,$title,$content){
+//function saveChapter($numberpost,$title,$content){
+// $adminManager=new jeanForteroche\Model\AdminManager;
+// $num=$adminManager->num();
+// $tabnumber=[];
+//}
+function saveNew($numberpost,$title,$text,$message){
     $adminManager=new jeanForteroche\Model\AdminManager;
-    $number=$adminManager->lenChapter();
-    if ($id>$number['COUNT(id_chapter)'])
-    {
-        $post=$adminManager->createChapter($id,$title,$content);
-    }
-    else
-    {
-        $post=$adminManager->saveChapter($id,$title,$content);
-    }
-    $resume=$adminManager->resumeChapter();
-    $resume2=$adminManager->resumeAChapter($id);
+    $num=$adminManager->num();
+    $tabnumber=[];
+    while($number=$num->fetch()){
+        array_push($tabnumber,$number['number_chapter']);}
 
-    $message='le chapitre a bien été sauvegardé';
-    require('view/backend/AdminCreateChapter.php');
-}
+    if(((in_array($numberpost,$tabnumber))&&$message !="Attention ce chapitre existe déjà!")){
+        $id=$adminManager->getId($numberpost);
+
+            $message="Attention ce chapitre existe déjà!";
+            $chapter=[
+                "id_chapter"=>$id,
+                "number_chapter"=>$numberpost,
+                "title"=>$title,
+                "content"=>$text
+            ];
+            editANewChapter($chapter,$message);}
+
+        elseif(in_array($numberpost,$tabnumber)) {
+            $id=$adminManager->getId($numberpost);
+$res=$adminManager->saveChapter($id,$numberpost,$title,$text);
+$message='le chapitre a bien été sauvegardé';
+editAChapter($id);
+       }
+        else{
+            $res=$adminManager->createChapter($numberpost,$title,$text);
+            $id=$adminManager->getId($numberpost);
+            $message='le chapitre a bien été sauvegardé';
+        editAChapter($id);}
+    }
+//    else{
+// $res=$adminManager->createChapter($numberpost,$title,$text);
+// $id=$adminManager->getId($numberpost);
+// $chapter=[
+// "id_chapter"=>$id,
+// "number_chapter"=>$numberpost,
+// "title"=>$title,
+// "content"=>$text
+// ];
+// $message='le chapitre a bien été crée.';
+// $resume=$adminManager->resumeChapter();
+// require('view/backend/AdminCreateChapter.php');
+// }
+//
+
+
 
 /**
  *this function uptdate a existing chapter

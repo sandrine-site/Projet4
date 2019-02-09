@@ -5,11 +5,12 @@
     <!--Editeur de texte -->
     <article id="create">
         <?php
-        if (isset ($resume2)){
-            $chapter=$resume2;
-        }
+//        if (isset ($resume2)){
+//            $chapter=$resume2;
+//        }
+        if (!isset($message)){$message="";}
         ?>
-        <form action="./index.php?action=saveNew&&id_chapter=<?=$chapter['id_chapter']?>" method="post" value="save" class="chapitre">
+        <form action="./index.php?action=saveNew&&message=<?=$message?>" method="post" value="save" class="chapitre">
             <div class="col-sm-12 col-md-6 col-lg-6">
                 <h2> Créer un nouveau chapitre : </h2>
             </div>
@@ -30,7 +31,7 @@
                     <label for="id_chapter">
                         <h3> Numéro : </h3>
                     </label>
-                    <input type="text" id="id_chapter" name="id_chapter" value="<?=$chapter['id_chapter']?>" />
+                    <input type="text" id="number_chapter" name="number_chapter" value="<?=$chapter['number_chapter']?>" />
                 </div>
             </div>
             <div class="row">

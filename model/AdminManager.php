@@ -10,7 +10,7 @@ require_once("Manager.php");
 
 class AdminManager extends Manager{
 
-/**
+    /**
 * this function checks if password and login are good
 * @param[text] $login
 * @param[text] $pw
@@ -27,7 +27,7 @@ class AdminManager extends Manager{
         return $pwVerif;
     }
 
-/**
+    /**
 * this function will look for the login in the password table
 *
 * @return[text]$resultat the login
@@ -40,7 +40,7 @@ class AdminManager extends Manager{
         return $resultat;
     }
 
-/**
+    /**
 * this function update the password
 * @param[text] $name
 * @param[text] $pw
@@ -55,25 +55,25 @@ class AdminManager extends Manager{
         return $message;
     }
 
-/**
+    /**
 *this function give an absract of evry chapter
 *
 * @return[array]$resum = the caracteres of the chapter
 */
     public function resumeChapter(){
         $db = $this->dbConnect();
-        $req = $db->prepare('SELECT number_chapter,title,content,DATE_FORMAT(publication_date, \'%d/%m/%Y \')AS publication_date,DATE_FORMAT(modification_date, \'%d/%m/%Y \') AS modification_date FROM chapter WHERE ? ORDER BY number_chapter DESC ');
+        $req = $db->prepare('SELECT id_chapter,number_chapter,title,content,DATE_FORMAT(publication_date, \'%d/%m/%Y \')AS publication_date,DATE_FORMAT(modification_date, \'%d/%m/%Y \') AS modification_date FROM chapter WHERE ? ORDER BY number_chapter DESC ');
         $req->execute(array(1));
         return $req;
     }
-/**
+    /**
 *this function give an absract of one chapter
 *
 * @return[array]$resum = the caracteres of the chapter
 */
     public function resumeAChapter($id){
         $db = $this->dbConnect();
-        $req = $db->prepare('SELECT number_chapter,title,content,DATE_FORMAT(publication_date, \'%d/%m/%Y \')AS publication_date,DATE_FORMAT(modification_date, \'%d/%m/%Y \') AS modification_date  FROM chapter WHERE id_chapter=?');
+        $req = $db->prepare('SELECT id_chapter,number_chapter,title,content,DATE_FORMAT(publication_date, \'%d/%m/%Y \')AS publication_date,DATE_FORMAT(modification_date, \'%d/%m/%Y \') AS modification_date  FROM chapter WHERE id_chapter=?');
         $req->execute(array($id));
         $resultat = $req->fetch();
         return $resultat;
@@ -81,7 +81,7 @@ class AdminManager extends Manager{
 
 
 
-/**
+    /**
 * this function counts the number of chapter, public access
 *
 * @return [int] $len t[he number of chapter]
@@ -93,7 +93,29 @@ class AdminManager extends Manager{
         return $len;
     }
 
-/**
+    public function nummax(){
+        $db = $this->dbConnect();
+        $req = $db->query('SELECT id_chapter,number_chapter FROM chapter ORDER BY number_chapter DESC LIMIT 0,1');
+        $resultat = $req->fetch();
+        return $resultat;
+    }
+
+    public function num(){
+        $db = $this->dbConnect();
+        $req = $db->query('SELECT ALL number_chapter,id_chapter FROM chapter');
+
+        return $req;
+    }
+
+    public function getId($number){
+        $db = $this->dbConnect();
+        $req = $db->prepare('SELECT id_chapter FROM chapter WHERE number_chapter=?');
+     $req->execute(array($number));
+        $resultat=$req->fetch();
+       return $resultat["id_chapter"];
+    }
+
+    /**
 * this function will look for and displays the comment corresponding at the chapter
 * @param [int] $number_chapter [the number of chapter]
 *
@@ -101,12 +123,12 @@ class AdminManager extends Manager{
 */
     public function getComments(){
         $db = $this->dbConnect();
-        $req = $db->prepare('SELECT id_comment,signalement,number_chapter,author,comment,DATE_FORMAT(dateComment, \'%d/%m/%Y \') AS dateComment FROM comments WHERE ? ORDER BY id_comment DESC ');
+        $req = $db->prepare('SELECT id_comment,signalement,id_chapter,author,comment,DATE_FORMAT(dateComment, \'%d/%m/%Y \') AS dateComment FROM comments WHERE ? ORDER BY id_comment DESC ');
         $req->execute(array(1));
         return $req;
     }
 
-/**
+    /**
  * This function delete the selectionned comment
  * @param [integer] $id
  *
@@ -118,11 +140,11 @@ class AdminManager extends Manager{
         $comment->execute(array($id));
         $req=$db->prepare('DELETE FROM comments WHERE id_comment=?');
         $req->execute(array($id));
-         while ($res = $comment->fetch()){$confirm="Le message ecrit par ".$res['author'].", le ".$res['DateComment_fr']." a bien été supprimé.";}
+        while ($res = $comment->fetch()){$confirm="Le message ecrit par ".$res['author'].", le ".$res['DateComment_fr']." a bien été supprimé.";}
         return $confirm;
     }
 
-/**
+    /**
  * this function erases the number of reports
  * @param [integer] $id
  *
@@ -136,7 +158,7 @@ class AdminManager extends Manager{
         return $message;
     }
 
-/**
+    /**
 * this function update a existing chapter
 * @param[int] $id
 * @param[text] $title
@@ -147,10 +169,10 @@ class AdminManager extends Manager{
         $db = $this->dbConnect();
         $req = $db->prepare('UPDATE chapter SET number_chapter=?,title=?,modification_date=NOW(), content=? WHERE id_chapter=?');
         $req->execute(array($number,$title,$content,$id));
-            return $req ;
+        return $req ;
     }
 
-/**
+    /**
 * this function save a new chapter
 * @param[int] $id
 * @param[text] $title
@@ -162,6 +184,6 @@ class AdminManager extends Manager{
         $db = $this->dbConnect();
         $req = $db->prepare('INSERT INTO chapter (number_chapter, publication_date,title,content,modification_date) VALUES(?, NOW(), ?,?,NOW()) ');
         $req->execute(array($number,$title,$content));
-            return $req ;
+        return $req ;
     }
 }
