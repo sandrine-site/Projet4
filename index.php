@@ -146,8 +146,21 @@ try{
             case 'update':
                 updateChapter($_POST["id_chapter"],$_POST['title'],$_POST['mytextarea']);
                 break;
+
             case 'supprim':
                 deleteChapter($_POST["number"]);
+                break;
+
+            case 'numero':
+                   $idMax=idmax();
+                $id=0;
+               while ($id<=$idMax){
+                   if (isset($_POST['old'.$id])&&$_POST['old'.$id]!=$_POST['new'.$id])
+                   {$message=changeNummero($_POST['new'.$id],$_POST[$id]);}
+                   $id++;
+               }
+                if(!isset ($message)){$message="";}
+                listChapters($message);
                 break;
 
             case 'creditsPhoto':

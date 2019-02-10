@@ -145,7 +145,7 @@ button.btn.btn-light {
     white-space: nowrap;
     vertical-align: middle;
     cursor: pointer;
-    background-color: #e2d6c4;
+    background-color: transparent;
     border: 1px solid transparent;
     border-radius: 4px;
 }
@@ -434,13 +434,17 @@ div.show:nth-child(2) > div:nth-child(1) > div:nth-child(1) {
 }
 
 /* ---------------------------------------- */
-/* == Administration Chapter                         */
+/* == Administration Chapter                */
 /*---------------------------------------- */
 
 #create,
 #fast,
 #create {
     margin: 2% 8%;
+}
+
+#supprim {
+    text-align: left;
 }
 
 html body div#administrationChapter article#supprim div.row form.delete div.col-sm-12.col-md-6.col-lg-6 button.btn.btn-primary i.far.fa-trash-alt {
@@ -507,4 +511,18 @@ button.btn p {
 
 #id_chapter {
     width: 50px;
+}
+
+/*---------------tableau changer la numérotation---------------*/
+
+table.numero {
+    width: 55%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+table.numero > tbody:nth-child(2) > tr:nth-child(1) > th:nth-child(2),
+table.numero > tbody:nth-child(2) > tr:nth-child(1) > th:nth-child(3),
+    {
+    width: 15%;
 }

@@ -87,15 +87,49 @@
                             </div>
                             <button type="button" class="btn btn-danger" data-dismiss="modal"> <i class="fas fa-times"></i> annuler
                             </button>
-
                         </div>
                     </div>
-
-
                 </div>
             </form>
-
         </div>
+    </article>
+    <article id="numero">
+        <h3>Pour changer la numérotation des chapitres, veuillez la changer dans le tableau ci-dessous puis valider.</h3>
+        <form action="./index.php?action=numero" method="post" value="numero" class="numero">
+            <button type="submit" class="btn btn-primary"> valider
+            </button>
+            <table class="table table-striped numero">
+                <thead>
+                    <tr>
+                        <th scope="col">titre</th>
+                        <th scope="col">ancien numéro</th>
+                        <th scope="col">nouveau numéro</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php
+            while ($res = $resume2->fetch())
+            {?>
+                    <tr>
+                        <th scope="row">
+                            <?= ($res['title'])?>
+                        </th>
+                        <th scope="row">
+                            <?=($res['number_chapter'])?>
+                            <input type="hidden" id=" old<?=$res['id_chapter']?>" name="old<?=$res['id_chapter']?>" value="<?=($res['number_chapter'])?>" />
+
+                        </th>
+                        <th>
+                            <input type="text" id="new<?=$res['id_chapter']?>" name="new<?=$res['id_chapter']?>" value="<?=($res['number_chapter'])?>" />
+                        </th>
+                        <input type="hidden" id=" <?=$res['id_chapter']?>" name="<?=$res['id_chapter']?>" value="<?=$res['id_chapter']?>" />
+                    </tr>
+                    <?php
+            }
+            $resume->closeCursor();
+                ?>
+                </tbody>
+            </table>
     </article>
 </div>
 

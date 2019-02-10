@@ -117,6 +117,12 @@ public function delete($number){
         $resultat=$req->fetch();
        return $resultat["id_chapter"];
     }
+    public function idMax(){
+        $db = $this->dbConnect();
+        $req = $db->query('SELECT id_chapter,number_chapter FROM chapter ORDER BY id_chapter DESC LIMIT 0,1');
+        $resultat = $req->fetch();
+        return $resultat;
+    }
 
     /**
 * this function will look for and displays the comment corresponding at the chapter
@@ -188,5 +194,11 @@ public function delete($number){
         $req = $db->prepare('INSERT INTO chapter (number_chapter, publication_date,title,content,modification_date) VALUES(?, NOW(), ?,?,NOW()) ');
         $req->execute(array($number,$title,$content));
         return $req ;
+    }
+    public function changeNum($new,$id){
+        $db = $this->dbConnect();
+        $req=$db->prepare('UPDATE chapter SET number_chapter=? where id_chapter=?');
+        $req->execute(array($new,$id));
+        return $req;
     }
 }

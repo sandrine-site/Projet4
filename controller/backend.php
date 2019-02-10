@@ -198,11 +198,11 @@ function editAChapter($id){
  *  @link ['view/backend/AdminEditChapter.php']
  */
 function editANewChapter($newChap,$message){
-$adminManager=new jeanForteroche\Model\AdminManager;
-$resume=$adminManager->resumeChapter();
-$chapter=$newChap;
+    $adminManager=new jeanForteroche\Model\AdminManager;
+    $resume=$adminManager->resumeChapter();
+    $chapter=$newChap;
     if (!isset ($message)){$message="";}
-require('view/backend/AdminCreateChapter.php');
+    require('view/backend/AdminCreateChapter.php');
 }
 
 /**
@@ -226,27 +226,27 @@ function saveNew($numberpost,$title,$text,$message){
     if(((in_array($numberpost,$tabnumber))&&$message !="Attention ce chapitre existe déjà!")){
         $id=$adminManager->getId($numberpost);
 
-            $message="Attention ce chapitre existe déjà!";
-            $chapter=[
-                "id_chapter"=>$id,
-                "number_chapter"=>$numberpost,
-                "title"=>$title,
-                "content"=>$text
-            ];
-            editANewChapter($chapter,$message);}
+        $message="Attention ce chapitre existe déjà!";
+        $chapter=[
+            "id_chapter"=>$id,
+            "number_chapter"=>$numberpost,
+            "title"=>$title,
+            "content"=>$text
+        ];
+        editANewChapter($chapter,$message);}
 
-        elseif(in_array($numberpost,$tabnumber)) {
-            $id=$adminManager->getId($numberpost);
-$res=$adminManager->saveChapter($id,$numberpost,$title,$text);
-$message='le chapitre a bien été sauvegardé';
-editAChapter($id);
-       }
-        else{
-            $res=$adminManager->createChapter($numberpost,$title,$text);
-            $id=$adminManager->getId($numberpost);
-            $message='le chapitre a bien été sauvegardé';
-        editAChapter($id);}
+    elseif(in_array($numberpost,$tabnumber)) {
+        $id=$adminManager->getId($numberpost);
+        $res=$adminManager->saveChapter($id,$numberpost,$title,$text);
+        $message='le chapitre a bien été sauvegardé';
+        editAChapter($id);
     }
+    else{
+        $res=$adminManager->createChapter($numberpost,$title,$text);
+        $id=$adminManager->getId($numberpost);
+        $message='le chapitre a bien été sauvegardé';
+        editAChapter($id);}
+}
 function deleteChapter($numberpost){
     $adminManager=new jeanForteroche\Model\AdminManager;
     $num=$adminManager->num();
@@ -254,10 +254,10 @@ function deleteChapter($numberpost){
     while($number=$num->fetch()){
         array_push($tabnumber,$number['number_chapter']);}
     if(in_array($numberpost,$tabnumber)){
-    $del=$adminManager->delete($numberpost);
-    $message='Le chapitre a bien été supprimé. Attention à la numérotation des chapitres';
+        $del=$adminManager->delete($numberpost);
+        $message='Le chapitre a bien été supprimé. Attention à la numérotation des chapitres';
     }
-        else{$message='Désolé mais ce chapitre n\'existe pas!';}
+    else{$message='Désolé mais ce chapitre n\'existe pas!';}
     listChapters($message);
 }
 /**
@@ -289,6 +289,20 @@ function updateChapter($id,$title,$content){
 function listChapters($message){
     $adminManager=new jeanForteroche\Model\AdminManager;
     $resume=$adminManager->resumeChapter();
+    $resume2=$adminManager->resumeChapter();
     $message=$message;
     require('view/backend/AdminListChapters.php');
+}
+function idmax(){
+    $adminManager=new jeanForteroche\Model\AdminManager;
+    $id=$adminManager->idMax();
+    $idMax=($id['id_chapter']);
+    return $idMax;}
+
+
+function changeNummero($new,$id){
+    $adminManager=new jeanForteroche\Model\AdminManager;
+    $res=$adminManager->changeNum($new,$id);
+    $message="Les changements de numéro ont bien étés effectués";
+    return $message;
 }
