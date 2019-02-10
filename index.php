@@ -136,7 +136,7 @@ try{
                 break;
 
             case'ListOfChapter':
-                listChapters();
+                listChapters("");
                 break;
 
             case 'edit':
@@ -145,6 +145,9 @@ try{
 
             case 'update':
                 updateChapter($_POST["id_chapter"],$_POST['title'],$_POST['mytextarea']);
+                break;
+            case 'supprim':
+                deleteChapter($_POST["number"]);
                 break;
 
             case 'creditsPhoto':

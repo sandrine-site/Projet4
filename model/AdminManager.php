@@ -78,9 +78,12 @@ class AdminManager extends Manager{
         $resultat = $req->fetch();
         return $resultat;
     }
+public function delete($number){
+        $db = $this->dbConnect();
+        $req=$db->prepare('DELETE FROM chapter WHERE number_chapter=?');
+        $req->execute(array($number));
 
-
-
+}
     /**
 * this function counts the number of chapter, public access
 *

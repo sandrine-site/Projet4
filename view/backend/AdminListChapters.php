@@ -33,7 +33,7 @@
             ?>
                 <tr>
                     <th scope="row">
-                        <?= ($res['id_chapter'])?>
+                        <?= ($res['number_chapter'])?>
                     </th>
                     <th scope="row">
                         <?= strip_tags($res['title'])?>
@@ -58,6 +58,44 @@
                 ?>
             </tbody>
         </table>
+    </article>
+    <article id="supprim">
+        <h3> Si vous voulez supprimer un chapitre veuliiez indiquer son numéro dans le champs ci-dessous. </h3>
+        <div class="row">
+            <form action="./index.php?action=supprim" method="post" value="delete" class="delete">
+                <div class="col-sm-12 col-md-6 col-lg-6">
+
+                    <label for="number">
+                        <h3> Numéro : </h3>
+                    </label>
+                    <input type="text" id="number" name="number" />
+                </div>
+                <div class="col-sm-12 col-md-6 col-lg-6">
+                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#deletChap">
+                        <h5> Supprimer<br /></h5>
+                        <i class="far fa-trash-alt"></i>
+                    </button>
+                </div>
+                <div class="modal" id="deletChap" role="dialog">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-body">
+                                <p>Êtes-vous sûr de vouloir supprimer ce chapitre<br />
+                                    <button type="submit" role="submit" class="btn btn-primary"><i class="fas fa-check"></i> oui
+                                    </button>
+                                </p>
+                            </div>
+                            <button type="button" class="btn btn-danger" data-dismiss="modal"> <i class="fas fa-times"></i> annuler
+                            </button>
+
+                        </div>
+                    </div>
+
+
+                </div>
+            </form>
+
+        </div>
     </article>
 </div>
 

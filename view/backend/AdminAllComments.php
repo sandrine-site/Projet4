@@ -52,7 +52,7 @@
                     </a>
                 </th>
                 <td>
-                    <button type="button" class="btn btn-light" data-toggle="modal" data-target="#delet"><i class="far fa-times-circle"></i>
+                    <button type="button" class="btn btn-light" data-toggle="modal" data-target="#delet"><i class="far fa-trash-alt"></i>
                     </button>
                     <div class="modal" id="delet" role="dialog">
                         <div class="modal-dialog">

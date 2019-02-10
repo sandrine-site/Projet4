@@ -215,11 +215,7 @@ require('view/backend/AdminCreateChapter.php');
  * @return [text] $message [confimation message]
  * @link ['view/backend/AdminCreateChapter.php']
  */
-//function saveChapter($numberpost,$title,$content){
-// $adminManager=new jeanForteroche\Model\AdminManager;
-// $num=$adminManager->num();
-// $tabnumber=[];
-//}
+
 function saveNew($numberpost,$title,$text,$message){
     $adminManager=new jeanForteroche\Model\AdminManager;
     $num=$adminManager->num();
@@ -251,23 +247,19 @@ editAChapter($id);
             $message='le chapitre a bien été sauvegardé';
         editAChapter($id);}
     }
-//    else{
-// $res=$adminManager->createChapter($numberpost,$title,$text);
-// $id=$adminManager->getId($numberpost);
-// $chapter=[
-// "id_chapter"=>$id,
-// "number_chapter"=>$numberpost,
-// "title"=>$title,
-// "content"=>$text
-// ];
-// $message='le chapitre a bien été crée.';
-// $resume=$adminManager->resumeChapter();
-// require('view/backend/AdminCreateChapter.php');
-// }
-//
-
-
-
+function deleteChapter($numberpost){
+    $adminManager=new jeanForteroche\Model\AdminManager;
+    $num=$adminManager->num();
+    $tabnumber=[];
+    while($number=$num->fetch()){
+        array_push($tabnumber,$number['number_chapter']);}
+    if(in_array($numberpost,$tabnumber)){
+    $del=$adminManager->delete($numberpost);
+    $message='Le chapitre a bien été supprimé. Attention à la numérotation des chapitres';
+    }
+        else{$message='Désolé mais ce chapitre n\'existe pas!';}
+    listChapters($message);
+}
 /**
  *this function uptdate a existing chapter
  * @param [integer] $id the number of chapter
@@ -294,8 +286,9 @@ function updateChapter($id,$title,$content){
  * @return [text] $message [confimation message]
  *  @link ['view/backend/AdminListChapters.php']
  */
-function listChapters(){
+function listChapters($message){
     $adminManager=new jeanForteroche\Model\AdminManager;
     $resume=$adminManager->resumeChapter();
+    $message=$message;
     require('view/backend/AdminListChapters.php');
 }
