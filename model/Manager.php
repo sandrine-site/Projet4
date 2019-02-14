@@ -1,4 +1,5 @@
 <?php
+
 /*
  * this class manages the db connect
  * package [jeanForteroche]\[Model]
@@ -6,14 +7,14 @@
  * @return $db 
  */
 namespace jeanForteroche\Model;
-require_once("ManagerLog.php");
 
-class Manager extends ManagerLog {
+class Manager  {
+
     protected function dbConnect(){
-        $managerLog=new ManagerLog;
         try
         {
-            $db = new \PDO($managerLog->_dsn ,$managerLog->_user, $managerLog->_password);
+            $config=include('.\config\config.php');
+            $db = new \PDO($config['hostname'] ,$config['user'], $config['password']);
             return $db;
         }
         catch(Exception $e)
@@ -21,4 +22,5 @@ class Manager extends ManagerLog {
             die('Erreur : '.$e->getMessage());
         }
     }
+
 }

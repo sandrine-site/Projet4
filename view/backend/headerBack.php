@@ -35,7 +35,6 @@
         </div>
 
         <?php
-
         if (isset($_SESSION["delete comment"])&& $_SESSION["delete comment"]==true)
         {
             ?>
@@ -44,6 +43,7 @@
             </div>
 
             <?php
+
         }
         elseif (isset($_SESSION['newPwerror'])&&$_SESSION['newPwerror']==true )
         {
@@ -86,6 +86,22 @@
             attention vous avez deux fois le même numéro de chapitre
         </div>
         <?php
+        }
+        elseif (isset( $_SESSION['save chapter'])&& $_SESSION['save chapter']==true){
+            ?>
+            <div class="thank">
+                Le chapitre a bien été sauvegardé
+            </div>
+            <?php
+        }
+        elseif (isset( $_SESSION["exist"])&& $_SESSION["exist"]==true&& $_SESSION['save chapter']==false )
+        {
+            ?>
+            <div class="warning">
+                Attention ce chapitre existe déjà.
+            </div>
+
+            <?php
         }
             ?>
     </nav>

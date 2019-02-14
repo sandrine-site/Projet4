@@ -1,5 +1,9 @@
 <!--titre de la page -->
-<?php $title = "detail chapitre ";
+<?php
+$config=include('.\config\config.php');
+$url=$config['url'];
+
+$title = "detail chapitre ";
    $title2="chapitre";
 ?>
 
@@ -46,14 +50,14 @@
                         <br />
                         <span> le :
                             <?= $comment['DateComment_fr'] ?> </span>
-                        <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="<?='#signal'.$id?>"><em>signaler ce commentaire</em>
+                        <button type="button" class="btn btn-secondary" data-toggle="modal" data-target='#signal'.<?=$post['number_chapter']?>><em>signaler ce commentaire</em>
                         </button>
-                        <div class="modal" id="<?='signal'.$id?>" role="dialog">
+                        <div class="modal" id='signal'.<?=$post['number_chapter']?> role="dialog">
                             <div class="modal-dialog">
                                 <div class="modal-content">
                                     <p>Êtes-vous sûr de vouloir signaler ce commentaire<br /></p>
                                     <div class="modal-footer">
-                                        <a class="btn btn-primary" href="./index.php?action=signalComment&&id_comment=<?=$id?>&&id_chapter=<?=$comment['id_chapter'] ?>&&from=<?=$title?>" role="button"> <i class="fas fa-check"></i> oui</a>
+                                        <a class="btn btn-primary" href="<?=$url?>?action=signalComment&&id_comment=<?=$comment['id_comment']?>&&id_chapter=<?=$post['number_chapter']?> &&from=chapitre" role="button"> <i class="fas fa-check"></i> oui</a>
                                         <button type="button" class="btn btn-danger" data-dismiss="modal"> <i class="fas fa-times"></i> annuler</button>
                                     </div>
                                 </div>
@@ -65,7 +69,7 @@
                             }
                         }
                         $comments->closeCursor();
-                ?>
+                ?>0
             </div>
             <div class="row">
                 <a class="btn btn-primary" href="./index.php?action=comments&&id_chapter=<?=$post['id_chapter'] ?>" role="button">

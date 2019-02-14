@@ -65,7 +65,7 @@ article {
     box-shadow: 0px 10px 30px 0 rgba(49, 52, 57, 0.3), 0 10px 30px rgba(0, 0, 0, 0.08);
     margin-right: 8%;
     margin-left: 8%;
-    margin-bottom: 8%;
+    margin-bottom: 2%;
     border-radius: 10px;
     text-align: center;
 }
@@ -74,6 +74,13 @@ article {
     color: crimson;
     font-size: 25px;
     margin-top: 40px;
+}
+.thank{
+    font-family: 'Caveat', cursive;
+    color: #8d8b40;
+    font-size: 1.5em;
+    line-height: 4em;
+    text-align: center;
 }
 
 article p {
@@ -282,10 +289,6 @@ article.row:nth-child(3) > a:nth-child(5) {
     width: 20%
 }
 
-.chapters > thead:nth-child(1) > tr:nth-child(1) > th:nth-child(3) {
-    width: 60%;
-}
-
 .chapters > thead:nth-child(1) > tr:nth-child(1) > th:nth-child(4) {
     width: 5%;
     text-align: center;
@@ -323,9 +326,6 @@ article.row:nth-child(3) > a:nth-child(5) {
     text-align: center;
 }
 
-.comments > thead:nth-child(1) > tr:nth-child(1) > th:nth-child(5) {
-    width: 70%;
-}
 
 .comments > thead:nth-child(1) > tr:nth-child(1) > th:nth-child(6) {
     width: 5%;
@@ -436,21 +436,29 @@ div.show:nth-child(2) > div:nth-child(1) > div:nth-child(1) {
 /* ---------------------------------------- */
 /* == Administration Chapter                */
 /*---------------------------------------- */
-
-#create,
 #fast,
-#create {
-    margin: 2% 8%;
+#supprim,
+#numero {
+    text-align: left;
 }
 
-#supprim {
-    text-align: left;
+div.col-sm-12:nth-child(2) > button:nth-child(1) {
+    margin-left: 70%;
 }
 
 html body div#administrationChapter article#supprim div.row form.delete div.col-sm-12.col-md-6.col-lg-6 button.btn.btn-primary i.far.fa-trash-alt {
     color: #e2d6c4;
 }
 
+#numero > p:nth-child(2) {
+    color: crimson;
+}
+
+form.numero > button:nth-child(1) {
+    display: block;
+    align-self: center;
+    margin-left: 80%;
+}
 
 html body div#administrationChapter article#supprim div.row form.delete div.col-sm-12.col-md-6.col-lg-6 button.btn.btn-primary:hover > i.far.fa-trash-alt {
     color: #331902;
@@ -461,7 +469,7 @@ html body div#administrationChapter article#supprim div.row form.delete div.col-
     align-content: center;
     display: flex;
     flex-direction: column;
-    margin-top: -2%;
+    margin-top: 2%;
 }
 
 #create {

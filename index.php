@@ -1,100 +1,111 @@
 <?php
-require('controller/frontend.php');
-require('controller/backend.php');
+session_start();
+use jeanForteroche\Model\Admin;
+use jeanForteroche\Model\User;
+
+require('controller/User.php');
+require('controller/Admin.php');
+$admin=new Admin();
+$user=new User();
+$config=include('config/config.php');
+$url=$config['url'];
+$_SESSION['error add comment']=$config['error add comment'];
+if ((!isset($_GET['from2'])||$_GET['from2']!='user')){
+$_SESSION['signal comment']=$config['signal comment'];}
+$_SESSION['password message']=$config['password message'];
+$_SESSION['newPwerror']=$config['newPwerror'];
+$_SESSION['newPwless']=$config['newPwless'];
+$_SESSION['message new Pw']=$config['message new Pw'];
+$_SESSION['save chapter']=$config['save chapter'];
 try{
     if (isset($_GET['action'])){
         switch ($_GET['action'])
         {
             case 'others':
                 if (isset($_GET['id_chapter'])&& $_GET['id_chapter']>0)
-                {
-                    if (isset($_GET['message'])){$message=$_GET['message'];}
-                    elseif(isset($_GET['ErreurMessage'])){$message=$_GET['ErreurMessage'];}
-                    else{$message="";}
-                    chapPost($_GET['id_chapter'],$message);
+                { if (isset($_GET['from'])){$_SESSION['signal comment']=true;}
+                    $user->chapPost($_GET['id_chapter']);
                 }
                 else
                 {
-                    require("view/frontend/erreur.php");}
+                    require("view/frontend/error.php");}
                 break;
 
             case 'comments':
                 if (isset($_GET['id_chapter'])&& $_GET['id_chapter']>0)
-                {
-                    if (isset($_GET['message'])){$message=$_GET['message'];}
-                    elseif(isset($_GET['ErreurMessage'])){$message=$_GET['ErreurMessage'];}
-                    else{$message="";}
-                    commentChapter($_GET['id_chapter'],$message);
+                {if (isset($_GET['from'])){$_SESSION['signal comment']=true;}
+
+                    $user->commentChapter($_GET['id_chapter']);
                 }
                 else
                 {
-                    require("view/frontend/erreur.php");}
+                    require("view/frontend/error.php");}
                 break;
 
             case 'addComment':
                 if (isset($_GET['id_chapter'])&&$_GET['id_chapter']>0){
                     if(isset($_POST['author'])&&isset($_POST['comment'])&&$_POST['author']!=""&&$_POST['comment']!=""){
-                        addComment($_GET['id_chapter'],$_POST['author'],htmlspecialchars($_POST['comment']));
+                        $user->addComment($_GET['id_chapter'],$_POST['author'],htmlspecialchars($_POST['comment']));
                     }
+//
                     else{
-                        header('Location: index.php?action=comments&&id_chapter=' . $_GET['id_chapter']."&&ErreurMessage=Désolés, nous n'avons pas pu enregistrer votre message" );}
+                        $_SESSION['error add comment']=true;
+                        $user->commentChapter($_GET['id_chapter']);;}
                 }
                 else
                 {
-                    require("view/frontend/erreur.php");
+                    require("view/frontend/error.php");
                 }
                 break;
 
             case 'signalComment':
-                if (isset($_GET['id_comment'])&&$_GET['id_comment']>0&&$_GET['id_chapter']&&$_GET['id_chapter']>0)
+                if (isset($_GET['id_comment'])&&$_GET['id_comment']>0)
                 {
                     $from=$_GET['from'];
-                    if (isset($message)){
-                        signalComment($_GET['id_comment'],$_GET['id_chapter'],$from,$message);}
-                    else{
-                        signalComment($_GET['id_comment'],$_GET['id_chapter'],$from,"");}
+                    $user->signalComment($_GET['id_comment'],$_GET['id_chapter'],$from);
                 }
+
                 else
                 {
-                    throw new exception('il y a un probleme sur un des identifiants envoyé');
+                    throw new exception('il y a un problème sur un des identifiants envoyés');
                 }
                 break;
 
             case 'interfaceAdmin':
+                var_dump($_SESSION['password message']);
                 if(!empty($_POST['Name'])&&!empty($_POST['Password']))
                 {
-                    verifiePws($_POST['Name'],$_POST['Password']);
+                    $admin->verifiyPws($_POST['Name'],$_POST['Password']);
                 }
                 elseif (!empty($_POST['Name']) xor !empty($_POST['password'])) {
-                    $message='Attention vous devez renseigner un mot de passe et un nom d\'utilisateur';
-                    require("view/frontend/password.php");}
+                    $_SESSION['password message']=true;
+                    $admin->interfaceAdminPW();
+}
                 else{
-                    interfaceAdminPW("");}
+                    $_SESSION['password message']=false;
+                    $admin->interfaceAdminPW();}
+                break;
+            case 'adminAccueil':
+                $admin->adminAccueil();
                 break;
 
             case 'AllComments':
-                if (isset($_GET['message'])){
-                    adminAllComments($_GET['message']);}
-                else{adminAllComments("");}
+                $admin->adminAllComments();
                 break;
 
             case 'delete':
                 if (isset($_GET['id_comment'])>0)
-                { deletComment($_GET['id_comment'],$_GET['from']);
+                { $admin->deleteComment($_GET['id_comment'],$_GET['from']);
                 }
                 else
                 {
                     throw new exception('Aucun identifiant de chapitre envoyé');}
                 break;
 
-            case 'adminAccueil':
-                adminAccueil($_GET['message']);
-                break;
-
             case 'keepComment':
                 if (isset($_GET['id_comment'])>0)
                 {
-                    keep($_GET['id_comment'],$_GET['from']);
+                    $admin->keep($_GET['id_comment'],$_GET['from']);
                 }
                 else
                 {
@@ -102,65 +113,68 @@ try{
                 break;
 
             case'Adminpw':
-                admPW("");
+                $post=$admin->admPWS();
+                require('view/backend/Adminpassword.php');
                 break;
 
             case'AdminPW':
                 if(!empty($_POST['Name'])&&!empty($_POST['Password'])&&!empty($_POST['Password1'])&&!empty($_POST['Password2']))
                 {
                     if ($_POST['Password1']==$_POST['Password2']) {
-                        newPws($_POST['Name'],$_POST['Password'],$_POST['Password1']);
+                       $admin->newPws($_POST['Name'],$_POST['Password'],$_POST['Password1']);
                     }
                     else
                     {
-                        $message='Les deux mots de passe doivent etre identiques';
-                        admPW($message);
+                        $_SESSION['newPwerror']=true;
+                        $post=$admin->admPWS();
+                        require('view/backend/Adminpassword.php');
                     }
                 }
                 else
                 {
-                    $message='Tous les champs doivent être remplis' ;
-                    admPW($message);
+                  $_SESSION['newPwless']=true;
+                    $post=$admin->admPWS();
+                    require('view/backend/Adminpassword.php');
                 }
                 break;
 
             case 'CreeNewChapter':
-                createNewChapters();
+                $_SESSION['exist']=false;
+                $admin->createNewChapters();
                 break;
 
             case 'saveNew':
-                if (isset($_GET['message'])){
-               $message=$_GET['message'];}
-                else{$message="";}
-                   saveNew($_POST["number_chapter"],$_POST['title'],$_POST['mytextarea'],$message);
+                $admin->saveNew($_POST["number_chapter"],$_POST['title'],$_POST['mytextarea']);
                 break;
 
             case'ListOfChapter':
-                listChapters("");
+              $admin->listChapters();
                 break;
 
             case 'edit':
-                editAchapter($_GET['id_chapter']);
+                $admin->editAChapter($_GET['id_chapter']);
+
                 break;
 
             case 'update':
-                updateChapter($_POST["id_chapter"],$_POST['title'],$_POST['mytextarea']);
+                $admin->updateChapter($_POST["id_chapter"],$_POST['title'],$_POST['mytextarea']);
                 break;
 
             case 'supprim':
-                deleteChapter($_POST["number"]);
+                $admin->deleteChapter($_GET['number']);
                 break;
 
             case 'numero':
-                   $idMax=idmax();
+                   $idMax=$admin->idmax();
                 $id=0;
-               while ($id<=$idMax){
-                   if (isset($_POST['old'.$id])&&$_POST['old'.$id]!=$_POST['new'.$id])
-                   {$message=changeNummero($_POST['new'.$id],$_POST[$id]);}
+               while ($id<=$idMax) {
+                   if (isset($_POST['old' . $id]) && $_POST['old' . $id] != $_POST['new' . $id]) {
+                       $admin->changeNumber($_POST['new' . $id], $_POST[$id]);
+                   }
                    $id++;
                }
-                if(!isset ($message)){$message="";}
-                listChapters($message);
+
+                $admin->listChapters();
                 break;
 
             case 'creditsPhoto':
@@ -173,10 +187,10 @@ try{
         }
     }
     else {
-        post();
+        $user->post();
     }
 }
 catch(Exception $e)
 {
-    require("view/frontend/erreur.php");
+    require("./view/frontend/error.php");
 }

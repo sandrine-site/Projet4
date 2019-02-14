@@ -1,4 +1,4 @@
-<?php 
+<?php
   $title = 'Site de Jean Forteroche : crédits photo';
   ob_start();
 ?>

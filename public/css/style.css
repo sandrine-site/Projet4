@@ -80,7 +80,9 @@ article {
 article p {
     text-align: justify;
 }
-
+.no{
+    height: 0;
+}
 .warning {
     color: crimson;
     font-size: 25px;
@@ -88,10 +90,10 @@ article p {
     text-align: center;
 }
 
-html body header article div.warning div#thank {
+.thank{
     font-family: 'Caveat', cursive;
     color: #8d8b40;
-    font-size: 1.2em;
+    font-size: 1.5em;
     line-height: 1em;
     text-align: center;
 }
@@ -145,6 +147,10 @@ article .btn-secondary {
     display: block;
 }
 
+.Avis button.btn.btn-secondary {
+    background-color: transparent;
+}
+
 /*     modal     */
 .modal {
     position: fixed;
@@ -162,6 +168,7 @@ div.show:nth-child(2) > div:nth-child(1) > div:nth-child(1) {
 
 .modal-backdrop {
     background-color: transparent;
+    z-index: 0;
 }
 
 .modal-content p {

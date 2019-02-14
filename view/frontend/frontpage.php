@@ -1,4 +1,7 @@
-<?php 
+<?php
+$config=include('.\config\config.php');
+$url=$config['url'];
+
 $title = 'Site de Jean Forteroche';
 ob_start();
 ?>
@@ -67,20 +70,7 @@ ob_start();
         <article id="comments">
             <div class="col-12 conteneur">
                 <?php
-    if (isset($_GET['ErrorComments'])){
-                ?>
-                <div class="warning">
-                    <p>Veuillez m'excuser mais je n'ai pas compris votre demande</p>
-                </div>
-                <?php
-    }
-                        if (isset($_GET['from'])&&$_GET['from']=='frontend'){
-                ?>
-                <div class="warning">
-                    <p>Merci de nous avoir indiqué ce commentaire, nous allons le lire avec attention.</p>
-                </div>
-                <?php
-                        }
+
                         $number= $post['number_chapter'];
                 ?>
                 <h2>Les derniers commentaires sur le chapitre :
@@ -90,20 +80,31 @@ ob_start();
                     <?php
     $i=1;
                     while ($comment = $comments->fetch()){
-                        if ($i<=4){
+                        if ($i<=1){
                     ?>
                     <div class="col-sm-12 col-md-6 col-lg-3 Avis">
                         <h4> Par :
                             <?= htmlspecialchars($comment['author']) ?>
                         </h4>
                         <p>
-                            <?= nl2br(htmlspecialchars($comment['comment'])) ?>
+                            <?= nl2br(htmlspecialchars($comment['comment'])) ?></p>
                             <br /><br />
                             <span>le :
-                                <?= $comment['DateComment_fr'] ?></span>
-                            <a class="btn btn-secondary" href="./index.php?action=signalComment&&id_comment=<?=$comment['id_comment'] ?>&&id_chapter=<?=$comment['id_chapter'] ?>&&from=<?=$title?>"><em>signaler ce commentaire</em>
-                            </a>
+         <?= $comment['DateComment_fr'] ?></span>
+                            <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="<?='#signal'. $comment['id_comment']?>"><em>Signaler ce commentaire</em>
+                            </button>
+                            <div class="modal" id="<?='signal'. $comment['id_comment']?>" role="dialog">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                        <p>Êtes-vous sûr de vouloir signaler ce commentaire<br /></p>
+                        <div class="modal-footer">
+                            <a class="btn btn-primary" href="<?= $url?>?action=signalComment&&id_comment=<?=$comment['id_comment']?>&&id_chapter=<?=$post['number_chapter']?> &&from=Site de Jean Forteroche" role="button"> <i class="fas fa-check"></i> oui</a>
+                            <button type="button" class="btn btn-danger" data-dismiss="modal"> <i class="fas fa-times"></i> annuler</button>
+                        </div>
                     </div>
+                </div>
+            </div>
+    </div>
                     <?php
                         $i++;
                         }

@@ -1,26 +1,26 @@
 <?php
 
 /*
-* this class manages the administration interface
+* manages the administration interface
 * package [Manager.php]
 * package [jeanForteroche]\[Model]
 */
+
 namespace jeanForteroche\Model;
 require_once("Manager.php");
 
 class AdminManager extends Manager{
 
     /**
-* this function checks if password and login are good
-* @param[text] $login
-* @param[text] $pw
-*
-* @return[bool ]$pwVerif = 1 if the password is ok
-*/
+     * checks the password
+     * @param $login [string]
+     * @param $pw [string]
+     * @return bool [bool ]$pwVerif
+     */
     public function verifiePw($login,$pw)
     {
         $db = $this->dbConnect();
-        $req = $db->prepare('SELECT passwords FROM Passwordtable WHERE logins = ?');
+        $req = $db->prepare('SELECT passwords FROM passwordtable WHERE logins = ?');
         $req->execute(array($login));
         $resultat = $req->fetch();
         $pwVerif= password_verify($pw,$resultat['passwords']);
@@ -28,49 +28,50 @@ class AdminManager extends Manager{
     }
 
     /**
-* this function will look for the login in the password table
-*
-* @return[text]$resultat the login
-*/
+     * look for the login  password table
+     *
+     * @return mixed [string]$result the login
+     */
     public function AdmPW(){
         $db = $this->dbConnect();
-        $req = $db->prepare('SELECT logins FROM Passwordtable WHERE  ?');
+        $req = $db->prepare('SELECT logins FROM passwordtable WHERE id_pw=?');
         $req->execute(array(1));
-        $resultat = $req->fetch();
-        return $resultat;
+        $result = $req->fetch();
+        return $result;
     }
 
     /**
-* this function update the password
-* @param[text] $name
-* @param[text] $pw
-*
-* @return[text]$message [confimation message]
-*/
+     * update the password
+     * @param $name
+     * @param $pw
+     * @return string [text]$message [confimation message]
+     */
     public function changedPW($name,$pw){
         $db=$this->dbConnect();
-        $req=$db->prepare('UPDATE Passwordtable SET passwords=? where logins=?');
+        $req=$db->prepare('UPDATE passwordtable SET passwords=? where logins=?');
         $req->execute(array($pw,$name));
-        $message='le mot de passe a bien été modifié';
-        return $message;
+        $_SESSION["message new Pw"]='ok';
+        return ;
     }
 
     /**
-*this function give an absract of evry chapter
-*
-* @return[array]$resum = the caracteres of the chapter
-*/
+     * abstract of every chapter
+     *
+     * @return bool|\PDOStatement [array]$resum = the caracteres of the chapter
+     */
     public function resumeChapter(){
         $db = $this->dbConnect();
         $req = $db->prepare('SELECT id_chapter,number_chapter,title,content,DATE_FORMAT(publication_date, \'%d/%m/%Y \')AS publication_date,DATE_FORMAT(modification_date, \'%d/%m/%Y \') AS modification_date FROM chapter WHERE ? ORDER BY number_chapter DESC ');
         $req->execute(array(1));
         return $req;
     }
+
     /**
-*this function give an absract of one chapter
-*
-* @return[array]$resum = the caracteres of the chapter
-*/
+     *abstract of one chapter
+     *
+     * @param $id
+     * @return mixed [array]$resume = character's
+     */
     public function resumeAChapter($id){
         $db = $this->dbConnect();
         $req = $db->prepare('SELECT id_chapter,number_chapter,title,content,DATE_FORMAT(publication_date, \'%d/%m/%Y \')AS publication_date,DATE_FORMAT(modification_date, \'%d/%m/%Y \') AS modification_date  FROM chapter WHERE id_chapter=?');
@@ -78,17 +79,25 @@ class AdminManager extends Manager{
         $resultat = $req->fetch();
         return $resultat;
     }
-public function delete($number){
+
+
+    /**
+     * delete a chapter
+     * @param $number[int]
+     */
+    public function delete($number){
         $db = $this->dbConnect();
         $req=$db->prepare('DELETE FROM chapter WHERE number_chapter=?');
         $req->execute(array($number));
+        return;
 
-}
+    }
+
     /**
-* this function counts the number of chapter, public access
-*
-* @return [int] $len t[he number of chapter]
-*/
+     * counts the number of chapter, public access
+     *
+     * @return mixed [int] $len [he number of chapter]
+     */
     public function lenchapter(){
         $db = $this->dbConnect();
         $req=$db->query('SELECT COUNT(number_chapter) FROM chapter WHERE 1 ');
@@ -96,6 +105,11 @@ public function delete($number){
         return $len;
     }
 
+    /**
+     * get the n° of the last chapter
+     *
+     * @return mixed [int}
+     */
     public function nummax(){
         $db = $this->dbConnect();
         $req = $db->query('SELECT id_chapter,number_chapter FROM chapter ORDER BY number_chapter DESC LIMIT 0,1');
@@ -103,6 +117,10 @@ public function delete($number){
         return $resultat;
     }
 
+    /**
+     * get the list of chapter
+     * @return false|\PDOStatement
+     */
     public function num(){
         $db = $this->dbConnect();
         $req = $db->query('SELECT ALL number_chapter,id_chapter FROM chapter');
@@ -113,9 +131,9 @@ public function delete($number){
     public function getId($number){
         $db = $this->dbConnect();
         $req = $db->prepare('SELECT id_chapter FROM chapter WHERE number_chapter=?');
-     $req->execute(array($number));
+        $req->execute(array($number));
         $resultat=$req->fetch();
-       return $resultat["id_chapter"];
+        return $resultat["id_chapter"];
     }
     public function idMax(){
         $db = $this->dbConnect();
@@ -173,11 +191,11 @@ public function delete($number){
 * @param[text] $title
 * @param[text]  $content
 */
-    public function saveChapter($id,$number,$title,$content)
+    public function saveChapter($id,$title,$content)
     {
         $db = $this->dbConnect();
-        $req = $db->prepare('UPDATE chapter SET number_chapter=?,title=?,modification_date=NOW(), content=? WHERE id_chapter=?');
-        $req->execute(array($number,$title,$content,$id));
+        $req = $db->prepare('UPDATE chapter SET title=?,modification_date=NOW(), content=? WHERE id_chapter=?');
+        $req->execute(array($title,$content,$id));
         return $req ;
     }
 
@@ -195,10 +213,24 @@ public function delete($number){
         $req->execute(array($number,$title,$content));
         return $req ;
     }
+
+    /**
+     * change the number of chapter
+     * @param $new
+     * @param $id
+     *
+     * @return bool|\PDOStatement
+     */
     public function changeNum($new,$id){
         $db = $this->dbConnect();
         $req=$db->prepare('UPDATE chapter SET number_chapter=? where id_chapter=?');
         $req->execute(array($new,$id));
         return $req;
     }
+
+    public function count(){
+        $db = $this->dbConnect();
+        $nbr_doublon=$db->query('SELECT COUNT(number_chapter) AS nbr_doublon FROM chapter GROUP BY number_chapter HAVING  COUNT(number_chapter) > 1');
+        $doublon = max($nbr_doublon->fetch(),1);
+    return $doublon;}
 }

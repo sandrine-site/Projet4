@@ -1,5 +1,8 @@
-<?php $title = 'Administration des commentaires';?>
-<?php ob_start(); ?>
+
+<?php $title = 'Administration des commentaires';
+$config=include('config/config.php');
+$url=$config['url'];
+ ob_start(); ?>
 
 <!--tous les commentaires -->
 <article id="fast" class="row">
@@ -48,7 +51,8 @@
                     <?=nl2br( htmlspecialchars($comment['comment']))?>
                 </th>
                 <th>
-                    <a role="button" class="btn btn-light" href="http://localhost/Projet4/index.php?action=keepComment&&id_comment=<?=$comment['id_comment']?>&&from=Accueil" role="button"><i class="fas fa-check-square"></i>
+                    <a role="button" class="btn btn-light" href="<?=$url?>
+?action=keepComment&&id_comment=<?=$comment['id_comment']?>&&from=Accueil" role="button"><i class="fas fa-check-square"></i>
                     </a>
                 </th>
                 <td>
@@ -59,7 +63,7 @@
                             <div class="modal-content">
                                 <div class="modal-body">
                                     <p>Êtes-vous sûr de vouloir supprimer ce commentaire<br />
-                                        <a class="btn btn-primary" href="http://localhost/Projet4/index.php?action=delete&&id_comment=<?=$comment['id_comment']?>&&from=Accueil" role="button"> <i class="fas fa-check"></i> oui
+                                        <a class="btn btn-primary" href="<?=$url?>?action=delete&&id_comment=<?=$comment['id_comment']?>&&from=Accueil" role="button"> <i class="fas fa-check"></i> oui
                                         </a>
                                     </p>
                                 </div>

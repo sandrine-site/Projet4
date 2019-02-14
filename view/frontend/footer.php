@@ -1,6 +1,6 @@
 <footer>
     <div class="col-sm-12 col-md-6 col-lg-4 footer">
-        <a href="http://localhost/Projet4/mentions.html">
+        <a href="http://jeanforteroche.slashcreations.fr/mentions.html">
             <h4>Mentions légales</h4>
         </a><br />
         <a href="./index.?action=creditsPhoto"> Crédits Photos</a><br />

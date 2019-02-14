@@ -1,12 +1,12 @@
-<?php $title = 'Edition des Chapitres';?>
-
-<?php ob_start(); ?>
+<?php $title = 'Edition des Chapitres';$config=include('config/config.php');
+$url=$config['url'];
+ob_start(); ?>
 
 <div id="administrationChapter">
     <!--résumé des chapitres -->
     <article id="fast" class="row">
-        <div class="col-sm-12 col-md-6 col-lg-6">
-            <h3>Vous pouvez choisir le chapitre à édité dans la liste çi dessous :</h3>
+        <div class="col-sm-12 col-md-12 col-lg-12">
+            <h3>Vous pouvez choisir le chapitre à éditer dans la liste ci-dessous :</h3>
         </div>
         <table class="table table-striped chapters">
             <thead>
@@ -17,6 +17,7 @@
                     <th scope="col">Date de publication</th>
                     <th scope="col">Dernière modification</th>
                     <th scope="col">Editer</th>
+                    <th scope="col">Supprimer</th>
                 </tr>
             </thead>
             <tbody>
@@ -48,9 +49,31 @@
                         <?= ($res['modification_date'])?>
                     </th>
                     <th>
-                        <a role="button" class="btn btn-light" href="http://localhost/Projet4/index.php?action=edit&&id_chapter=<?=$res['id_chapter']?>" role="button"><i class="far fa-edit"></i>
+                        <a role="button" class="btn btn-light"
+                           href="<?=$url?>?action=edit&&id_chapter=<?=$res['id_chapter']?>" role="button"><i class="far fa-edit"></i>
                         </a>
                     </th>
+                    <td>
+                        <button type="button" class="btn btn-light" data-toggle="modal"
+                                data-target="#deletChap<?=$res['number_chapter']?>"><i class="far fa-trash-alt"></i>
+                        </button>
+                        <div class="modal" id="deletChap<?=$res['number_chapter']?>" role="dialog">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-body">
+                                        <p>Êtes-vous sûr de vouloir supprimer ce chapitre<br />
+                                            <a class="btn btn-primary"
+                                               href="<?=$url?>?action=supprim&&number=<?=$res['number_chapter']?>"
+                                               role="button"> <i class="fas fa-check"></i> oui
+                                            </a>
+                                        </p>
+                                    </div>
+                                    <button type="button" class="btn btn-danger" data-dismiss="modal"> <i class="fas fa-times"></i> annuler
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </td>
                 </tr>
                 <?php
             }
@@ -59,44 +82,11 @@
             </tbody>
         </table>
     </article>
-    <article id="supprim">
-        <h3> Si vous voulez supprimer un chapitre veuliiez indiquer son numéro dans le champs ci-dessous. </h3>
-        <div class="row">
-            <form action="./index.php?action=supprim" method="post" value="delete" class="delete">
-                <div class="col-sm-12 col-md-6 col-lg-6">
-
-                    <label for="number">
-                        <h3> Numéro : </h3>
-                    </label>
-                    <input type="text" id="number" name="number" />
-                </div>
-                <div class="col-sm-12 col-md-6 col-lg-6">
-                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#deletChap">
-                        <h5> Supprimer<br /></h5>
-                        <i class="far fa-trash-alt"></i>
-                    </button>
-                </div>
-                <div class="modal" id="deletChap" role="dialog">
-                    <div class="modal-dialog">
-                        <div class="modal-content">
-                            <div class="modal-body">
-                                <p>Êtes-vous sûr de vouloir supprimer ce chapitre<br />
-                                    <button type="submit" role="submit" class="btn btn-primary"><i class="fas fa-check"></i> oui
-                                    </button>
-                                </p>
-                            </div>
-                            <button type="button" class="btn btn-danger" data-dismiss="modal"> <i class="fas fa-times"></i> annuler
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            </form>
-        </div>
-    </article>
     <article id="numero">
         <h3>Pour changer la numérotation des chapitres, veuillez la changer dans le tableau ci-dessous puis valider.</h3>
         <form action="./index.php?action=numero" method="post" value="numero" class="numero">
-            <button type="submit" class="btn btn-primary"> valider
+            <button type="submit" class="btn btn-primary">
+                <h5>Valider </h5><i class="fas fa-check"></i>
             </button>
             <table class="table table-striped numero">
                 <thead>
@@ -120,7 +110,7 @@
 
                         </th>
                         <th>
-                            <input type="text" id="new<?=$res['id_chapter']?>" name="new<?=$res['id_chapter']?>" value="<?=($res['number_chapter'])?>" />
+                            <input type="text" id="new<?=$res['id_chapter']?>" name="new<?=$res['id_chapter']?>" value="<?=($res['number_chapter'])?>" size="3" />
                         </th>
                         <input type="hidden" id=" <?=$res['id_chapter']?>" name="<?=$res['id_chapter']?>" value="<?=$res['id_chapter']?>" />
                     </tr>

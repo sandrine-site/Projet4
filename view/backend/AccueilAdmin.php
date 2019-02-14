@@ -7,7 +7,7 @@
         <h3>Aperçu des chapitres:</h3>
     </div>
     <div class="col-sm-12 col-md-6 col-lg-6">
-        <a class="btn btn-primary" href="http://localhost/Projet4/index.php?action=<?='CreeNewChapter'?>">
+        <a class="btn btn-primary" href="http://localhost/Projet4/index?action=<?='CreeNewChapter'?>">
             <h5>Nouveau chapitre</h5>
             <i class="fas fa-file"></i>
         </a>
@@ -50,7 +50,7 @@
                     <?= ($res['modification_date'])?>
                 </th>
                 <th>
-                    <a role="button" class="btn btn-light" href="http://localhost/Projet4/index.php?action=edit&&id_chapter=<?=$res['id_chapter']?>" role="button"><i class="far fa-edit"></i></a>
+                    <a role="button" class="btn btn-light" href="http://localhost/Projet4/index?action=edit&&id_chapter=<?=$res['id_chapter']?>" role="button"><i class="far fa-edit"></i></a>
                 </th>
             </tr>
             <?php
@@ -59,7 +59,7 @@
             ?>
         </tbody>
     </table>
-    <a class="btn btn-primary" href="http://localhost/Projet4/index.php?action=<?='CreeNewChapter'?>" role="button">
+    <a class="btn btn-primary" href="http://localhost/Projet4/index?action=<?='CreeNewChapter'?>" role="button">
         <h5>Nouveau chapitre</h5>
         <i class="fas fa-file"></i>
     </a>
@@ -70,7 +70,7 @@
         <h3>Les derniers commentaires </h3>
     </div>
     <div class="col-sm-12 col-md-6 col-lg-6">
-        <a class="btn btn-primary" href="http://localhost/Projet4/index.php?action=<?='AllComments'?>&&message=<?=''?>" role="button">
+        <a class="btn btn-primary" href="http://localhost/Projet4/index?action=<?='AllComments'?>&&message=<?=''?>" role="button">
             <h5>Tous les <br />
                 commentaires :</h5>
             <i class="fas fa-list-ul"></i>
@@ -113,16 +113,16 @@
                 <th>
                     <?= htmlspecialchars($comment['dateComment'])?>
                 </th>
-                <th>
-                    <div id='<?=$_id?>'>
-                        <?= htmlspecialchars($comment['signalement'])?>
-                    </div>
+            <th>
+                <div id='<?=$_id?>'>
+                    <?= htmlspecialchars($comment['signalement'])?>
+                </div>
                 </th>
                 <th>
                     <?=nl2br( htmlspecialchars($comment['comment']))?>
                 </th>
                 <th>
-                    <a role="button" class="btn btn-light" href="http://localhost/Projet4/index.php?action=keepComment&&id_comment=<?=$comment['id_comment']?>&&from=Accueil" role="button"><i class="fas fa-check-square"></i>
+                    <a role="button" class="btn btn-light" href="http://localhost/Projet4/index?action=keepComment&&id_comment=<?=$comment['id_comment']?>&&from=Accueil" ><i class="fas fa-check-square"></i>
                     </a>
                 </th>
                 <td>
@@ -133,8 +133,9 @@
                             <div class="modal-content">
                                 <div class="modal-body">
                                     <p>Êtes-vous sûr de vouloir supprimer ce commentaire<br />
-                                        <a class="btn btn-primary" href="http://localhost/Projet4/index.php?action=delete&&id_comment=<?=$comment['id_comment']?>&&from=Accueil" role="button"> <i class="fas fa-check"></i> oui
-                                        </a></p>
+                                        <a class="btn btn-primary" href="http://localhost/Projet4/index?action=delete&&id_comment=<?=$comment['id_comment']?>&&from=Accueil" role="button"> <i class="fas fa-check"></i> oui
+                                        </a>
+                                    </p>
                                 </div>
                                 <button type="button" class="btn btn-danger" data-dismiss="modal"> <i class="fas fa-times"></i> annuler
                                 </button>
@@ -151,7 +152,7 @@
             ?>
         </tbody>
     </table>
-    <a class="btn btn-primary" href="http://localhost/Projet4/index.php?action=<?='AllComments'?>&&message=<?=''?>" role="button">
+    <a class="btn btn-primary" href="http://localhost/Projet4/index?action=<?='AllComments'?>&&message=<?=''?>" role="button">
         <h5>Tous les <br />
             commentaires :</h5>
         <i class="fas fa-list-ul"></i>
