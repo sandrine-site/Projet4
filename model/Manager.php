@@ -10,10 +10,13 @@ namespace jeanForteroche\Model;
 
 class Manager  {
 
+    /**
+     * @return \PDO
+     */
     protected function dbConnect(){
         try
         {
-            $config=include('.\config\config.php');
+            $config=include('././config/config.php');
             $db = new \PDO($config['hostname'] ,$config['user'], $config['password']);
             return $db;
         }

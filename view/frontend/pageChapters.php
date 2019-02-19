@@ -1,6 +1,6 @@
 <!--titre de la page -->
 <?php
-$config=include('.\config\config.php');
+$config=include('././config/config.php');
 $url=$config['url'];
 
 $title = "detail chapitre ";
@@ -69,7 +69,7 @@ $title = "detail chapitre ";
                             }
                         }
                         $comments->closeCursor();
-                ?>0
+                ?>
             </div>
             <div class="row">
                 <a class="btn btn-primary" href="./index.php?action=comments&&id_chapter=<?=$post['id_chapter'] ?>" role="button">

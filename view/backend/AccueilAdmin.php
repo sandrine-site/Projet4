@@ -1,4 +1,6 @@
-<?php $title = 'Administration';?>
+<?php $title = 'Administration';
+$config = include ('././config/config.php');
+$url = $config[ 'url' ];?>
 
 <?php ob_start(); ?>
 <!--résumé des précedents chapitres -->
@@ -7,7 +9,8 @@
         <h3>Aperçu des chapitres:</h3>
     </div>
     <div class="col-sm-12 col-md-6 col-lg-6">
-        <a class="btn btn-primary" href="http://localhost/Projet4/index?action=<?='CreeNewChapter'?>">
+        <a class="btn btn-primary" href="
+<?=$url?>?action=<?='CreeNewChapter'?>">
             <h5>Nouveau chapitre</h5>
             <i class="fas fa-file"></i>
         </a>
@@ -50,7 +53,8 @@
                     <?= ($res['modification_date'])?>
                 </th>
                 <th>
-                    <a role="button" class="btn btn-light" href="http://localhost/Projet4/index?action=edit&&id_chapter=<?=$res['id_chapter']?>" role="button"><i class="far fa-edit"></i></a>
+                    <a role="button" class="btn btn-light" href="
+<?=$url?>?action=edit&&id_chapter=<?=$res['id_chapter']?>" role="button"><i class="far fa-edit"></i></a>
                 </th>
             </tr>
             <?php
@@ -59,7 +63,7 @@
             ?>
         </tbody>
     </table>
-    <a class="btn btn-primary" href="http://localhost/Projet4/index?action=<?='CreeNewChapter'?>" role="button">
+    <a class="btn btn-primary" href="<?=$url?>?action=<?='CreeNewChapter'?>" role="button">
         <h5>Nouveau chapitre</h5>
         <i class="fas fa-file"></i>
     </a>
@@ -70,7 +74,7 @@
         <h3>Les derniers commentaires </h3>
     </div>
     <div class="col-sm-12 col-md-6 col-lg-6">
-        <a class="btn btn-primary" href="http://localhost/Projet4/index?action=<?='AllComments'?>&&message=<?=''?>" role="button">
+        <a class="btn btn-primary" href="./index.php?action=AllComments" role="button">
             <h5>Tous les <br />
                 commentaires :</h5>
             <i class="fas fa-list-ul"></i>
@@ -122,7 +126,9 @@
                     <?=nl2br( htmlspecialchars($comment['comment']))?>
                 </th>
                 <th>
-                    <a role="button" class="btn btn-light" href="http://localhost/Projet4/index?action=keepComment&&id_comment=<?=$comment['id_comment']?>&&from=Accueil" ><i class="fas fa-check-square"></i>
+                    <a role="button" class="btn btn-light"
+                       href="<?=$url?>?action=keepComment&&id_comment=<?=$comment['id_comment']?>&&from=Accueil" ><i
+                                class="fas fa-check-square"></i>
                     </a>
                 </th>
                 <td>
@@ -133,7 +139,8 @@
                             <div class="modal-content">
                                 <div class="modal-body">
                                     <p>Êtes-vous sûr de vouloir supprimer ce commentaire<br />
-                                        <a class="btn btn-primary" href="http://localhost/Projet4/index?action=delete&&id_comment=<?=$comment['id_comment']?>&&from=Accueil" role="button"> <i class="fas fa-check"></i> oui
+                                        <a class="btn btn-primary"
+                                           href="<?=$url?>?action=delete&&id_comment=<?=$comment['id_comment']?>&&from=Accueil" role="button"> <i class="fas fa-check"></i> oui
                                         </a>
                                     </p>
                                 </div>
@@ -152,7 +159,7 @@
             ?>
         </tbody>
     </table>
-    <a class="btn btn-primary" href="http://localhost/Projet4/index?action=<?='AllComments'?>&&message=<?=''?>" role="button">
+    <a class="btn btn-primary" <a class="btn btn-primary" href="./index.php?action=AllComments"role="button">
         <h5>Tous les <br />
             commentaires :</h5>
         <i class="fas fa-list-ul"></i>

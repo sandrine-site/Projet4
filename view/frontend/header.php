@@ -1,6 +1,6 @@
 <header>
 <?php
-$config=include('.\config\config.php');
+$config=include('././config/config.php');
 
 $url=$config['url'];
 
@@ -36,13 +36,13 @@ $url=$config['url'];
 </article>
        <?php }
        elseif ((isset($_SESSION['password message'])&&$_SESSION['password message']==true)||(isset($_SESSION['verifyPwsMessage'])&&$_SESSION['verifyPwsMessage']=='no')){
-           var_dump($_SESSION['verifyPwsMessage'])
+
            ?>
            <article class="warning">
                attention! vous devez remplir le nom et le mot de passe.
            </article>
        <?php }
-       elseif ($_SESSION['verifyPwsMessage']=='ko'){
+       elseif (isset($_SESSION['verifyPwsMessage'])&&$_SESSION['verifyPwsMessage']=='ko'){
            ?>
            <article class="warning">
               Le nom et le mot de passe ne correspondent pas !

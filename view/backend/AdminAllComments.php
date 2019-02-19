@@ -1,6 +1,6 @@
 
 <?php $title = 'Administration des commentaires';
-$config=include('config/config.php');
+$config=include('././config/config.php');
 $url=$config['url'];
  ob_start(); ?>
 

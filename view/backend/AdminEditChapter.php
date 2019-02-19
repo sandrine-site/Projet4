@@ -1,4 +1,6 @@
-<?php $title = 'Edition des Chapitres';?>
+<?php $title = 'Edition des Chapitres';
+$config = include ('././config/config.php');
+$url = $config[ 'url' ];?>
 
 <?php ob_start(); ?>
 <!--Editeur de texte -->
@@ -95,7 +97,8 @@
                         <?= ($res['modification_date'])?>
                     </th>
                     <th>
-                        <a role="button" class="btn btn-light" href="http://localhost/Projet4/index?action=edit&&id_chapter=<?=$res['id_chapter']?>" role="button"><i class="far fa-edit"></i>
+                        <a role="button" class="btn btn-light" href="$config = include ('././config/config.php');
+$url?action=edit&&id_chapter=<?=$res['id_chapter']?>" role="button"><i class="far fa-edit"></i>
                         </a>
                     </th>
                 </tr>

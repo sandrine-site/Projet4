@@ -19,14 +19,7 @@ class User
 {
     /**
      *  Displays last chapter and its comments
-     *
-     * @param $id_chapter [int]
-     *
-     * @return void [array] $post [array containing the element of the chapter]
-     * @use  chapterManager
-     * @use  commentsManager
-     *
-     * @link ['view/frontend/pageChapters.php] [Page affichant le chapitre]
+     * @param $id_chapter[int]
      */
     public function chapPost($id_chapter){
         $chapterManager=new ChapterManager();
@@ -40,14 +33,7 @@ class User
 
     /**
      * Displays the comments of the selected chapter
-     *
-     * @param $id_chapter [int]
-     *
-     * @return void [array] $comments [containing the different post concerning the chapter]
-     * @use  chapterManager
-     * @use  commentsManager
-     *
-     * @link [view/frontend/pageComments.php] [Page affichant les commentaires]
+     * @param $id_chapter[int]
      */
     public function commentChapter($id_chapter){
         $chapterManager=new ChapterManager();
@@ -60,12 +46,7 @@ class User
     }
 
     /**
-     * displays the last chapter and its comments
-     * @use  chapterManager
-     * @use  commentsManager
-     *
-     * @link [view/frontend/frontpage.php] [Page accueil]
-     * @return void [array] $comments containing the different post concerning the chapter
+     *displays the last chapter and its comments
      */
     public function post(){
         $chapterManager=new ChapterManager();
@@ -79,17 +60,11 @@ class User
 
     /**
      * locates a reported comment and places it in the table signal comment
-     * @use  commentsManager
-     *
      * @param $id_comment [int]
-     * @param $id_chapter [int]
-     * @param $from       [string]
-     * @param $messageUser
-     *
-     * @return void [array] $comments containing the different post concerning the chapter
-     * @link [view/frontend/pageComments.php] [Page affichant les commentaires]
+     * @param $id_chapter[int]
+     * @param $from[string]
      */
- public function signalComment($id_comment, $id_chapter, $from){
+    public function signalComment($id_comment, $id_chapter, $from){
         $commentsManager=new CommentsManager();
        $commentsManager->getSignal($id_comment);
         $comments=$commentsManager->getComments($id_chapter);
@@ -110,13 +85,11 @@ class User
         }
     }
 
-
     /**
      * allows you to add a comment
-     * @param [Integer] $id_chapter [id of the chapter for which we want to add a comment]
-     * @param [string] $author [person who add a comment]
-     * @param [string] $comment [commentaire]
-     * @use commentsManager
+     * @param $id_chapter [int]
+     * @param $author[string]
+     * @param $comment[string]
      */
     public function addComment($id_chapter, $author, $comment){
         $commentsManager=new CommentsManager();
@@ -132,6 +105,4 @@ class User
 
         }
     }
-
-
 }

@@ -1,4 +1,5 @@
-<?php $title = 'Edition des Chapitres';$config=include('config/config.php');
+<?php $title = 'Edition des Chapitres';
+$config=include('././config/config.php');
 $url=$config['url'];
 ob_start(); ?>
 

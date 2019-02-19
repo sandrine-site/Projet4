@@ -2,7 +2,7 @@
     <nav>
         <h1>Accés rapides</h1>
         <?php
-        $config=include('config/config.php');
+        $config=include('././config/config.php');
         $url=$config['url'];
         $active1=$active2=$active3=$active4='';
         switch( $title ){
