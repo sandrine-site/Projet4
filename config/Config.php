@@ -7,9 +7,9 @@
  */
 return array(
 'url'=>'http://localhost/Projet4/index.php',
-'hostname' =>'mysql:host=localhost;dbname=slash1040766_1oujev;charset=utf8',
-'user'=>'root',
-'password'=> '',
+'hostname' =>'mysql:host=............;dbname=......................;charset=utf8',
+'user'=>'............................',
+'password'=> '......................',
 'error add comment'=>false,
     'signal comment'=>false,
     'password message'=>false,
