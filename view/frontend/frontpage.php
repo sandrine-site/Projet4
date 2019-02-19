@@ -80,7 +80,7 @@ ob_start();
                     <?php
     $i=1;
                     while ($comment = $comments->fetch()){
-                        if ($i<=5){
+                        if ($i<=4){
                     ?>
                     <div class="col-sm-12 col-md-6 col-lg-3 Avis">
                         <h4> Par :
